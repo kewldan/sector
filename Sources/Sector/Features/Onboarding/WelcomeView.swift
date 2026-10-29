@@ -62,7 +62,7 @@ struct WelcomeView: View {
         model.refreshDiskAccess()
         model.phase = .permission
       } label: {
-        Text("Продолжить")
+        Text("onboarding.continue")
           .font(.system(size: 15, weight: .semibold))
           .frame(width: 248, height: 30)
       }

@@ -68,7 +68,10 @@ struct LargeFilesView: View {
           Text(item.title)
             .font(.system(size: 12, weight: .semibold))
             .foregroundStyle(filter == item ? Color.primary : Color.secondary)
-            .frame(width: 110, height: 28)
+            .fixedSize()
+            .padding(.horizontal, 14)
+            .frame(minWidth: 96)
+            .frame(height: 28)
             .background {
               if filter == item {
                 Capsule()

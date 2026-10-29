@@ -449,6 +449,22 @@
         }
       }
     },
+    "onboarding.continue": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Continue"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Продолжить"
+          }
+        }
+      }
+    },
     "status.paused": {
       "localizations": {
         "en": {

@@ -17,7 +17,7 @@ if ! grep -qs '^DEVELOPMENT_TEAM *= *[A-Z0-9]' Config/Local.xcconfig; then
 fi
 
 xcodebuild -project Sector.xcodeproj -scheme Sector -configuration "$configuration" \
-  -derivedDataPath build/DerivedData -destination 'platform=macOS' -quiet \
+  -derivedDataPath build/DerivedData -destination 'platform=macOS,arch=arm64' -quiet \
   -allowProvisioningUpdates "${signing[@]}" build
 
 rm -rf build/Sector.app

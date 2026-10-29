@@ -90,7 +90,9 @@ struct ExplorerView: View {
       .frame(maxWidth: .infinity, maxHeight: .infinity)
       .animation(Motion.resolve(Motion.smooth), value: explorer.mode)
 
+      // Tiles fill the whole card, so the hint would cover them.
       Text(hint)
+        .opacity(explorer.mode == .tiles ? 0 : 1)
         .font(.system(size: 11))
         .foregroundStyle(.secondary)
         .padding(.leading, 16)
