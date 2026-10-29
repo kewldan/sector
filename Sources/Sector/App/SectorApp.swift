@@ -5,12 +5,19 @@ import SwiftUI
 @main
 struct SectorApp: App {
   @NSApplicationDelegateAdaptor(AppDelegate.self) private var delegate
-  @State private var model = AppModel()
+  @State private var model: AppModel
+
+  init() {
+    let model = AppModel()
+    _model = State(initialValue: model)
+    SystemServices.start(model: model)
+  }
 
   var body: some Scene {
     Window("Sector", id: "main") {
       RootView()
         .environment(model)
+        .capturesOpenWindow()
         .frame(minWidth: 1080, minHeight: 700)
     }
     .defaultSize(width: 1280, height: 800)
