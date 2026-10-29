@@ -252,25 +252,10 @@ private struct AppDetail: View {
       .padding(.top, 12)
       .padding(.bottom, 10)
 
-      HStack(spacing: 8) {
-        Button {
-          apps.resetData(item)
-        } label: {
-          Text("Сбросить данные").frame(maxWidth: .infinity)
-        }
-        .buttonStyle(.glass)
-        .disabled(running || checked.isEmpty)
-        .layoutPriority(1)
-
-        Button {
-          apps.removeCompletely(item)
-        } label: {
-          Text("Удалить полностью").frame(maxWidth: .infinity)
-        }
-        .buttonStyle(.glassProminent)
-        .tint(Color.sectorDanger)
-        .disabled(running)
-        .layoutPriority(1.3)
+      // Side by side when both labels fit, stacked in a narrow panel.
+      ViewThatFits(in: .horizontal) {
+        HStack(spacing: 8) { actionButtons(item, running: running, checked: checked) }
+        VStack(spacing: 8) { actionButtons(item, running: running, checked: checked) }
       }
       .font(.system(size: 12, weight: .semibold))
       .controlSize(.large)
@@ -286,6 +271,26 @@ private struct AppDetail: View {
     )
     .shadow(color: Color(hex: 0x141E46).opacity(0.05), radius: 3, y: 1)
     .animation(Motion.resolve(Motion.smooth), value: running)
+  }
+
+  @ViewBuilder
+  private func actionButtons(_ item: InstalledApp, running: Bool, checked: [AppRelatedItem]) -> some View {
+    Button {
+      apps.resetData(item)
+    } label: {
+      Text("Сбросить данные").lineLimit(1).fixedSize().frame(maxWidth: .infinity)
+    }
+    .buttonStyle(.glass)
+    .disabled(running || checked.isEmpty)
+
+    Button {
+      apps.removeCompletely(item)
+    } label: {
+      Text("Удалить полностью").lineLimit(1).fixedSize().frame(maxWidth: .infinity)
+    }
+    .buttonStyle(.glassProminent)
+    .tint(Color.sectorDanger)
+    .disabled(running)
   }
 
   private var header: some View {
