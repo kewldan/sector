@@ -19,3 +19,17 @@ print(
 for child in tree.sortedChildren(FileTree.root).prefix(8) {
   print(String(format: "  %10.2f GB  %@", Double(tree.size(child)) / 1e9, tree.name(child)))
 }
+
+let cacheURL = FileManager.default.temporaryDirectory.appendingPathComponent("sector-bench-tree.bin")
+var t0 = Date()
+try tree.write(to: cacheURL)
+let writeTime = Date().timeIntervalSince(t0)
+t0 = Date()
+let loaded = FileTree.read(from: cacheURL)
+let readTime = Date().timeIntervalSince(t0)
+let bytes = (try? FileManager.default.attributesOfItem(atPath: cacheURL.path)[.size] as? Int) ?? 0
+print(
+  String(
+    format: "cache: %.1f MB, write %.2f s, read %.2f s, ok=%@", Double(bytes) / 1e6, writeTime,
+    readTime, loaded?.count == tree.count ? "yes" : "no"))
+try? FileManager.default.removeItem(at: cacheURL)

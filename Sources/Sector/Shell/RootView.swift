@@ -20,10 +20,6 @@ struct RootView: View {
       }
     }
     .animation(Motion.resolve(Motion.smooth), value: model.phase)
-    .task {
-      if model.phase == .main && model.tree == nil && !model.isScanning {
-        model.startScan()
-      }
-    }
+    .task { await model.launch() }
   }
 }

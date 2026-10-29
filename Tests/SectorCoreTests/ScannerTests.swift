@@ -127,3 +127,29 @@ private func allocated(_ url: URL) -> UInt64 {
   #expect(Plural.word(112, "файл", "файла", "файлов", locale: ru) == "файлов")
   #expect(Plural.word(5, "файл", "файла", "файлов", locale: Locale(identifier: "en_US")) == "файлов")
 }
+
+@MainActor @Test func cacheRoundTrip() throws {
+  let root = try makeFixture()
+  defer { try? FileManager.default.removeItem(at: root) }
+  let tree = try #require(DiskScanner(root: root).run())
+  let a = try #require(tree.child(FileTree.root, named: "a"))
+  tree.remove(try #require(tree.child(a, named: "big.bin")))
+
+  let file = root.appendingPathComponent("cache/tree.bin")
+  try tree.write(to: file)
+  let loaded = try #require(FileTree.read(from: file))
+  #expect(loaded.count == tree.count)
+  #expect(loaded.rootPath == tree.rootPath)
+  #expect(Int(loaded.scannedAt.timeIntervalSince1970) == Int(tree.scannedAt.timeIntervalSince1970))
+  for id in 0..<NodeID(tree.count) {
+    #expect(loaded.name(id) == tree.name(id))
+    #expect(loaded.size(id) == tree.size(id))
+    #expect(loaded.flags(id) == tree.flags(id))
+    #expect(loaded.children(id) == tree.children(id))
+  }
+
+  // Truncated files are rejected rather than crashing.
+  let data = try Data(contentsOf: file)
+  try data.prefix(data.count - 3).write(to: file)
+  #expect(FileTree.read(from: file) == nil)
+}

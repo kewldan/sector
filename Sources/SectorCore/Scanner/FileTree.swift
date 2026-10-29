@@ -43,9 +43,9 @@ public final class FileTree: @unchecked Sendable {
   var flags: ContiguousArray<UInt8>
   var names: ContiguousArray<UInt8>
 
-  init(rootPath: String, storage: TreeStorage) {
+  init(rootPath: String, storage: TreeStorage, scannedAt: Date = Date()) {
     self.rootPath = rootPath
-    self.scannedAt = Date()
+    self.scannedAt = scannedAt
     parents = storage.parents
     firstChildren = storage.firstChildren
     childCounts = storage.childCounts

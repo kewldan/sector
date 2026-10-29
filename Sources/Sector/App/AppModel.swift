@@ -81,6 +81,7 @@ final class AppModel {
   private(set) var hasFullDiskAccess = DiskAccess.hasFullAccess
   private var scanner: DiskScanner?
   private var progressTask: Task<Void, Never>?
+  private var saveTask: Task<Void, Never>?
 
   var deletionRequest: DeletionRequest?
   var toast: Toast?
@@ -126,6 +127,26 @@ final class AppModel {
 
   var isScanning: Bool { scanState == .running || scanState == .paused }
 
+  /// Called once the main window appears: shows the cached tree right away
+  /// and refreshes it in the background when stale, or scans from scratch.
+  func launch() async {
+    guard phase == .main, tree == nil, !isScanning else { return }
+    let root = scanRoot.path
+    let cached = await Task.detached(priority: .userInitiated) {
+      FileTree.read(from: FileTree.defaultCacheURL)
+    }.value
+    guard let cached, cached.rootPath == root, tree == nil, !isScanning else {
+      if tree == nil && !isScanning { startScan() }
+      return
+    }
+    await install(cached)
+    scanState = .finished(duration: 0)
+    smartClean.invalidate()
+    duplicates.invalidate()
+    apps.invalidate()
+    if Date().timeIntervalSince(cached.scannedAt) > 3600 { startScan(showScreen: false) }
+  }
+
   func startScan(showScreen: Bool = true) {
     scanner?.cancel()
     let scanner = DiskScanner(root: scanRoot, load: settings.scanLoad)
@@ -154,6 +175,7 @@ final class AppModel {
         return
       }
       await install(result)
+      scheduleSave()
       scanState = .finished(duration: scanProgress.elapsed)
       smartClean.invalidate()
       duplicates.invalidate()
@@ -255,8 +277,22 @@ final class AppModel {
       }
       treeVersion += 1
       recomputeBreakdown()
+      scheduleSave()
     }
     refreshVolume()
+  }
+
+  /// Persists the tree a moment after it settles, off the main actor.
+  private func scheduleSave() {
+    guard let tree else { return }
+    saveTask?.cancel()
+    saveTask = Task {
+      try? await Task.sleep(for: .seconds(2))
+      guard !Task.isCancelled else { return }
+      await Task.detached(priority: .utility) {
+        try? tree.write(to: FileTree.defaultCacheURL)
+      }.value
+    }
   }
 
   /// Records a cleanup performed outside `perform` (Smart Clean, Docker).
