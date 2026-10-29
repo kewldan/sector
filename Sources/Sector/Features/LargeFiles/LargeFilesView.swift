@@ -32,6 +32,8 @@ struct LargeFilesView: View {
     .padding(.horizontal, Metrics.pagePadding)
     .padding(.top, 20)
     .padding(.bottom, 20)
+    .navigationTitle("Большие и старые файлы")
+    .navigationSubtitle(subtitle(rows))
     .overlay(alignment: .bottom) { selectionBar }
     .animation(Motion.resolve(Motion.bouncy), value: selection.isEmpty)
     .task(id: model.treeVersion) { await reload() }
@@ -42,11 +44,10 @@ struct LargeFilesView: View {
   // MARK: - Header
 
   private func header(_ rows: [LargeFile]) -> some View {
-    PageHeader("Большие и старые файлы", subtitle: subtitle(rows)) {
-      HStack(spacing: 12) {
-        filterChips
-        searchField
-      }
+    HStack(spacing: 12) {
+      filterChips
+      Spacer(minLength: 12)
+      searchField
     }
   }
 

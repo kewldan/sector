@@ -137,7 +137,9 @@ struct QuickActionsCard: View {
       let trashItems = Plural.format(trashCount, "объект", "объекта", "объектов")
       ActionRow(
         symbol: "trash", color: DiskCategory.trash.color, title: "Корзина",
-        detail: trashCount == 0
+        detail: snapshot?.trashDenied == true
+          ? String(localized: "Нет доступа")
+          : trashCount == 0
           ? String(localized: "Пусто")
           : "\(ByteFormat.string(snapshot?.trashSize ?? 0)) · \(trashItems)",
         button: "Очистить", isEnabled: trashCount > 0
@@ -152,7 +154,9 @@ struct QuickActionsCard: View {
       let age = String(localized: "старше \(Plural.format(days, "дня", "дней", "дней"))")
       ActionRow(
         symbol: "arrow.down.to.line", color: Color(hex: 0x30B0C7), title: "Старые загрузки",
-        detail: (snapshot?.oldDownloadsSize ?? 0) > 0
+        detail: snapshot?.downloadsDenied == true
+          ? String(localized: "Нет доступа")
+          : (snapshot?.oldDownloadsSize ?? 0) > 0
           ? "\(ByteFormat.string(snapshot?.oldDownloadsSize ?? 0)) · \(age)"
           : String(localized: "Нет файлов \(age)"),
         button: "Проверить", isEnabled: true

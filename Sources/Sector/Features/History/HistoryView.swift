@@ -22,11 +22,6 @@ struct HistoryView: View {
 
   var body: some View {
     VStack(alignment: .leading, spacing: 14) {
-      PageHeader(
-        "История", subtitle: String(localized: "Всё, что удалял Sector, и что ещё можно вернуть")
-      ) {
-        exportMenu
-      }
       RatioHStack(ratios: [1.6, 1], spacing: 14) {
         FreedChart(months: HistoryFormat.months(records))
           .appearAnimation(delay: 0.1)
@@ -44,6 +39,11 @@ struct HistoryView: View {
     .padding(.horizontal, Metrics.pagePadding)
     .padding(.top, 20)
     .padding(.bottom, 20)
+    .navigationTitle("История")
+    .navigationSubtitle(String(localized: "Всё, что удалял Sector, и что ещё можно вернуть"))
+    .toolbar {
+      ToolbarItem(placement: .primaryAction) { exportMenu }
+    }
     .task(id: ReloadKey(history: model.historyVersion, local: localVersion)) { await reload() }
     .confirmationDialog(
       "Очистить Корзину?", isPresented: $confirmsEmptyTrash, titleVisibility: .visible
@@ -625,6 +625,8 @@ private struct RatioHStack: Layout {
   var ratios: [CGFloat]
   var spacing: CGFloat
 
+  private static let maxHeight: CGFloat = 260
+
   private func widths(_ total: CGFloat, count: Int) -> [CGFloat] {
     guard count > 0 else { return [] }
     let available = max(0, total - spacing * CGFloat(count - 1))
@@ -636,9 +638,16 @@ private struct RatioHStack: Layout {
   func sizeThatFits(proposal: ProposedViewSize, subviews: Subviews, cache: inout ()) -> CGSize {
     let width = proposal.width ?? 720
     let ws = widths(width, count: subviews.count)
+    // Charts report an unbounded ideal height when asked with `nil`, which
+    // would push the whole screen (and the split view) out of the window,
+    // so measure each card against a bounded height.
     let height =
       zip(subviews, ws)
-      .map { $0.sizeThatFits(ProposedViewSize(width: $1, height: nil)).height }
+      .map { subview, w in
+        let fitted = subview.sizeThatFits(ProposedViewSize(width: w, height: nil)).height
+        let bounded = subview.sizeThatFits(ProposedViewSize(width: w, height: Self.maxHeight)).height
+        return fitted.isFinite && fitted <= Self.maxHeight ? fitted : min(bounded, Self.maxHeight)
+      }
       .max() ?? 0
     return CGSize(width: width, height: height)
   }

@@ -17,6 +17,9 @@ struct OverviewSnapshot: Sendable {
   /// Top-level items in `~/.Trash`.
   var trash: [DeletionItem] = []
   var trashSize: UInt64 = 0
+  /// The scan could not read `~/.Trash` / `~/Downloads` (no Full Disk Access).
+  var trashDenied = false
+  var downloadsDenied = false
   /// Files in `~/Downloads` untouched for `minimumAgeDays`.
   var oldDownloadsSize: UInt64 = 0
   var oldDownloadsCount = 0
@@ -39,6 +42,7 @@ struct OverviewSnapshot: Sendable {
     }
 
     if let trash = tree.find(path: home + "/.Trash") {
+      snapshot.trashDenied = tree.flags(trash).contains(.denied)
       snapshot.trash = tree.orderedChildren(trash).map {
         DeletionItem(url: tree.url($0), size: tree.size($0))
       }
@@ -46,6 +50,7 @@ struct OverviewSnapshot: Sendable {
     }
 
     if let downloads = tree.find(path: home + "/Downloads") {
+      snapshot.downloadsDenied = tree.flags(downloads).contains(.denied)
       let cutoff = UInt32(clamping: Int(now.timeIntervalSince1970) - minimumAgeDays * 86_400)
       var stack = [downloads]
       while let id = stack.popLast() {

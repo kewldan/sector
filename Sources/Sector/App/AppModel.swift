@@ -109,9 +109,11 @@ final class AppModel {
     hasFullDiskAccess = DiskAccess.hasFullAccess
   }
 
-  /// Bytes used on the volume that the scan could not attribute to files.
+  /// Bytes used on the volume that the scan could not attribute to files:
+  /// snapshots, other APFS volumes, protected folders and, for a home-only
+  /// scan, everything outside the home folder.
   var unscannedBytes: UInt64 {
-    guard let tree, let volume, tree.rootPath == "/" else { return 0 }
+    guard let tree, let volume else { return 0 }
     let scanned = tree.size(FileTree.root)
     return volume.used > scanned ? volume.used - scanned : 0
   }
@@ -236,7 +238,7 @@ final class AppModel {
   private func install(_ tree: FileTree) async {
     refreshVolume()
     let unscanned: UInt64 = {
-      guard let volume, tree.rootPath == "/" else { return 0 }
+      guard let volume else { return 0 }
       let scanned = tree.size(FileTree.root)
       return volume.used > scanned ? volume.used - scanned : 0
     }()
