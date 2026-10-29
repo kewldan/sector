@@ -170,6 +170,9 @@ final class AppModel {
       return
     }
     await install(cached)
+    deniedPaths = await Task.detached(priority: .utility) {
+      Array(cached.nodes { cached.flags($0).contains(.denied) }.prefix(1000).map(cached.path))
+    }.value
     scanState = .finished(duration: 0)
     smartClean.invalidate()
     duplicates.invalidate()
