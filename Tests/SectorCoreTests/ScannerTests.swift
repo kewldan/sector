@@ -153,3 +153,16 @@ private func allocated(_ url: URL) -> UInt64 {
   try data.prefix(data.count - 3).write(to: file)
   #expect(FileTree.read(from: file) == nil)
 }
+
+@Test func skippedPathsAreNotEntered() throws {
+  let root = try makeFixture()
+  defer { try? FileManager.default.removeItem(at: root) }
+  let skipped = root.appendingPathComponent("a/b").path
+  let scanner = DiskScanner(root: root, skipPaths: [skipped])
+  let tree = try #require(scanner.run())
+  let node = try #require(tree.find(path: skipped))
+  #expect(tree.flags(node).contains(.denied))
+  #expect(tree.children(node).isEmpty)
+  #expect(scanner.deniedPaths == [skipped])
+  #expect(tree.find(path: root.appendingPathComponent("a/b/c/small.txt").path) == nil)
+}

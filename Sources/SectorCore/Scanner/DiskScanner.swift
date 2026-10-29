@@ -75,9 +75,14 @@ public final class DiskScanner: @unchecked Sendable {
   private var startTime = Date()
   private let pausedTime = Mutex<(total: TimeInterval, since: Date?)>((0, nil))
 
-  public init(root: URL, load: ScanLoad = .balanced) {
+  /// Directories never entered; reported as denied. Used without Full Disk
+  /// Access for locations where opening would only raise a privacy prompt.
+  public let skipPaths: Set<String>
+
+  public init(root: URL, load: ScanLoad = .balanced, skipPaths: Set<String> = []) {
     self.root = root.standardizedFileURL
     self.load = load
+    self.skipPaths = skipPaths
   }
 
   // MARK: - Control
@@ -143,24 +148,40 @@ public final class DiskScanner: @unchecked Sendable {
     DiskScanner.raiseDescriptorLimit()
     queue.push([WorkItem(node: 0, path: rootPath)])
 
-    let group = DispatchGroup()
-    for _ in 0..<load.threadCount {
-      group.enter()
+    let threadCount = load.threadCount
+    let running = Atomic<Int>(threadCount)
+    let exited = DispatchSemaphore(value: 0)
+    for index in 0..<threadCount {
       let thread = Thread { [self] in
-        worker()
-        group.leave()
+        worker(index)
+        running.subtract(1, ordering: .relaxed)
+        exited.signal()
       }
       thread.qualityOfService = load.qos
       thread.stackSize = 1 << 20
       thread.start()
     }
-    group.wait()
+    // Wait for every worker, except ones stuck opening a directory once the
+    // queue gave up on them (see `WorkQueue.pop`).
+    while true {
+      _ = exited.wait(timeout: .now() + 0.25)
+      let left = running.load(ordering: .relaxed)
+      if left == 0 || (queue.isAbandoned && left <= queue.openingCount) { break }
+    }
 
     if isCancelled { return nil }
     var finished = storage.withLock { s in
+      for item in queue.stalledItems {
+        s.flags[Int(item.node)] |= FileTree.Flags.denied.rawValue
+      }
       let taken = s
       s = TreeStorage(reserving: 0)
       return taken
+    }
+    let stalled = queue.stalledItems
+    if !stalled.isEmpty {
+      deniedCount.add(stalled.count, ordering: .relaxed)
+      denied.withLock { $0.append(contentsOf: stalled.map(\.path)) }
     }
     finished.aggregate()
     return FileTree(rootPath: rootPath, storage: finished)
@@ -183,7 +204,7 @@ public final class DiskScanner: @unchecked Sendable {
   private static let maxOpenHandles = 4096
   private let openHandles = HandleCounter()
 
-  private func worker() {
+  private func worker(_ index: Int) {
     let bufferSize = 256 * 1024
     let buffer = UnsafeMutableRawPointer.allocate(byteCount: bufferSize, alignment: 16)
     defer { buffer.deallocate() }
@@ -194,10 +215,19 @@ public final class DiskScanner: @unchecked Sendable {
     while let item = queue.pop() {
       batch.reset()
       subdirs.removeAll(keepingCapacity: true)
-      let fd = list(item, into: &batch, buffer: buffer, bufferSize: bufferSize)
+      let fd = list(item, worker: index, into: &batch, buffer: buffer, bufferSize: bufferSize)
 
       if !batch.entries.isEmpty {
-        let base = storage.withLock { $0.commit(batch, parent: item.node) }
+        // A worker that was stuck opening its directory may come back after
+        // the scan gave up on it; its results no longer have a tree to go to.
+        guard
+          let base = storage.withLock({ s -> Int32? in
+            queue.isAbandoned ? nil : s.commit(batch, parent: item.node)
+          })
+        else {
+          if fd >= 0 { close(fd) }
+          break
+        }
         var handle: DirectoryHandle?
         if fd >= 0, batch.entries.contains(where: \.isDirectory),
           openHandles.value < DiskScanner.maxOpenHandles
@@ -211,6 +241,10 @@ public final class DiskScanner: @unchecked Sendable {
           let name = String(
             decoding: batch.names[start..<start + Int(entry.nameLength)], as: UTF8.self)
           let path = item.path == "/" ? "/" + name : item.path + "/" + name
+          if skipPaths.contains(path) {
+            skip(node: base + Int32(k), path: path)
+            continue
+          }
           subdirs.append(WorkItem(node: base + Int32(k), path: path, name: name, parent: handle))
         }
         queue.push(subdirs)
@@ -224,18 +258,34 @@ public final class DiskScanner: @unchecked Sendable {
     }
   }
 
+  private func skip(node: Int32, path: String) {
+    deniedCount.add(1, ordering: .relaxed)
+    denied.withLock { if $0.count < 1000 { $0.append(path) } }
+    storage.withLock { $0.flags[Int(node)] |= FileTree.Flags.denied.rawValue }
+  }
+
   /// Lists one directory into `batch`; returns its still-open descriptor, or
   /// -1 if it could not be opened.
   private func list(
-    _ item: WorkItem, into batch: inout DirectoryBatch, buffer: UnsafeMutableRawPointer,
-    bufferSize: Int
+    _ item: WorkItem, worker: Int, into batch: inout DirectoryBatch,
+    buffer: UnsafeMutableRawPointer, bufferSize: Int
   ) -> Int32 {
     let flags = O_RDONLY | O_DIRECTORY | O_NOFOLLOW | O_CLOEXEC
+    // Opening a privacy-protected folder can block on a system prompt; the
+    // queue watches how long each open takes.
+    queue.beginOpen(worker: worker, item: item)
     let fd: Int32
     if let parent = item.parent {
       fd = item.name.withCString { openat(parent.fd, $0, flags) }
     } else {
       fd = open(item.path, flags)
+    }
+    let openErrno = errno
+    queue.endOpen(worker: worker)
+    errno = openErrno
+    if queue.isAbandoned {
+      if fd >= 0 { close(fd) }
+      return -1
     }
     guard fd >= 0 else {
       if errno == EACCES || errno == EPERM {
@@ -341,12 +391,24 @@ final class DirectoryHandle: @unchecked Sendable {
 
 /// LIFO work stack shared by scanner threads. Depth-first order keeps the
 /// number of pending paths small and directory metadata warm in cache.
+///
+/// It also watches directory opens: when the only work left is opens that
+/// have been blocked for `stallTimeout` (a privacy prompt nobody answered, a
+/// hung network mount), it gives up on them so the scan can finish.
 final class WorkQueue: @unchecked Sendable {
   private let condition = NSCondition()
   private var stack: [WorkItem] = []
   private var outstanding = 0
   private var paused = false
   private var cancelled = false
+  private var abandoned = false
+  private var opening: [Int: (item: WorkItem, since: Date)] = [:]
+  private var stalled: [WorkItem] = []
+  let stallTimeout: TimeInterval
+
+  init(stallTimeout: TimeInterval = 4) {
+    self.stallTimeout = stallTimeout
+  }
 
   func push(_ items: [WorkItem]) {
     guard !items.isEmpty else { return }
@@ -357,14 +419,25 @@ final class WorkQueue: @unchecked Sendable {
     condition.unlock()
   }
 
-  /// Next directory to scan; nil once all work is done or cancelled.
+  /// Next directory to scan; nil once all work is done, cancelled or
+  /// abandoned.
   func pop() -> WorkItem? {
     condition.lock()
     defer { condition.unlock() }
-    while !cancelled && (paused || (stack.isEmpty && outstanding > 0)) {
-      condition.wait()
+    while !cancelled && !abandoned && (paused || (stack.isEmpty && outstanding > 0)) {
+      if !paused && stack.isEmpty && outstanding > 0 {
+        let now = Date()
+        let stuck = opening.values.filter { now.timeIntervalSince($0.since) > stallTimeout }
+        if stuck.count == outstanding {
+          abandoned = true
+          stalled = stuck.map(\.item)
+          condition.broadcast()
+          break
+        }
+      }
+      condition.wait(until: Date().addingTimeInterval(0.5))
     }
-    if cancelled { return nil }
+    if cancelled || abandoned { return nil }
     return stack.popLast()
   }
 
@@ -374,6 +447,37 @@ final class WorkQueue: @unchecked Sendable {
     outstanding -= 1
     if outstanding == 0 { condition.broadcast() }
     condition.unlock()
+  }
+
+  func beginOpen(worker: Int, item: WorkItem) {
+    condition.lock()
+    opening[worker] = (item, Date())
+    condition.unlock()
+  }
+
+  func endOpen(worker: Int) {
+    condition.lock()
+    opening[worker] = nil
+    condition.unlock()
+  }
+
+  var isAbandoned: Bool {
+    condition.lock()
+    defer { condition.unlock() }
+    return abandoned
+  }
+
+  var openingCount: Int {
+    condition.lock()
+    defer { condition.unlock() }
+    return opening.count
+  }
+
+  /// Directories given up on, valid once `isAbandoned`.
+  var stalledItems: [WorkItem] {
+    condition.lock()
+    defer { condition.unlock() }
+    return stalled
   }
 
   func setPaused(_ value: Bool) {

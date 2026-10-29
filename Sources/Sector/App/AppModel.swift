@@ -127,6 +127,34 @@ final class AppModel {
 
   var isScanning: Bool { scanState == .running || scanState == .paused }
 
+  /// Folders macOS guards with a privacy prompt (or denies outright) unless
+  /// the app has Full Disk Access. Without it the scan skips them instead of
+  /// stacking up system dialogs, and the overview explains what is missing.
+  /// Desktop, Documents and Downloads are left in: one prompt each is the
+  /// normal way to grant those.
+  static var privacyProtectedPaths: Set<String> {
+    let home = NSHomeDirectory()
+    let library = home + "/Library"
+    return Set(
+      [
+        "/Containers", "/Group Containers", "/Mail", "/Messages", "/Safari", "/Calendars",
+        "/Reminders", "/Cookies", "/HomeKit", "/IdentityServices", "/Metadata/CoreSpotlight",
+        "/Mobile Documents", "/Photos", "/Suggestions", "/Sharing", "/Biome", "/DuetExpertCenter",
+        "/Application Support/AddressBook", "/Application Support/CallHistoryDB",
+        "/Application Support/CallHistoryTransactions", "/Application Support/com.apple.TCC",
+        "/Application Support/FileProvider", "/Application Support/Knowledge",
+        "/Application Support/com.apple.sharedfilelist", "/Autosave Information",
+        "/Accounts", "/Assistant/SiriVocabulary", "/PersonalizationPortrait", "/Trial",
+        "/Caches/com.apple.Safari", "/Caches/CloudKit", "/Caches/com.apple.findmy.fmipcore",
+        "/Caches/com.apple.HomeKit", "/Caches/com.apple.ap.adprivacyd",
+        "/Caches/com.apple.containermanagerd", "/Caches/FamilyCircle",
+      ].map { library + $0 }
+        + [
+          home + "/Movies/TV", home + "/Music/Music", home + "/Music/iTunes",
+          home + "/Pictures/Photos Library.photoslibrary", home + "/.Trash",
+        ])
+  }
+
   /// Called once the main window appears: shows the cached tree right away
   /// and refreshes it in the background when stale, or scans from scratch.
   func launch() async {
@@ -149,7 +177,10 @@ final class AppModel {
 
   func startScan(showScreen: Bool = true) {
     scanner?.cancel()
-    let scanner = DiskScanner(root: scanRoot, load: settings.scanLoad)
+    refreshDiskAccess()
+    let scanner = DiskScanner(
+      root: scanRoot, load: settings.scanLoad,
+      skipPaths: hasFullDiskAccess ? [] : Self.privacyProtectedPaths)
     self.scanner = scanner
     scanState = .running
     scanProgress = ScanProgress()
