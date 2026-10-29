@@ -209,10 +209,11 @@ final class AppModel {
   // MARK: - Removal
 
   /// Shows the confirmation sheet, or removes right away when the user
-  /// turned confirmations off.
+  /// turned confirmations off (globally, or for items in ~/Downloads).
   func requestDeletion(_ request: DeletionRequest) {
     guard !request.items.isEmpty else { return }
-    if settings.alwaysConfirm {
+    let skipsSheet = settings.skipConfirmForDownloads && request.isInDownloads
+    if settings.alwaysConfirm && !skipsSheet {
       deletionRequest = request
     } else {
       Task { await perform(request, mode: settings.moveToTrash ? .trash : .permanent) }
