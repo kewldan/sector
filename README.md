@@ -21,7 +21,7 @@
   <img alt="Tests" src="https://img.shields.io/badge/tests-36%20passing-34C759?logo=swift&logoColor=white">
   <img alt="Privacy" src="https://img.shields.io/badge/privacy-100%25%20local-248A3D?logo=shield&logoColor=white">
   <img alt="Lines of Swift" src="https://img.shields.io/badge/Swift%20code-20k%20lines-F05138">
-  <img alt="License" src="https://img.shields.io/badge/license-all%20rights%20reserved-lightgrey">
+  <a href="LICENSE"><img alt="License: MIT" src="https://img.shields.io/badge/license-MIT-yellow"></a>
 </p>
 
 <p align="center">
@@ -193,4 +193,4 @@ Sector speaks **English** and **Russian**. Russian is the source language; trans
 
 ## 📄 License
 
-No license has been chosen yet; all rights reserved.
+Sector is released under the [MIT License](LICENSE).
