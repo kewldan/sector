@@ -15,6 +15,7 @@ sample data and interactions, `<helmet><style>` the animations.
 ```sh
 scripts/build-app.sh          # xcodegen + xcodebuild → build/Sector.app (release)
 scripts/build-app.sh debug
+scripts/install.sh            # release build → /Applications/Sector.app
 scripts/test.sh               # swift-testing suite of SectorCore
 scripts/check-strings.sh      # untranslated UI strings (after build-app.sh)
 swift scripts/make-icon.swift # re-render Resources/AppIcon.icns
