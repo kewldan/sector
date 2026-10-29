@@ -252,6 +252,20 @@ struct MenuBarView: View {
       .simultaneousGesture(TapGesture().onEnded { NSApp.activate() })
       .help(Text("Настройки"))
       .accessibilityLabel(Text("Настройки"))
+      // Closing the window keeps Sector in the menu bar, so quitting lives here.
+      Button {
+        NSApp.terminate(nil)
+      } label: {
+        Image(systemName: "power")
+          .font(.system(size: 15))
+          .foregroundStyle(.secondary)
+          .frame(width: 32, height: 32)
+          .contentShape(.circle)
+      }
+      .buttonStyle(MenuPressStyle())
+      .keyboardShortcut("q")
+      .help(Text("Завершить Sector"))
+      .accessibilityLabel(Text("Завершить Sector"))
     }
   }
 

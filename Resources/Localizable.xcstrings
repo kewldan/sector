@@ -1375,6 +1375,16 @@
         }
       }
     },
+    "Завершить Sector": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Quit Sector"
+          }
+        }
+      }
+    },
     "Загрузки": {
       "localizations": {
         "en": {

@@ -20,6 +20,7 @@ Never ship the mocks' sample numbers — every figure comes from real data.
 scripts/build-app.sh          # xcodegen + xcodebuild → build/Sector.app (release)
 scripts/build-app.sh debug
 scripts/install.sh            # release build → /Applications/Sector.app, relaunched
+scripts/release.sh            # signed release → build/release/Sector-<version>.dmg + SHA-256
 scripts/test.sh               # swift-testing suite of SectorCore
 scripts/check-strings.sh      # UI strings missing English (run after build-app.sh)
 swift scripts/make-icon.swift # re-render Resources/AppIcon.icns from code
@@ -122,6 +123,14 @@ show up with real data. `screencapture -l <window id> -x out.png` captures a
 window with its shadow even when it is behind other windows (`-o` drops the
 shadow). README screenshots live in `docs/screenshots/`, the GIF in `docs/`;
 retake them in English when a screen changes noticeably.
+
+## Releases
+
+Bump `MARKETING_VERSION` (and `CURRENT_PROJECT_VERSION`) in `project.yml`, run
+`scripts/release.sh`, tag `v<version>`, then attach the DMG and its `.sha256`
+to a GitHub release (`gh release create`). Builds are signed with an Apple
+Development certificate but not notarized, so Gatekeeper blocks the first
+launch on other Macs — the README's Install section explains "Open Anyway".
 
 ## Git
 

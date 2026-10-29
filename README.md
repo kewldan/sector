@@ -10,6 +10,15 @@
 </p>
 
 <p align="center">
+  <a href="https://github.com/kewldan/sector/releases/latest"><b>⬇️ Download the latest release</b></a>
+  &nbsp;·&nbsp;
+  <a href="#-install">Install guide</a>
+</p>
+
+<p align="center">
+  <a href="https://github.com/kewldan/sector/releases/latest"><img alt="Latest release" src="https://img.shields.io/github/v/release/kewldan/sector?label=release&color=0A84FF"></a>
+  <a href="https://github.com/kewldan/sector/releases"><img alt="Downloads" src="https://img.shields.io/github/downloads/kewldan/sector/total?color=34C759"></a>
+  <br>
   <img alt="macOS 26+" src="https://img.shields.io/badge/macOS-26%2B-000000?logo=apple&logoColor=white">
   <img alt="Swift 6" src="https://img.shields.io/badge/Swift-6-F05138?logo=swift&logoColor=white">
   <img alt="SwiftUI" src="https://img.shields.io/badge/SwiftUI-Liquid%20Glass-0A84FF">
@@ -42,6 +51,50 @@
 
 > [!TIP]
 > Give Sector **Full Disk Access** (System Settings → Privacy & Security → Full Disk Access). Without it macOS hides Mail, Safari, other apps' containers and the Trash, and Sector shows how much it couldn't see.
+
+## 📥 Install
+
+> [!NOTE]
+> Requires **macOS 26 or later**. One universal build runs natively on Apple Silicon and Intel Macs.
+
+1. **Download** `Sector-<version>.dmg` from the [latest release](https://github.com/kewldan/sector/releases/latest).
+2. **Open the DMG** and drag **Sector** onto the **Applications** folder.
+3. **Open Sector the first time.** The build is signed but not notarized by Apple, so macOS blocks the first launch:
+   1. Double-click **Sector** in Applications. macOS says it can't verify the app — click **Done**.
+   2. Open **System Settings → Privacy & Security**, scroll down to *"Sector" was blocked…* and click **Open Anyway**.
+   3. Confirm with your password or Touch ID. From now on Sector opens like any other app.
+
+   <details>
+   <summary>Prefer Terminal?</summary>
+
+   Remove the quarantine flag macOS puts on downloaded files, then open the app normally:
+
+   ```sh
+   xattr -dr com.apple.quarantine /Applications/Sector.app
+   ```
+
+   </details>
+4. **Grant Full Disk Access** when Sector asks (or later in **System Settings → Privacy & Security → Full Disk Access**). Without it macOS hides Mail, Safari, other apps' data and the Trash from every app, Sector included.
+5. **Optional: add the widgets.** Right-click the desktop → **Edit Widgets** → search for **Sector**.
+
+To check the download, compare its checksum with the `.sha256` file attached to the release:
+
+```sh
+shasum -a 256 ~/Downloads/Sector-*.dmg
+```
+
+<details>
+<summary>🧽 Uninstall</summary>
+
+Quit Sector (menu bar icon → power button, or <kbd>⌘Q</kbd>), move `/Applications/Sector.app` to the Trash, and remove its data:
+
+```sh
+rm -rf ~/Library/Application\ Support/Sector ~/Library/Caches/com.kewldan.sector
+rm -rf ~/Library/Group\ Containers/*.com.kewldan.sector
+defaults delete com.kewldan.sector
+```
+
+</details>
 
 ## 📸 Screenshots
 
@@ -97,7 +150,7 @@ How it gets there:
 - ✋ **You see it before it goes.** Large files, duplicates and apps go through a confirmation sheet that lists every item and the space it frees (an explicit setting turns it off). Smart Clean shows every category and item before you press **Clean**; its one-click **Clean** in the menu bar cleans the safe selection straight away.
 - 🔒 **Local only.** Nothing leaves your Mac. There is no network code in the app.
 
-## 🚀 Getting started
+## 🛠️ Build from source
 
 ### Requirements
 
@@ -107,7 +160,7 @@ How it gets there:
 ### Build and install
 
 ```sh
-git clone <repo-url> sector && cd sector
+git clone https://github.com/kewldan/sector.git && cd sector
 scripts/install.sh        # release build → /Applications/Sector.app
 ```
 
@@ -117,6 +170,7 @@ Other scripts:
 scripts/build-app.sh      # release build → build/Sector.app (pass "debug" for a debug build)
 scripts/test.sh           # unit tests of the engine
 scripts/check-strings.sh  # UI strings missing an English translation
+scripts/release.sh        # signed release → build/release/Sector-<version>.dmg + SHA-256
 ```
 
 ### Signing
