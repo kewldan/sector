@@ -4,6 +4,7 @@
 # selected the flag is unnecessary but harmless.
 set -euo pipefail
 cd "$(dirname "$0")/.."
+source scripts/env.sh
 plugins="$(xcode-select -p)/usr/lib/swift/host/plugins/testing"
 extra=()
 [[ -d "$plugins" ]] && extra=(-Xswiftc -plugin-path -Xswiftc "$plugins")

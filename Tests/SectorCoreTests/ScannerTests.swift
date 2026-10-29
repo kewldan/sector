@@ -29,7 +29,7 @@ private func allocated(_ url: URL) -> UInt64 {
 @Test func scanMatchesStat() throws {
   let root = try makeFixture()
   defer { try? FileManager.default.removeItem(at: root) }
-  let tree = try #require(Scanner(root: root).run())
+  let tree = try #require(DiskScanner(root: root).run())
 
   let big = try #require(tree.find(path: root.appendingPathComponent("a/big.bin").path))
   // Hard-linked copies share one allocation; whichever is found first owns it.
@@ -58,7 +58,7 @@ private func allocated(_ url: URL) -> UInt64 {
 @Test func treeInvariants() throws {
   let root = try makeFixture()
   defer { try? FileManager.default.removeItem(at: root) }
-  let tree = try #require(Scanner(root: root, load: .maximum).run())
+  let tree = try #require(DiskScanner(root: root, load: .maximum).run())
 
   for id in 1..<NodeID(tree.count) {
     let parent = try #require(tree.parent(id))
@@ -79,7 +79,7 @@ private func allocated(_ url: URL) -> UInt64 {
 @MainActor @Test func removeUpdatesAncestors() throws {
   let root = try makeFixture()
   defer { try? FileManager.default.removeItem(at: root) }
-  let tree = try #require(Scanner(root: root).run())
+  let tree = try #require(DiskScanner(root: root).run())
 
   let a = try #require(tree.child(FileTree.root, named: "a"))
   let big = try #require(tree.child(a, named: "big.bin"))
@@ -101,7 +101,7 @@ private func allocated(_ url: URL) -> UInt64 {
     chmod(locked.path, 0o755)
     try? FileManager.default.removeItem(at: root)
   }
-  let scanner = Scanner(root: root)
+  let scanner = DiskScanner(root: root)
   let tree = try #require(scanner.run())
   let node = try #require(tree.child(FileTree.root, named: "locked"))
   #expect(tree.flags(node).contains(.denied))

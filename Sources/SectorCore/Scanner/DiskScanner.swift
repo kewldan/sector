@@ -11,6 +11,21 @@ public struct ScanProgress: Sendable, Equatable {
   public var currentPath: String = ""
   public var elapsed: TimeInterval = 0
   public var isPaused = false
+
+  public init() {}
+
+  public init(
+    bytes: UInt64, files: Int, directories: Int, deniedDirectories: Int, currentPath: String,
+    elapsed: TimeInterval, isPaused: Bool
+  ) {
+    self.bytes = bytes
+    self.files = files
+    self.directories = directories
+    self.deniedDirectories = deniedDirectories
+    self.currentPath = currentPath
+    self.elapsed = elapsed
+    self.isPaused = isPaused
+  }
 }
 
 /// How hard the scanner may push the machine.
@@ -41,7 +56,7 @@ public enum ScanLoad: String, Sendable, CaseIterable, Codable {
 /// Mount points below the root are skipped, so scanning `/` counts the
 /// system and data volumes once (firmlinks are followed transparently) and
 /// never wanders into external drives.
-public final class Scanner: @unchecked Sendable {
+public final class DiskScanner: @unchecked Sendable {
   public let root: URL
   public let load: ScanLoad
 
@@ -125,7 +140,7 @@ public final class Scanner: @unchecked Sendable {
     var st = stat()
     let mtime = lstat(rootPath, &st) == 0 ? UInt32(clamping: st.st_mtimespec.tv_sec) : 0
     storage.withLock { $0.appendRoot(modified: mtime) }
-    Scanner.raiseDescriptorLimit()
+    DiskScanner.raiseDescriptorLimit()
     queue.push([WorkItem(node: 0, path: rootPath)])
 
     let group = DispatchGroup()
@@ -185,7 +200,7 @@ public final class Scanner: @unchecked Sendable {
         let base = storage.withLock { $0.commit(batch, parent: item.node) }
         var handle: DirectoryHandle?
         if fd >= 0, batch.entries.contains(where: \.isDirectory),
-          openHandles.value < Scanner.maxOpenHandles
+          openHandles.value < DiskScanner.maxOpenHandles
         {
           handle = DirectoryHandle(fd: fd, counter: openHandles)
         } else if fd >= 0 {

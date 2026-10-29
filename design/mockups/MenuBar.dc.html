@@ -1,0 +1,174 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<title>Sector — строка меню и виджеты</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0}
+*{box-sizing:border-box}
+a{color:#0071E3;text-decoration:none}a:hover{color:#0058B0}
+button{font:inherit;color:inherit;border:0;background:none;padding:0;cursor:pointer;text-align:left}
+@keyframes drift1{0%,100%{transform:translate(0,0) scale(1)}50%{transform:translate(70px,40px) scale(1.15)}}
+@keyframes drift2{0%,100%{transform:translate(0,0) scale(1.1)}50%{transform:translate(-80px,-50px) scale(.95)}}
+@keyframes popIn{0%{opacity:0;transform:scale(.6) translateY(-14px)}60%{opacity:1}100%{opacity:1;transform:none}}
+@keyframes itemIn{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+@keyframes draw{from{stroke-dashoffset:100}to{stroke-dashoffset:12.4}}
+@keyframes drawW{from{stroke-dashoffset:100}to{stroke-dashoffset:12.4}}
+@keyframes growX{from{transform:scaleX(0)}to{transform:scaleX(1)}}
+@keyframes growY{from{transform:scaleY(0)}to{transform:scaleY(1)}}
+@keyframes widgetIn{0%{opacity:0;transform:translateY(24px) scale(.9)}100%{opacity:1;transform:none}}
+@keyframes iconPulse{0%,100%{transform:scale(1)}50%{transform:scale(1.12)}}
+@keyframes shimmer{0%{transform:translateX(-140%) skewX(-20deg)}55%,100%{transform:translateX(520%) skewX(-20deg)}}
+@keyframes blink{0%,100%{opacity:1}50%{opacity:.35}}
+.mi{transition:background .15s}
+.mi:hover{background:rgba(0,113,227,.1)!important;color:#1d1d1f}
+.gbtn{transition:transform .25s cubic-bezier(.32,.72,0,1),background .2s}
+.gbtn:hover{background:rgba(255,255,255,.98)!important;color:#1d1d1f}
+.gbtn:active{transform:scale(.95)}
+.pbtn{transition:transform .25s cubic-bezier(.32,.72,0,1),filter .2s}
+.pbtn:hover{filter:brightness(1.08);color:#fff}
+.pbtn:active{transform:scale(.95)}
+.wid{transition:transform .4s cubic-bezier(.34,1.56,.64,1)}
+.wid:hover{transform:scale(1.03)}
+.mbi{transition:background .2s}
+.mbi:hover{background:rgba(255,255,255,.35)}
+</style>
+</helmet>
+<div style="width:1280px;height:800px;position:relative;overflow:hidden;font-family:-apple-system,BlinkMacSystemFont,'SF Pro Text','Inter',system-ui,sans-serif;color:#1d1d1f;background:#cfdaee">
+  <div aria-hidden="true" style="position:absolute;inset:0;background:linear-gradient(155deg,#c9d9f3 0%,#a9bfe6 48%,#d9c9ec 100%)"></div>
+  <div aria-hidden="true" style="position:absolute;left:-180px;top:-200px;width:820px;height:820px;border-radius:50%;background:radial-gradient(circle,rgba(56,132,255,.6) 0%,rgba(56,132,255,0) 68%);animation:drift1 22s ease-in-out infinite"></div>
+  <div aria-hidden="true" style="position:absolute;right:-200px;bottom:-260px;width:860px;height:860px;border-radius:50%;background:radial-gradient(circle,rgba(175,82,222,.5) 0%,rgba(175,82,222,0) 66%);animation:drift2 26s ease-in-out infinite"></div>
+  <div aria-hidden="true" style="position:absolute;left:460px;top:320px;width:600px;height:600px;border-radius:50%;background:radial-gradient(circle,rgba(48,176,199,.42) 0%,rgba(48,176,199,0) 66%);animation:drift1 30s ease-in-out infinite reverse"></div>
+
+  <div style="position:absolute;left:0;top:0;right:0;height:30px;display:flex;align-items:center;gap:2px;padding:0 10px;background:rgba(255,255,255,.28);backdrop-filter:blur(30px) saturate(180%);-webkit-backdrop-filter:blur(30px) saturate(180%);font-size:13px">
+    <span style="font-weight:700;padding:0 10px">Finder</span>
+    <span style="padding:0 9px">Файл</span>
+    <span style="padding:0 9px">Правка</span>
+    <span style="padding:0 9px">Вид</span>
+    <span style="padding:0 9px">Переход</span>
+    <span style="padding:0 9px">Окно</span>
+    <span style="padding:0 9px">Справка</span>
+    <span style="flex:1"></span>
+    <button class="mbi" type="button" onClick="{{toggle}}" aria-expanded="{{open}}" aria-label="Sector: 123 ГБ свободно" style="{{mbBtn}}">
+      <svg width="16" height="16" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="8" fill="none" stroke="rgba(0,0,0,.25)" stroke-width="3.2"></circle><circle cx="12" cy="12" r="8" fill="none" stroke="#1d1d1f" stroke-width="3.2" stroke-linecap="round" pathLength="100" stroke-dasharray="87.6 100" transform="rotate(-90 12 12)"></circle></svg>
+      <span style="font-size:12px;font-weight:600;font-variant-numeric:tabular-nums">123 ГБ</span>
+    </button>
+    <span aria-hidden="true" style="padding:0 8px;display:flex"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#1d1d1f" stroke-width="2" stroke-linecap="round"><path d="M2.5 9a14 14 0 0 1 19 0"></path><path d="M5.5 12.5a9.5 9.5 0 0 1 13 0"></path><path d="M8.7 16a5 5 0 0 1 6.6 0"></path><circle cx="12" cy="19.5" r=".6" fill="#1d1d1f"></circle></svg></span>
+    <span aria-hidden="true" style="padding:0 8px;display:flex"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#1d1d1f" stroke-width="2" stroke-linecap="round"><rect x="3" y="5" width="8" height="6" rx="3"></rect><rect x="13" y="13" width="8" height="6" rx="3"></rect><circle cx="17" cy="8" r="3"></circle><circle cx="7" cy="16" r="3"></circle></svg></span>
+    <span style="padding:0 10px;font-weight:500">Чт 29 окт. 14:32</span>
+  </div>
+
+  <div class="wid" style="position:absolute;left:40px;top:64px;width:172px;height:172px;border-radius:24px;padding:16px;background:rgba(255,255,255,.55);backdrop-filter:blur(30px) saturate(180%);-webkit-backdrop-filter:blur(30px) saturate(180%);box-shadow:0 10px 30px rgba(20,30,70,.15),inset 0 0 0 .5px rgba(255,255,255,.7),inset 0 1px 0 rgba(255,255,255,.9);display:flex;flex-direction:column;animation:widgetIn .8s cubic-bezier(.34,1.3,.64,1) .2s both">
+    <div style="display:flex;align-items:center;gap:6px;font-size:11px;font-weight:600;color:#3a3a3c"><span style="width:14px;height:14px;border-radius:4px;background:linear-gradient(160deg,#5AC8FA,#0A84FF 50%,#5E5CE6)"></span>Macintosh HD</div>
+    <div style="position:relative;width:86px;height:86px;margin:10px auto 0">
+      <svg aria-hidden="true" width="86" height="86" viewBox="0 0 86 86" style="transform:rotate(-90deg)">
+        <circle cx="43" cy="43" r="36" fill="none" stroke="rgba(0,0,0,.08)" stroke-width="10"></circle>
+        <circle cx="43" cy="43" r="36" fill="none" stroke="#0071E3" stroke-width="10" stroke-linecap="round" pathLength="100" stroke-dasharray="100 100" style="animation:drawW 1.4s cubic-bezier(.32,.72,0,1) .6s both"></circle>
+      </svg>
+      <div style="position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center"><span style="font-size:20px;font-weight:700;letter-spacing:-.02em">123</span><span style="font-size:10px;color:#3a3a3c">ГБ своб.</span></div>
+    </div>
+    <div style="font-size:11px;color:#3a3a3c;text-align:center;margin-top:auto">Занято 88%</div>
+  </div>
+
+  <a class="wid" href="SmartClean.dc.html" style="position:absolute;left:228px;top:64px;width:360px;height:172px;border-radius:24px;padding:16px 18px;color:#1d1d1f;background:rgba(255,255,255,.55);backdrop-filter:blur(30px) saturate(180%);-webkit-backdrop-filter:blur(30px) saturate(180%);box-shadow:0 10px 30px rgba(20,30,70,.15),inset 0 0 0 .5px rgba(255,255,255,.7),inset 0 1px 0 rgba(255,255,255,.9);display:flex;flex-direction:column;animation:widgetIn .8s cubic-bezier(.34,1.3,.64,1) .35s both">
+    <div style="display:flex;align-items:center;gap:6px;font-size:11px;font-weight:600;color:#3a3a3c"><span style="width:14px;height:14px;border-radius:4px;background:linear-gradient(160deg,#5AC8FA,#0A84FF 50%,#5E5CE6)"></span>Sector<span style="margin-left:auto;font-weight:500">обновлено 2 мин назад</span></div>
+    <div style="display:flex;align-items:baseline;gap:6px;margin-top:8px"><span style="font-size:26px;font-weight:700;letter-spacing:-.02em">64,8 ГБ</span><span style="font-size:12px;color:#3a3a3c">можно освободить</span></div>
+    <div style="display:flex;align-items:flex-end;gap:7px;height:56px;margin-top:auto">
+      <span style="flex:1;height:100%;border-radius:5px;background:#5E5CE6;transform-origin:bottom;animation:growY .7s cubic-bezier(.34,1.3,.64,1) .6s both"></span>
+      <span style="flex:1;height:52%;border-radius:5px;background:#34C759;transform-origin:bottom;animation:growY .7s cubic-bezier(.34,1.3,.64,1) .67s both"></span>
+      <span style="flex:1;height:42%;border-radius:5px;background:#0071E3;transform-origin:bottom;animation:growY .7s cubic-bezier(.34,1.3,.64,1) .74s both"></span>
+      <span style="flex:1;height:36%;border-radius:5px;background:#8E8E93;transform-origin:bottom;animation:growY .7s cubic-bezier(.34,1.3,.64,1) .81s both"></span>
+      <span style="flex:1;height:27%;border-radius:5px;background:#30B0C7;transform-origin:bottom;animation:growY .7s cubic-bezier(.34,1.3,.64,1) .88s both"></span>
+      <span style="flex:1;height:18%;border-radius:5px;background:#A2845E;transform-origin:bottom;animation:growY .7s cubic-bezier(.34,1.3,.64,1) .95s both"></span>
+      <span style="flex:1;height:8%;border-radius:5px;background:#FF9500;transform-origin:bottom;animation:growY .7s cubic-bezier(.34,1.3,.64,1) 1.02s both"></span>
+    </div>
+    <div style="display:flex;gap:7px;font-size:9.5px;color:#3a3a3c;margin-top:5px"><span style="flex:1;text-align:center">Xcode</span><span style="flex:1;text-align:center">node</span><span style="flex:1;text-align:center">Docker</span><span style="flex:1;text-align:center">Сим.</span><span style="flex:1;text-align:center">Кэши</span><span style="flex:1;text-align:center">Корз.</span><span style="flex:1;text-align:center">Логи</span></div>
+  </a>
+
+  <sc-if value="{{open}}" hint-placeholder-val="{{ true }}">
+    <section aria-label="Sector в строке меню" style="position:absolute;right:150px;top:36px;width:356px;border-radius:22px;padding:14px;background:rgba(250,250,252,.82);backdrop-filter:blur(40px) saturate(180%);-webkit-backdrop-filter:blur(40px) saturate(180%);box-shadow:0 24px 60px rgba(20,30,70,.28),0 0 0 .5px rgba(0,0,0,.12),inset 0 1px 0 #fff;transform-origin:85% 0;animation:popIn .45s cubic-bezier(.34,1.35,.64,1) both">
+      <div style="display:flex;align-items:center;gap:14px;padding:4px 4px 12px;animation:itemIn .4s cubic-bezier(.32,.72,0,1) .1s both">
+        <div style="position:relative;width:68px;height:68px;flex-shrink:0">
+          <svg aria-hidden="true" width="68" height="68" viewBox="0 0 68 68" style="transform:rotate(-90deg)">
+            <circle cx="34" cy="34" r="28" fill="none" stroke="rgba(0,0,0,.08)" stroke-width="9"></circle>
+            <circle cx="34" cy="34" r="28" fill="none" stroke="#0071E3" stroke-width="9" stroke-linecap="round" pathLength="100" stroke-dasharray="100 100" style="animation:draw 1.2s cubic-bezier(.32,.72,0,1) .2s both"></circle>
+          </svg>
+          <div style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:700">88%</div>
+        </div>
+        <div style="min-width:0">
+          <div style="font-size:14px;font-weight:700">Macintosh HD</div>
+          <div style="font-size:12px;color:#3a3a3c;font-variant-numeric:tabular-nums">123,4 ГБ свободно из 994,7 ГБ</div>
+          <div style="display:inline-flex;align-items:center;gap:5px;margin-top:5px;padding:2px 8px;border-radius:8px;background:rgba(255,149,0,.15);color:#9A4600;font-size:11px;font-weight:600"><span style="width:6px;height:6px;border-radius:50%;background:#FF9500;animation:blink 1.8s ease-in-out infinite"></span>Заполнится примерно через 2 месяца</div>
+        </div>
+      </div>
+      <div aria-hidden="true" style="display:flex;gap:2px;height:8px;border-radius:4px;overflow:hidden;background:rgba(0,0,0,.06);margin:0 4px 12px">
+        <span style="width:21.6%;background:#5E5CE6;transform-origin:left;animation:growX .6s cubic-bezier(.32,.72,0,1) .25s both"></span>
+        <span style="width:18.9%;background:#FF2D55;transform-origin:left;animation:growX .6s cubic-bezier(.32,.72,0,1) .32s both"></span>
+        <span style="width:14.3%;background:#007AFF;transform-origin:left;animation:growX .6s cubic-bezier(.32,.72,0,1) .39s both"></span>
+        <span style="width:12.5%;background:#8E8E93;transform-origin:left;animation:growX .6s cubic-bezier(.32,.72,0,1) .46s both"></span>
+        <span style="width:9.7%;background:#FF9500;transform-origin:left;animation:growX .6s cubic-bezier(.32,.72,0,1) .53s both"></span>
+        <span style="width:5.9%;background:#34C759;transform-origin:left;animation:growX .6s cubic-bezier(.32,.72,0,1) .6s both"></span>
+        <span style="width:4.2%;background:#30B0C7;transform-origin:left;animation:growX .6s cubic-bezier(.32,.72,0,1) .67s both"></span>
+      </div>
+
+      <div style="position:relative;overflow:hidden;display:flex;align-items:center;gap:10px;padding:12px 12px 12px 14px;border-radius:16px;color:#fff;background:linear-gradient(135deg,#0071E3,#4B4FD9);box-shadow:0 8px 20px rgba(0,90,200,.25);animation:itemIn .4s cubic-bezier(.32,.72,0,1) .18s both">
+        <div style="flex:1;min-width:0">
+          <div style="font-size:11px;opacity:.9">Умная очистка</div>
+          <div style="font-size:18px;font-weight:700;letter-spacing:-.01em">64,8 ГБ можно освободить</div>
+        </div>
+        <a class="gbtn" href="Cleaning.dc.html" style="position:relative;overflow:hidden;height:30px;padding:0 14px;border-radius:15px;background:rgba(255,255,255,.92);color:#0062C4;font-size:12px;font-weight:700;display:flex;align-items:center">
+          <span aria-hidden="true" style="position:absolute;top:0;left:0;width:24px;height:100%;background:linear-gradient(90deg,rgba(0,113,227,0),rgba(0,113,227,.2),rgba(0,113,227,0));animation:shimmer 2.8s ease-in-out 1s infinite"></span>Очистить</a>
+      </div>
+
+      <div style="display:flex;flex-direction:column;gap:2px;margin-top:8px">
+        <div class="mi" style="display:flex;align-items:center;gap:10px;padding:8px 8px;border-radius:12px;animation:itemIn .4s cubic-bezier(.32,.72,0,1) .24s both">
+          <span style="width:28px;height:28px;border-radius:8px;background:rgba(162,132,94,.16);color:#7A5C36;display:flex;align-items:center;justify-content:center"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 7h16"></path><path d="M9 7V4.5h6V7"></path><path d="M6 7l1 13h10l1-13"></path></svg></span>
+          <span style="flex:1;font-size:13px">Корзина</span>
+          <span style="font-size:12px;color:#3a3a3c;font-variant-numeric:tabular-nums">4,2 ГБ</span>
+          <a class="gbtn" href="Done.dc.html" style="height:24px;padding:0 10px;border-radius:12px;background:rgba(0,0,0,.06);color:#1d1d1f;font-size:11px;font-weight:600;display:flex;align-items:center">Очистить</a>
+        </div>
+        <div class="mi" style="display:flex;align-items:center;gap:10px;padding:8px 8px;border-radius:12px;animation:itemIn .4s cubic-bezier(.32,.72,0,1) .3s both">
+          <span style="width:28px;height:28px;border-radius:8px;background:rgba(48,176,199,.15);color:#16788A;display:flex;align-items:center;justify-content:center"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 4v11"></path><path d="M7 10l5 5 5-5"></path><path d="M5 20h14"></path></svg></span>
+          <span style="flex:1;font-size:13px">Загрузки</span>
+          <span style="font-size:12px;color:#3a3a3c;font-variant-numeric:tabular-nums">29,8 ГБ</span>
+          <a class="gbtn" href="LargeFiles.dc.html" style="height:24px;padding:0 10px;border-radius:12px;background:rgba(0,0,0,.06);color:#1d1d1f;font-size:11px;font-weight:600;display:flex;align-items:center">Разобрать</a>
+        </div>
+        <div class="mi" style="display:flex;align-items:center;gap:10px;padding:8px 8px;border-radius:12px;animation:itemIn .4s cubic-bezier(.32,.72,0,1) .36s both">
+          <span style="width:28px;height:28px;border-radius:8px;background:rgba(0,0,0,.06);color:#3a3a3c;display:flex;align-items:center;justify-content:center"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" aria-hidden="true"><rect x="3" y="6" width="18" height="12" rx="3"></rect><circle cx="17" cy="12" r="1"></circle></svg></span>
+          <span style="flex:1;min-width:0"><span style="display:block;font-size:13px">Samsung T7</span><span style="display:block;font-size:11px;color:#6e6e73">1,2 ТБ свободно из 2 ТБ</span></span>
+          <button class="gbtn" type="button" aria-label="Извлечь Samsung T7" style="width:26px;height:26px;border-radius:13px;background:rgba(0,0,0,.06);display:flex;align-items:center;justify-content:center"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#3a3a3c" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 14l7-8 7 8z"></path><path d="M5 19h14"></path></svg></button>
+        </div>
+      </div>
+
+      <div style="height:.5px;background:rgba(0,0,0,.1);margin:8px 4px"></div>
+      <div style="display:flex;align-items:center;gap:6px;animation:itemIn .4s cubic-bezier(.32,.72,0,1) .42s both">
+        <a class="mi" href="Overview.dc.html" style="flex:1;display:flex;align-items:center;gap:8px;padding:8px;border-radius:10px;color:#1d1d1f;font-size:13px;font-weight:500">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#0071E3" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="16" rx="3"></rect><path d="M3 9h18"></path></svg>Открыть Sector</a>
+        <a class="gbtn" href="Settings.dc.html" aria-label="Настройки" style="width:32px;height:32px;border-radius:16px;display:flex;align-items:center;justify-content:center;color:#3a3a3c"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="3"></circle><path d="M12 2.5v3M12 18.5v3M2.5 12h3M18.5 12h3M5.3 5.3l2.1 2.1M16.6 16.6l2.1 2.1M5.3 18.7l2.1-2.1M16.6 7.4l2.1-2.1"></path></svg></a>
+      </div>
+    </section>
+  </sc-if>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1280,"height":800}}'>
+class Component extends DCLogic {
+  renderVals() {
+    const s = this.state || {};
+    const open = s.open == null ? true : s.open;
+    return {
+      open: open,
+      toggle: () => this.setState({ open: !open }),
+      mbBtn: 'display:flex;align-items:center;gap:5px;height:22px;padding:0 8px;border-radius:7px;margin:0 4px;background:' + (open ? 'rgba(255,255,255,.55)' : 'rgba(255,255,255,0)') + ';transition:background .2s'
+    };
+  }
+}
+</script>
+</body>
+</html>

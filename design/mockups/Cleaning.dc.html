@@ -1,0 +1,215 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<title>Sector — идёт очистка</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0}
+*{box-sizing:border-box}
+a{color:#0071E3;text-decoration:none}a:hover{color:#0058B0}
+button{font:inherit;color:inherit;border:0;background:none;padding:0;cursor:pointer;text-align:left}
+@keyframes fadeUp{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:none}}
+@keyframes winIn{from{opacity:0;transform:translateY(18px) scale(.97)}to{opacity:1;transform:none}}
+@keyframes drift1{0%,100%{transform:translate(0,0) scale(1)}50%{transform:translate(70px,40px) scale(1.15)}}
+@keyframes drift2{0%,100%{transform:translate(0,0) scale(1.1)}50%{transform:translate(-80px,-50px) scale(.95)}}
+@keyframes spin{to{transform:rotate(360deg)}}
+@keyframes pop{0%{transform:scale(0)}60%{transform:scale(1.25)}100%{transform:scale(1)}}
+@keyframes fly1{0%{transform:translate(470px,-110px) scale(1) rotate(0);opacity:0}10%{opacity:1}55%{transform:translate(220px,-150px) scale(.85) rotate(120deg)}100%{transform:translate(0,0) scale(.2) rotate(260deg);opacity:0}}
+@keyframes fly2{0%{transform:translate(470px,20px) scale(1) rotate(0);opacity:0}10%{opacity:1}55%{transform:translate(230px,-30px) scale(.85) rotate(-110deg)}100%{transform:translate(0,0) scale(.2) rotate(-240deg);opacity:0}}
+@keyframes fly3{0%{transform:translate(470px,160px) scale(1) rotate(0);opacity:0}10%{opacity:1}55%{transform:translate(220px,150px) scale(.85) rotate(90deg)}100%{transform:translate(0,0) scale(.2) rotate(220deg);opacity:0}}
+@keyframes glow{0%,100%{box-shadow:0 0 0 0 rgba(0,113,227,.0),0 20px 50px rgba(20,30,70,.14)}50%{box-shadow:0 0 0 14px rgba(0,113,227,.08),0 20px 50px rgba(20,30,70,.14)}}
+@keyframes shimmerBar{0%{transform:translateX(-100%)}100%{transform:translateX(300%)}}
+@keyframes rowNow{0%,100%{background:rgba(0,113,227,.08)}50%{background:rgba(0,113,227,.14)}}
+@keyframes strike{from{transform:scaleX(0)}to{transform:scaleX(1)}}
+.gbtn{transition:transform .25s cubic-bezier(.32,.72,0,1),background .2s}
+.gbtn:hover{background:rgba(255,255,255,.98)!important;color:#1d1d1f}
+.gbtn:active{transform:scale(.95)}
+.pbtn{transition:transform .25s cubic-bezier(.32,.72,0,1),filter .2s}
+.pbtn:hover{filter:brightness(1.08);color:#fff}
+.pbtn:active{transform:scale(.95)}
+</style>
+</helmet>
+<div style="width:1280px;height:800px;position:relative;overflow:hidden;font-family:-apple-system,BlinkMacSystemFont,'SF Pro Text','Inter',system-ui,sans-serif;color:#1d1d1f;background:#cfdaee">
+  <div aria-hidden="true" style="position:absolute;inset:0;background:linear-gradient(155deg,#dce6f5 0%,#c3d2ea 48%,#e6dcef 100%)"></div>
+  <div aria-hidden="true" style="position:absolute;left:-180px;top:-240px;width:760px;height:760px;border-radius:50%;background:radial-gradient(circle,rgba(56,132,255,.55) 0%,rgba(56,132,255,0) 68%);animation:drift1 22s ease-in-out infinite"></div>
+  <div aria-hidden="true" style="position:absolute;right:-220px;bottom:-260px;width:820px;height:820px;border-radius:50%;background:radial-gradient(circle,rgba(175,82,222,.42) 0%,rgba(175,82,222,0) 66%);animation:drift2 26s ease-in-out infinite"></div>
+
+  <div style="position:absolute;left:40px;top:40px;width:1200px;height:720px;border-radius:26px;background:rgba(246,247,250,.86);backdrop-filter:blur(50px) saturate(180%);-webkit-backdrop-filter:blur(50px) saturate(180%);box-shadow:0 40px 100px rgba(20,30,70,.28),0 0 0 .5px rgba(0,0,0,.16),inset 0 1px 0 rgba(255,255,255,.9);display:flex;overflow:hidden;animation:winIn .8s cubic-bezier(.32,.72,0,1) both">
+    <div aria-hidden="true" style="width:232px;flex-shrink:0;margin:8px;border-radius:18px;background:rgba(255,255,255,.6);box-shadow:inset 0 0 0 .5px rgba(0,0,0,.08),inset 0 1px 0 rgba(255,255,255,.9);display:flex;flex-direction:column;gap:6px;padding:14px 12px">
+      <div style="display:flex;gap:8px;padding:0 2px 12px">
+        <span style="width:12px;height:12px;border-radius:50%;background:#FF5F57"></span>
+        <span style="width:12px;height:12px;border-radius:50%;background:#FEBC2E"></span>
+        <span style="width:12px;height:12px;border-radius:50%;background:#28C840"></span>
+      </div>
+      <div style="opacity:.42;display:flex;flex-direction:column;gap:6px">
+        <div style="height:30px;border-radius:9px;background:rgba(0,0,0,.05);margin-bottom:8px"></div>
+        <div style="font-size:13px;padding:6px 10px">Обзор</div>
+        <div style="font-size:13px;padding:6px 10px">Карта диска</div>
+        <div style="font-size:13px;padding:6px 10px;border-radius:10px;background:rgba(0,113,227,.13);font-weight:600">Умная очистка</div>
+        <div style="font-size:13px;padding:6px 10px">Большие и старые</div>
+        <div style="font-size:13px;padding:6px 10px">Дубликаты</div>
+        <div style="font-size:13px;padding:6px 10px">Приложения</div>
+        <div style="font-size:13px;padding:6px 10px">История</div>
+      </div>
+    </div>
+
+    <main style="flex:1;min-width:0;display:flex;flex-direction:column">
+      <header style="height:56px;flex-shrink:0;display:flex;align-items:center;gap:12px;padding:0 16px 0 12px">
+        <div>
+          <h1 style="margin:0;font-size:15px;font-weight:700;letter-spacing:-.01em">{{headTitle}}</h1>
+          <div style="font-size:11px;color:#6e6e73">{{headSub}}</div>
+        </div>
+        <div style="flex:1"></div>
+        <sc-if value="{{running}}" hint-placeholder-val="{{ true }}">
+          <button class="gbtn" type="button" onClick="{{pause}}" style="height:34px;padding:0 16px;border-radius:17px;background:rgba(255,255,255,.72);box-shadow:0 1px 3px rgba(20,30,70,.08),0 0 0 .5px rgba(0,0,0,.08),inset 0 1px 0 #fff;font-size:13px;font-weight:500">Остановить</button>
+        </sc-if>
+        <sc-if value="{{paused}}" hint-placeholder-val="{{ false }}">
+          <button class="gbtn" type="button" onClick="{{resume}}" style="height:34px;padding:0 16px;border-radius:17px;background:rgba(255,255,255,.72);box-shadow:0 1px 3px rgba(20,30,70,.08),0 0 0 .5px rgba(0,0,0,.08),inset 0 1px 0 #fff;font-size:13px;font-weight:600;color:#0062C4">Продолжить</button>
+        </sc-if>
+      </header>
+
+      <div style="flex:1;min-height:0;position:relative;display:flex;align-items:center;gap:40px;padding:0 36px 24px 40px">
+        <div style="width:340px;flex-shrink:0;display:flex;flex-direction:column;align-items:center">
+          <div style="position:relative;width:280px;height:280px">
+            <div aria-hidden="true" style="position:absolute;inset:26px;border-radius:50%;background:rgba(255,255,255,.85);box-shadow:inset 0 0 0 .5px rgba(0,0,0,.06);animation:glow 2.4s ease-in-out infinite"></div>
+            <svg aria-hidden="true" width="280" height="280" viewBox="0 0 280 280" style="position:absolute;inset:0;transform:rotate(-90deg)">
+              <defs><linearGradient id="clG" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#30B0C7"></stop><stop offset=".55" stop-color="#0071E3"></stop><stop offset="1" stop-color="#5E5CE6"></stop></linearGradient></defs>
+              <circle cx="140" cy="140" r="126" fill="none" stroke="rgba(0,0,0,.07)" stroke-width="16"></circle>
+              <circle cx="140" cy="140" r="126" fill="none" stroke="url(#clG)" stroke-width="16" stroke-linecap="round" pathLength="100" style="{{ringStyle}}"></circle>
+            </svg>
+            <sc-if value="{{running}}" hint-placeholder-val="{{ true }}">
+              <svg aria-hidden="true" width="280" height="280" viewBox="0 0 280 280" style="position:absolute;inset:0;animation:spin 3s linear infinite">
+                <circle cx="140" cy="14" r="4" fill="#fff" stroke="#0071E3" stroke-width="2"></circle>
+              </svg>
+            </sc-if>
+            <div role="status" aria-live="polite" style="position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center">
+              <sc-if value="{{notDone}}" hint-placeholder-val="{{ true }}">
+                <div style="display:flex;flex-direction:column;align-items:center">
+                  <span style="font-size:12px;color:#6e6e73">Освобождено</span>
+                  <span style="font-size:44px;line-height:50px;font-weight:700;letter-spacing:-.03em;font-variant-numeric:tabular-nums">{{freed}}</span>
+                  <span style="font-size:13px;color:#6e6e73">ГБ из 64,8</span>
+                </div>
+              </sc-if>
+              <sc-if value="{{done}}" hint-placeholder-val="{{ false }}">
+                <div style="display:flex;flex-direction:column;align-items:center;animation:pop .6s cubic-bezier(.34,1.56,.64,1) both">
+                  <span style="width:64px;height:64px;border-radius:50%;background:#34C759;display:flex;align-items:center;justify-content:center;box-shadow:0 10px 24px rgba(52,199,89,.4)"><svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"></path></svg></span>
+                  <span style="font-size:15px;font-weight:700;margin-top:10px">64,8 ГБ свободно</span>
+                </div>
+              </sc-if>
+            </div>
+          </div>
+          <div style="width:260px;height:6px;border-radius:3px;background:rgba(0,0,0,.07);margin-top:26px;overflow:hidden;position:relative">
+            <div style="{{barStyle}}"></div>
+            <sc-if value="{{running}}" hint-placeholder-val="{{ true }}">
+              <div style="position:absolute;top:0;left:0;width:60px;height:100%;background:linear-gradient(90deg,rgba(255,255,255,0),rgba(255,255,255,.7),rgba(255,255,255,0));animation:shimmerBar 1.2s linear infinite"></div>
+            </sc-if>
+          </div>
+          <div style="font-size:12px;color:#6e6e73;margin-top:10px;font-variant-numeric:tabular-nums">{{eta}}</div>
+          <sc-if value="{{done}}" hint-placeholder-val="{{ false }}">
+            <a class="pbtn" href="Done.dc.html" style="margin-top:18px;height:40px;padding:0 24px;border-radius:20px;background:#0071E3;color:#fff;font-size:14px;font-weight:600;display:flex;align-items:center;gap:6px;box-shadow:0 8px 20px rgba(0,113,227,.35);animation:fadeUp .5s cubic-bezier(.32,.72,0,1) .3s both">Посмотреть итог<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 6l6 6-6 6"></path></svg></a>
+          </sc-if>
+        </div>
+
+        <ol aria-label="Этапы очистки" style="flex:1;min-width:0;list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:6px">
+          <sc-for list="{{steps}}" as="st" hint-placeholder-count="7">
+            <li style="{{st.row}}">
+              <span style="width:26px;height:26px;flex-shrink:0;display:flex;align-items:center;justify-content:center">
+                <sc-if value="{{st.isDone}}" hint-placeholder-val="{{ false }}">
+                  <span style="width:22px;height:22px;border-radius:50%;background:#34C759;display:flex;align-items:center;justify-content:center;animation:pop .45s cubic-bezier(.34,1.56,.64,1) both"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"></path></svg></span>
+                </sc-if>
+                <sc-if value="{{st.isNow}}" hint-placeholder-val="{{ false }}">
+                  <span aria-hidden="true" style="width:20px;height:20px;border-radius:50%;border:2.5px solid rgba(0,113,227,.2);border-top-color:#0071E3;animation:spin .8s linear infinite"></span>
+                </sc-if>
+                <sc-if value="{{st.isWait}}" hint-placeholder-val="{{ true }}">
+                  <span aria-hidden="true" style="width:18px;height:18px;border-radius:50%;border:1.5px dashed rgba(0,0,0,.25)"></span>
+                </sc-if>
+              </span>
+              <span style="flex:1;min-width:0">
+                <span style="display:block;font-size:13px;font-weight:600;color:{{st.color}}">{{st.name}}</span>
+                <span style="display:block;font-size:11px;color:#6e6e73;font-variant-numeric:tabular-nums">{{st.sub}}</span>
+              </span>
+              <span style="font-size:13px;font-weight:600;font-variant-numeric:tabular-nums;color:{{st.color}}">{{st.size}}</span>
+            </li>
+          </sc-for>
+        </ol>
+
+        <sc-if value="{{running}}" hint-placeholder-val="{{ true }}">
+          <div aria-hidden="true" style="position:absolute;left:210px;top:290px;width:0;height:0">
+            <span style="position:absolute;left:-6px;top:-6px;width:12px;height:14px;border-radius:3px;background:#5E5CE6;animation:fly1 1.6s cubic-bezier(.45,.05,.55,.95) infinite"></span>
+            <span style="position:absolute;left:-5px;top:-5px;width:10px;height:12px;border-radius:3px;background:#34C759;animation:fly2 1.8s cubic-bezier(.45,.05,.55,.95) .3s infinite"></span>
+            <span style="position:absolute;left:-6px;top:-6px;width:12px;height:14px;border-radius:3px;background:#0071E3;animation:fly3 1.7s cubic-bezier(.45,.05,.55,.95) .6s infinite"></span>
+            <span style="position:absolute;left:-4px;top:-4px;width:8px;height:10px;border-radius:2px;background:#30B0C7;animation:fly1 2s cubic-bezier(.45,.05,.55,.95) .9s infinite"></span>
+            <span style="position:absolute;left:-5px;top:-5px;width:10px;height:12px;border-radius:3px;background:#FF9500;animation:fly2 1.5s cubic-bezier(.45,.05,.55,.95) 1.1s infinite"></span>
+            <span style="position:absolute;left:-4px;top:-4px;width:8px;height:10px;border-radius:2px;background:#AF52DE;animation:fly3 1.9s cubic-bezier(.45,.05,.55,.95) 1.3s infinite"></span>
+          </div>
+        </sc-if>
+      </div>
+    </main>
+  </div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1280,"height":800}}'>
+class Component extends DCLogic {
+  componentDidMount() { this.setState({ p: 0, paused: false }); this.start(); }
+  componentWillUnmount() { clearInterval(this.timer); }
+  start() {
+    clearInterval(this.timer);
+    this.timer = setInterval(() => {
+      const cur = (this.state && this.state.p) || 0;
+      const n = Math.min(100, cur + 0.9 + Math.random() * 0.7);
+      this.setState({ p: n });
+      if (n >= 100) clearInterval(this.timer);
+    }, 80);
+  }
+  renderVals() {
+    const s = this.state || {};
+    const p = s.p || 0;
+    const paused = !!s.paused;
+    const done = p >= 100;
+    const f1 = (v) => v.toFixed(1).replace('.', ',');
+    const cats = [['Кэши Xcode', 23.4, 4812], ['node_modules', 11.8, 61204], ['Образы Docker', 9.6, 17], ['Симуляторы iOS', 8.2, 6], ['Кэши приложений', 6.2, 9340], ['Корзина', 4.2, 312], ['Логи и отчёты', 1.4, 2210]];
+    const total = 64.8;
+    let cum = 0;
+    let nowFound = false;
+    const steps = cats.map((c, i) => {
+      const start = cum / total * 100;
+      cum += c[1];
+      const end = cum / total * 100;
+      const isDone = p >= end;
+      const isNow = !isDone && !nowFound;
+      if (isNow) nowFound = true;
+      const frac = isNow ? Math.max(0, Math.min(1, (p - start) / (end - start))) : (isDone ? 1 : 0);
+      return {
+        name: c[0], isDone: isDone, isNow: isNow, isWait: !isDone && !isNow,
+        size: isDone ? f1(c[1]) + ' ГБ' : (isNow ? f1(c[1] * frac) + ' ГБ' : f1(c[1]) + ' ГБ'),
+        sub: isDone ? 'Готово · ' + c[2].toLocaleString('ru-RU') + ' объектов' : (isNow ? (paused ? 'Пауза' : 'Удаляем… ' + Math.round(c[2] * frac).toLocaleString('ru-RU') + ' из ' + c[2].toLocaleString('ru-RU')) : 'В очереди'),
+        color: isDone ? '#1E7A35' : (isNow ? '#1d1d1f' : '#8a8a8e'),
+        row: 'display:flex;align-items:center;gap:12px;height:58px;padding:0 16px 0 12px;border-radius:16px;transition:background .3s,box-shadow .3s;animation:fadeUp .5s cubic-bezier(.32,.72,0,1) ' + (i * 60) + 'ms both' + (isNow ? ';background:rgba(0,113,227,.09);box-shadow:inset 0 0 0 .5px rgba(0,113,227,.25)' : (isDone ? ';background:rgba(255,255,255,.55)' : ';background:rgba(255,255,255,.35)'))
+      };
+    });
+    const remain = Math.max(0, Math.round((100 - p) / 100 * 9));
+    return {
+      steps: steps,
+      running: !done && !paused,
+      paused: !done && paused,
+      done: done, notDone: !done,
+      freed: f1(total * p / 100),
+      headTitle: done ? 'Очистка завершена' : (paused ? 'Очистка на паузе' : 'Идёт очистка'),
+      headSub: done ? 'Все 7 категорий обработаны' : 'Не выключайте Mac · можно продолжать работать',
+      eta: done ? 'Заняло 9 секунд' : (paused ? 'Пауза · ' + Math.floor(p) + '%' : Math.floor(p) + '% · осталось ~' + remain + ' с'),
+      ringStyle: 'stroke-dasharray:' + p.toFixed(2) + ' 100;transition:stroke-dasharray .25s linear',
+      barStyle: 'height:100%;border-radius:3px;background:linear-gradient(90deg,#30B0C7,#0071E3,#5E5CE6);width:' + p.toFixed(1) + '%;transition:width .25s linear',
+      pause: () => { clearInterval(this.timer); this.setState({ paused: true }); },
+      resume: () => { this.setState({ paused: false }); this.start(); }
+    };
+  }
+}
+</script>
+</body>
+</html>

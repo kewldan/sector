@@ -6,7 +6,7 @@ let args = CommandLine.arguments
 let path = args.count > 1 ? args[1] : NSHomeDirectory()
 let load = args.count > 2 ? ScanLoad(rawValue: args[2]) ?? .balanced : .balanced
 
-let scanner = Scanner(root: URL(fileURLWithPath: path), load: load)
+let scanner = DiskScanner(root: URL(fileURLWithPath: path), load: load)
 let start = Date()
 guard let tree = scanner.run() else { exit(1) }
 let elapsed = Date().timeIntervalSince(start)

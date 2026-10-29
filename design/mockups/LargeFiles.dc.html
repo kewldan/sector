@@ -1,0 +1,239 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<title>Sector — большие и старые файлы</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0}
+*{box-sizing:border-box}
+a{color:#0071E3;text-decoration:none}a:hover{color:#0058B0}
+button{font:inherit;color:inherit;border:0;background:none;padding:0;cursor:pointer;text-align:left}
+@keyframes fadeUp{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:none}}
+@keyframes rowIn{from{opacity:0;transform:translateX(-14px)}to{opacity:1;transform:none}}
+@keyframes winIn{from{opacity:0;transform:translateY(18px) scale(.97)}to{opacity:1;transform:none}}
+@keyframes drift1{0%,100%{transform:translate(0,0) scale(1)}50%{transform:translate(70px,40px) scale(1.15)}}
+@keyframes drift2{0%,100%{transform:translate(0,0) scale(1.1)}50%{transform:translate(-80px,-50px) scale(.95)}}
+@keyframes growX{from{transform:scaleX(0)}to{transform:scaleX(1)}}
+@keyframes barUp{0%{opacity:0;transform:translate(-50%,40px) scale(.9)}100%{opacity:1;transform:translate(-50%,0)}}
+@keyframes checkPop{0%{transform:scale(.3)}60%{transform:scale(1.2)}100%{transform:scale(1)}}
+@keyframes numSwap{from{opacity:0;transform:translateY(-8px)}to{opacity:1;transform:none}}
+.nav-i{display:flex;align-items:center;gap:10px;height:32px;padding:0 10px;border-radius:10px;color:#1d1d1f;font-size:13px;transition:background .2s}
+.nav-i:hover{background:rgba(0,0,0,.05);color:#1d1d1f}
+.gbtn{transition:transform .25s cubic-bezier(.32,.72,0,1),background .2s}
+.gbtn:hover{background:rgba(255,255,255,.98)!important;color:#1d1d1f}
+.gbtn:active{transform:scale(.95)}
+.dbtn{transition:transform .25s cubic-bezier(.32,.72,0,1),filter .2s}
+.dbtn:hover{filter:brightness(1.08);color:#fff}
+.dbtn:active{transform:scale(.95)}
+.frow{transition:background .2s}
+.frow:hover{background:rgba(0,113,227,.05)!important}
+.cb{transition:background .2s,box-shadow .2s,transform .2s cubic-bezier(.34,1.56,.64,1)}
+.cb:active{transform:scale(.85)}
+</style>
+</helmet>
+<div style="width:1280px;height:800px;position:relative;overflow:hidden;font-family:-apple-system,BlinkMacSystemFont,'SF Pro Text','Inter',system-ui,sans-serif;color:#1d1d1f;background:#cfdaee">
+  <div aria-hidden="true" style="position:absolute;inset:0;background:linear-gradient(155deg,#dce6f5 0%,#c3d2ea 48%,#e6dcef 100%)"></div>
+  <div aria-hidden="true" style="position:absolute;left:-180px;top:-240px;width:760px;height:760px;border-radius:50%;background:radial-gradient(circle,rgba(56,132,255,.55) 0%,rgba(56,132,255,0) 68%);animation:drift1 22s ease-in-out infinite"></div>
+  <div aria-hidden="true" style="position:absolute;right:-220px;bottom:-260px;width:820px;height:820px;border-radius:50%;background:radial-gradient(circle,rgba(175,82,222,.42) 0%,rgba(175,82,222,0) 66%);animation:drift2 26s ease-in-out infinite"></div>
+
+  <div style="position:absolute;left:40px;top:40px;width:1200px;height:720px;border-radius:26px;background:rgba(246,247,250,.86);backdrop-filter:blur(50px) saturate(180%);-webkit-backdrop-filter:blur(50px) saturate(180%);box-shadow:0 40px 100px rgba(20,30,70,.28),0 0 0 .5px rgba(0,0,0,.16),inset 0 1px 0 rgba(255,255,255,.9);display:flex;overflow:hidden;animation:winIn .8s cubic-bezier(.32,.72,0,1) both">
+    <nav aria-label="Разделы" style="width:232px;flex-shrink:0;margin:8px;border-radius:18px;background:rgba(255,255,255,.6);box-shadow:inset 0 0 0 .5px rgba(0,0,0,.08),inset 0 1px 0 rgba(255,255,255,.9),0 1px 3px rgba(20,30,70,.06);display:flex;flex-direction:column;padding:14px 10px 10px">
+      <div style="display:flex;gap:8px;padding:0 4px 16px">
+        <span style="width:12px;height:12px;border-radius:50%;background:#FF5F57;box-shadow:inset 0 0 0 .5px rgba(0,0,0,.15)"></span>
+        <span style="width:12px;height:12px;border-radius:50%;background:#FEBC2E;box-shadow:inset 0 0 0 .5px rgba(0,0,0,.15)"></span>
+        <span style="width:12px;height:12px;border-radius:50%;background:#28C840;box-shadow:inset 0 0 0 .5px rgba(0,0,0,.15)"></span>
+      </div>
+      <label style="display:flex;align-items:center;gap:6px;height:30px;padding:0 10px;border-radius:9px;background:rgba(0,0,0,.05);color:#6e6e73;font-size:13px;margin-bottom:14px">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="6.5"></circle><path d="M20 20l-4.2-4.2"></path></svg>
+        <input type="search" placeholder="Поиск" aria-label="Поиск по диску" style="border:0;background:transparent;outline:none;font:inherit;color:#1d1d1f;width:100%;min-width:0">
+      </label>
+      <div style="font-size:11px;font-weight:600;color:#6e6e73;padding:0 10px 6px">Диск</div>
+      <a class="nav-i" href="Overview.dc.html"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#0071E3" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 16a8 8 0 1 1 16 0"></path><path d="M12 16l4-5"></path></svg>Обзор</a>
+      <a class="nav-i" href="Explorer.dc.html"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#0071E3" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="8.5"></circle><path d="M12 3.5V12l6.5 5"></path></svg>Карта диска</a>
+      <a class="nav-i" href="SmartClean.dc.html"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#0071E3" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M11 3l1.8 4.7L17.5 9.5l-4.7 1.8L11 16l-1.8-4.7L4.5 9.5l4.7-1.8z"></path><path d="M18.5 14.5l.8 2.2 2.2.8-2.2.8-.8 2.2-.8-2.2-2.2-.8 2.2-.8z"></path></svg>Умная очистка<span style="margin-left:auto;font-size:11px;font-weight:600;color:#0062C4;background:rgba(0,113,227,.12);padding:2px 7px;border-radius:10px">64,8 ГБ</span></a>
+      <div style="font-size:11px;font-weight:600;color:#6e6e73;padding:16px 10px 6px">Инструменты</div>
+      <a class="nav-i" href="LargeFiles.dc.html" aria-current="page" style="background:rgba(0,113,227,.13);font-weight:600"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#0071E3" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 3h7l5 5v13H7z"></path><path d="M14 3v5h5"></path></svg>Большие и старые</a>
+      <a class="nav-i" href="Duplicates.dc.html"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#0071E3" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="8" y="8" width="12" height="12" rx="2.5"></rect><path d="M16 8V6a2 2 0 0 0-2-2H6a2 2 0 0 0-2 2v8a2 2 0 0 0 2 2h2"></path></svg>Дубликаты</a>
+      <a class="nav-i" href="Apps.dc.html"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#0071E3" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="4" width="7" height="7" rx="2"></rect><rect x="13" y="4" width="7" height="7" rx="2"></rect><rect x="4" y="13" width="7" height="7" rx="2"></rect><rect x="13" y="13" width="7" height="7" rx="2"></rect></svg>Приложения</a>
+      <a class="nav-i" href="History.dc.html"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#0071E3" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12a8 8 0 1 0 2.3-5.6"></path><path d="M4 4v4h4"></path><path d="M12 8v4l3 2"></path></svg>История</a>
+      <div style="flex:1"></div>
+      <div style="padding:12px;border-radius:14px;background:rgba(255,255,255,.7);box-shadow:inset 0 0 0 .5px rgba(0,0,0,.06)">
+        <div style="display:flex;align-items:center;gap:8px;font-size:12px;font-weight:600">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#6e6e73" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><rect x="3" y="6" width="18" height="12" rx="3"></rect><circle cx="17" cy="12" r="1"></circle></svg>Macintosh HD
+          <a href="Settings.dc.html" aria-label="Настройки" style="margin-left:auto;color:#6e6e73;display:flex;width:24px;height:24px;align-items:center;justify-content:center;border-radius:7px"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="3"></circle><path d="M12 2.5v3M12 18.5v3M2.5 12h3M18.5 12h3M5.3 5.3l2.1 2.1M16.6 16.6l2.1 2.1M5.3 18.7l2.1-2.1M16.6 7.4l2.1-2.1"></path></svg></a>
+        </div>
+        <div style="height:6px;border-radius:3px;background:rgba(0,0,0,.08);margin:10px 0 6px;overflow:hidden">
+          <div style="width:87.6%;height:100%;border-radius:3px;background:linear-gradient(90deg,#0071E3,#5E5CE6);transform-origin:left;animation:growX 1.2s cubic-bezier(.32,.72,0,1) .4s both"></div>
+        </div>
+        <div style="font-size:11px;color:#6e6e73">123,4 ГБ свободно из 994,7 ГБ</div>
+      </div>
+    </nav>
+
+    <main style="flex:1;min-width:0;display:flex;flex-direction:column;position:relative">
+      <header style="height:56px;flex-shrink:0;display:flex;align-items:center;gap:12px;padding:0 16px 0 12px">
+        <div>
+          <h1 style="margin:0;font-size:15px;font-weight:700;letter-spacing:-.01em">Большие и старые файлы</h1>
+          <div style="font-size:11px;color:#6e6e73">Больше 1 ГБ · {{countLabel}}</div>
+        </div>
+        <div style="flex:1"></div>
+        <div role="group" aria-label="Фильтр" style="position:relative;display:flex;height:32px;padding:2px;border-radius:16px;background:rgba(0,0,0,.06)">
+          <span aria-hidden="true" style="{{pill}}"></span>
+          <button type="button" aria-pressed="{{fAll}}" onClick="{{setAll}}" style="position:relative;width:110px;height:28px;border-radius:14px;font-size:12px;font-weight:600;text-align:center">Все</button>
+          <button type="button" aria-pressed="{{fOld}}" onClick="{{setOld}}" style="position:relative;width:110px;height:28px;border-radius:14px;font-size:12px;font-weight:600;text-align:center">Старше полугода</button>
+          <button type="button" aria-pressed="{{fBig}}" onClick="{{setBig}}" style="position:relative;width:110px;height:28px;border-radius:14px;font-size:12px;font-weight:600;text-align:center">Больше 20 ГБ</button>
+        </div>
+        <label style="display:flex;align-items:center;gap:6px;height:32px;width:180px;padding:0 12px;border-radius:16px;background:rgba(255,255,255,.72);box-shadow:0 1px 3px rgba(20,30,70,.08),0 0 0 .5px rgba(0,0,0,.08);color:#6e6e73;font-size:13px">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="6.5"></circle><path d="M20 20l-4.2-4.2"></path></svg>
+          <input type="search" placeholder="Имя файла" aria-label="Поиск по имени файла" style="border:0;background:transparent;outline:none;font:inherit;color:#1d1d1f;width:100%;min-width:0">
+        </label>
+      </header>
+
+      <div style="flex:1;min-height:0;padding:0 20px 16px 12px">
+        <section aria-label="Список файлов" style="height:100%;border-radius:22px;background:rgba(255,255,255,.72);box-shadow:inset 0 0 0 .5px rgba(0,0,0,.07),inset 0 1px 0 #fff,0 1px 3px rgba(20,30,70,.05);display:flex;flex-direction:column;overflow:hidden;animation:fadeUp .6s cubic-bezier(.32,.72,0,1) .1s both">
+          <div style="display:flex;align-items:center;gap:12px;height:36px;padding:0 18px;font-size:11px;font-weight:600;color:#6e6e73;border-bottom:.5px solid rgba(0,0,0,.08);flex-shrink:0">
+            <span style="width:20px"></span>
+            <span style="flex:1;padding-left:44px">Имя</span>
+            <span style="width:130px">Открывался</span>
+            <span style="width:170px;text-align:right">Размер ↓</span>
+          </div>
+          <div style="flex:1;min-height:0;overflow:auto;padding:6px 8px 80px">
+            <sc-if value="{{fAll}}" hint-placeholder-val="{{ true }}">
+              <sc-for list="{{rowsAll}}" as="r" hint-placeholder-count="9">
+                <div class="frow" style="{{r.rowStyle}}">
+                  <button class="cb" type="button" aria-pressed="{{r.sel}}" aria-label="{{r.label}}" onClick="{{r.toggle}}" style="{{r.cbStyle}}">
+                    <sc-if value="{{r.sel}}" hint-placeholder-val="{{ false }}"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="animation:checkPop .35s cubic-bezier(.34,1.56,.64,1) both"><path d="M5 12.5l4.5 4.5L19 7.5"></path></svg></sc-if>
+                  </button>
+                  <span style="width:34px;height:34px;border-radius:10px;flex-shrink:0;display:flex;align-items:center;justify-content:center;font-size:9px;font-weight:800;letter-spacing:.02em;color:#fff;background:{{r.color}};box-shadow:inset 0 1px 0 rgba(255,255,255,.35)">{{r.ext}}</span>
+                  <span style="flex:1;min-width:0">
+                    <span style="display:block;font-size:13px;font-weight:500;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">{{r.name}}</span>
+                    <span style="display:block;font-size:11px;color:#6e6e73;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">{{r.path}}</span>
+                  </span>
+                  <span style="width:130px;font-size:12px;color:{{r.ageColor}}">{{r.opened}}</span>
+                  <span style="width:170px;display:flex;align-items:center;gap:10px;justify-content:flex-end">
+                    <span style="width:80px;height:5px;border-radius:3px;background:rgba(0,0,0,.06);overflow:hidden"><span style="{{r.bar}}"></span></span>
+                    <span style="width:66px;text-align:right;font-size:13px;font-weight:600;font-variant-numeric:tabular-nums">{{r.size}}</span>
+                  </span>
+                </div>
+              </sc-for>
+            </sc-if>
+            <sc-if value="{{fOld}}" hint-placeholder-val="{{ false }}">
+              <sc-for list="{{rowsOld}}" as="r" hint-placeholder-count="7">
+                <div class="frow" style="{{r.rowStyle}}">
+                  <button class="cb" type="button" aria-pressed="{{r.sel}}" aria-label="{{r.label}}" onClick="{{r.toggle}}" style="{{r.cbStyle}}">
+                    <sc-if value="{{r.sel}}" hint-placeholder-val="{{ false }}"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="animation:checkPop .35s cubic-bezier(.34,1.56,.64,1) both"><path d="M5 12.5l4.5 4.5L19 7.5"></path></svg></sc-if>
+                  </button>
+                  <span style="width:34px;height:34px;border-radius:10px;flex-shrink:0;display:flex;align-items:center;justify-content:center;font-size:9px;font-weight:800;letter-spacing:.02em;color:#fff;background:{{r.color}};box-shadow:inset 0 1px 0 rgba(255,255,255,.35)">{{r.ext}}</span>
+                  <span style="flex:1;min-width:0">
+                    <span style="display:block;font-size:13px;font-weight:500;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">{{r.name}}</span>
+                    <span style="display:block;font-size:11px;color:#6e6e73;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">{{r.path}}</span>
+                  </span>
+                  <span style="width:130px;font-size:12px;color:{{r.ageColor}}">{{r.opened}}</span>
+                  <span style="width:170px;display:flex;align-items:center;gap:10px;justify-content:flex-end">
+                    <span style="width:80px;height:5px;border-radius:3px;background:rgba(0,0,0,.06);overflow:hidden"><span style="{{r.bar}}"></span></span>
+                    <span style="width:66px;text-align:right;font-size:13px;font-weight:600;font-variant-numeric:tabular-nums">{{r.size}}</span>
+                  </span>
+                </div>
+              </sc-for>
+            </sc-if>
+            <sc-if value="{{fBig}}" hint-placeholder-val="{{ false }}">
+              <sc-for list="{{rowsBig}}" as="r" hint-placeholder-count="4">
+                <div class="frow" style="{{r.rowStyle}}">
+                  <button class="cb" type="button" aria-pressed="{{r.sel}}" aria-label="{{r.label}}" onClick="{{r.toggle}}" style="{{r.cbStyle}}">
+                    <sc-if value="{{r.sel}}" hint-placeholder-val="{{ false }}"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="animation:checkPop .35s cubic-bezier(.34,1.56,.64,1) both"><path d="M5 12.5l4.5 4.5L19 7.5"></path></svg></sc-if>
+                  </button>
+                  <span style="width:34px;height:34px;border-radius:10px;flex-shrink:0;display:flex;align-items:center;justify-content:center;font-size:9px;font-weight:800;letter-spacing:.02em;color:#fff;background:{{r.color}};box-shadow:inset 0 1px 0 rgba(255,255,255,.35)">{{r.ext}}</span>
+                  <span style="flex:1;min-width:0">
+                    <span style="display:block;font-size:13px;font-weight:500;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">{{r.name}}</span>
+                    <span style="display:block;font-size:11px;color:#6e6e73;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">{{r.path}}</span>
+                  </span>
+                  <span style="width:130px;font-size:12px;color:{{r.ageColor}}">{{r.opened}}</span>
+                  <span style="width:170px;display:flex;align-items:center;gap:10px;justify-content:flex-end">
+                    <span style="width:80px;height:5px;border-radius:3px;background:rgba(0,0,0,.06);overflow:hidden"><span style="{{r.bar}}"></span></span>
+                    <span style="width:66px;text-align:right;font-size:13px;font-weight:600;font-variant-numeric:tabular-nums">{{r.size}}</span>
+                  </span>
+                </div>
+              </sc-for>
+            </sc-if>
+          </div>
+        </section>
+      </div>
+
+      <sc-if value="{{hasSel}}" hint-placeholder-val="{{ true }}">
+        <div style="position:absolute;left:50%;bottom:30px;display:flex;align-items:center;gap:10px;height:52px;padding:0 8px 0 18px;border-radius:26px;background:rgba(255,255,255,.82);backdrop-filter:blur(30px) saturate(180%);-webkit-backdrop-filter:blur(30px) saturate(180%);box-shadow:0 18px 40px rgba(20,30,70,.22),0 0 0 .5px rgba(0,0,0,.1),inset 0 1px 0 #fff;animation:barUp .55s cubic-bezier(.34,1.4,.64,1) both;white-space:nowrap">
+          <span style="font-size:13px;color:#6e6e73">Выбрано</span>
+          <span style="font-size:13px;font-weight:700;font-variant-numeric:tabular-nums">{{selCount}} · {{selSize}}</span>
+          <span style="width:.5px;height:22px;background:rgba(0,0,0,.12);margin:0 4px"></span>
+          <button class="gbtn" type="button" onClick="{{clear}}" style="height:36px;padding:0 14px;border-radius:18px;font-size:13px;font-weight:500;background:rgba(0,0,0,0)">Снять выбор</button>
+          <button class="gbtn" type="button" style="height:36px;padding:0 14px;border-radius:18px;font-size:13px;font-weight:500;background:rgba(0,0,0,.05);display:flex;align-items:center;gap:6px"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 12s3.6-7 10-7 10 7 10 7-3.6 7-10 7S2 12 2 12z"></path><circle cx="12" cy="12" r="3"></circle></svg>Просмотр</button>
+          <a class="dbtn" href="ConfirmDelete.dc.html" style="height:36px;padding:0 16px;border-radius:18px;font-size:13px;font-weight:600;background:#E5243B;color:#fff;display:flex;align-items:center;gap:6px;box-shadow:0 6px 16px rgba(229,36,59,.3)"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 7h16"></path><path d="M9 7V4.5h6V7"></path><path d="M6 7l1 13h10l1-13"></path></svg>Удалить…</a>
+        </div>
+      </sc-if>
+    </main>
+  </div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1280,"height":800}}'>
+class Component extends DCLogic {
+  renderVals() {
+    const s = this.state || {};
+    const filter = s.filter || 'all';
+    const sel = s.sel || { 3: true, 4: true, 5: true };
+    const f1 = (v) => v.toFixed(1).replace('.', ',') + ' ГБ';
+    const files = [
+      { id: 1, name: 'Docker.raw', path: '~/Library/Containers/com.docker.docker/Data', v: 64.0, opened: 'Сегодня', age: 0, ext: 'VM', color: '#5E5CE6' },
+      { id: 2, name: 'Влог 2026.fcpbundle', path: '~/Movies', v: 41.0, opened: '7 мес. назад', age: 7, ext: 'FCP', color: '#AF52DE' },
+      { id: 3, name: 'Windows 11 ARM.pvm', path: '~/Parallels', v: 38.5, opened: '1,5 года назад', age: 18, ext: 'PVM', color: '#4A48C9' },
+      { id: 4, name: 'Резервная копия iPhone', path: '~/Library/Application Support/MobileSync/Backup', v: 22.7, opened: '11 мес. назад', age: 11, ext: 'BAK', color: '#1E9BB3' },
+      { id: 5, name: 'UniversalMac_26.4_Restore.ipsw', path: '~/Downloads', v: 18.2, opened: '6 мес. назад', age: 6, ext: 'IPSW', color: '#7C7C82' },
+      { id: 6, name: 'Xcode_17.xip', path: '~/Downloads', v: 11.1, opened: '4 мес. назад', age: 4, ext: 'XIP', color: '#E08600' },
+      { id: 7, name: 'Запись экрана 2026-03-14.mov', path: '~/Desktop', v: 9.4, opened: '7 мес. назад', age: 7, ext: 'MOV', color: '#AF52DE' },
+      { id: 8, name: 'dataset_dump.tar.gz', path: '~/Documents/Проекты', v: 6.8, opened: '1 год назад', age: 12, ext: 'TGZ', color: '#E08600' },
+      { id: 9, name: 'ubuntu-24.04-arm64.iso', path: '~/Downloads', v: 3.1, opened: '1 год назад', age: 13, ext: 'ISO', color: '#7C7C82' }
+    ];
+    const toggle = (id) => () => {
+      const cur = Object.assign({}, (this.state && this.state.sel) || { 3: true, 4: true, 5: true });
+      if (cur[id]) delete cur[id]; else cur[id] = true;
+      this.setState({ sel: cur });
+    };
+    const mk = (list) => list.map((f, i) => {
+      const on = !!sel[f.id];
+      return {
+        name: f.name, path: f.path, size: f1(f.v), opened: f.opened, ext: f.ext, color: f.color, sel: on,
+        label: 'Выбрать ' + f.name, toggle: toggle(f.id),
+        ageColor: f.age >= 12 ? '#B25000' : (f.age >= 6 ? '#3a3a3c' : '#6e6e73'),
+        rowStyle: 'display:flex;align-items:center;gap:12px;height:54px;padding:0 10px;border-radius:12px;background:' + (on ? 'rgba(0,113,227,.09)' : 'rgba(0,0,0,0)') + ';animation:rowIn .5s cubic-bezier(.32,.72,0,1) ' + (i * 45) + 'ms both',
+        cbStyle: 'width:20px;height:20px;border-radius:6px;flex-shrink:0;display:flex;align-items:center;justify-content:center;background:' + (on ? '#0071E3' : 'rgba(255,255,255,.9)') + ';box-shadow:' + (on ? '0 2px 6px rgba(0,113,227,.35)' : 'inset 0 0 0 1px rgba(0,0,0,.22)'),
+        bar: 'display:block;height:100%;border-radius:3px;background:' + f.color + ';width:' + (f.v / 64 * 100).toFixed(0) + '%;transform-origin:left;animation:growX .8s cubic-bezier(.32,.72,0,1) ' + (200 + i * 45) + 'ms both'
+      };
+    });
+    const ids = Object.keys(sel);
+    const selSize = files.filter((f) => sel[f.id]).reduce((acc, f) => acc + f.v, 0);
+    const n = ids.length;
+    const word = n % 10 === 1 && n % 100 !== 11 ? 'файл' : (n % 10 >= 2 && n % 10 <= 4 && (n % 100 < 10 || n % 100 >= 20) ? 'файла' : 'файлов');
+    const pillLeft = filter === 'all' ? 2 : (filter === 'old' ? 112 : 222);
+    return {
+      rowsAll: mk(files),
+      rowsOld: mk(files.filter((f) => f.age >= 6)),
+      rowsBig: mk(files.filter((f) => f.v >= 20)),
+      fAll: filter === 'all', fOld: filter === 'old', fBig: filter === 'big',
+      countLabel: filter === 'all' ? '9 файлов, 214,8 ГБ' : (filter === 'old' ? '7 файлов, 139,7 ГБ' : '4 файла, 166,2 ГБ'),
+      pill: 'position:absolute;top:2px;left:' + pillLeft + 'px;width:110px;height:28px;border-radius:14px;background:#fff;box-shadow:0 1px 3px rgba(0,0,0,.12),0 0 0 .5px rgba(0,0,0,.06);transition:left .45s cubic-bezier(.34,1.35,.64,1)',
+      setAll: () => this.setState({ filter: 'all' }),
+      setOld: () => this.setState({ filter: 'old' }),
+      setBig: () => this.setState({ filter: 'big' }),
+      hasSel: n > 0,
+      selCount: n + ' ' + word,
+      selSize: f1(selSize),
+      clear: () => this.setState({ sel: {} })
+    };
+  }
+}
+</script>
+</body>
+</html>

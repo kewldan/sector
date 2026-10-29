@@ -1,0 +1,222 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<title>Sector — приложения</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0}
+*{box-sizing:border-box}
+a{color:#0071E3;text-decoration:none}a:hover{color:#0058B0}
+button{font:inherit;color:inherit;border:0;background:none;padding:0;cursor:pointer;text-align:left}
+@keyframes fadeUp{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:none}}
+@keyframes cardIn{from{opacity:0;transform:scale(.85) translateY(10px)}to{opacity:1;transform:none}}
+@keyframes winIn{from{opacity:0;transform:translateY(18px) scale(.97)}to{opacity:1;transform:none}}
+@keyframes drift1{0%,100%{transform:translate(0,0) scale(1)}50%{transform:translate(70px,40px) scale(1.15)}}
+@keyframes drift2{0%,100%{transform:translate(0,0) scale(1.1)}50%{transform:translate(-80px,-50px) scale(.95)}}
+@keyframes growX{from{transform:scaleX(0)}to{transform:scaleX(1)}}
+@keyframes growY{from{transform:scaleY(0)}to{transform:scaleY(1)}}
+@keyframes jiggle{0%,100%{transform:rotate(0)}25%{transform:rotate(-3.5deg)}75%{transform:rotate(3.5deg)}}
+@keyframes leafIn{from{opacity:0;transform:translateX(-10px)}to{opacity:1;transform:none}}
+@keyframes iconDrop{0%{opacity:0;transform:translateY(-24px) scale(.7)}70%{opacity:1;transform:translateY(3px) scale(1.04)}100%{transform:none}}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.55}}
+.nav-i{display:flex;align-items:center;gap:10px;height:32px;padding:0 10px;border-radius:10px;color:#1d1d1f;font-size:13px;transition:background .2s}
+.nav-i:hover{background:rgba(0,0,0,.05);color:#1d1d1f}
+.gbtn{transition:transform .25s cubic-bezier(.32,.72,0,1),background .2s}
+.gbtn:hover{background:rgba(255,255,255,.98)!important;color:#1d1d1f}
+.gbtn:active{transform:scale(.95)}
+.dbtn{transition:transform .25s cubic-bezier(.32,.72,0,1),filter .2s}
+.dbtn:hover{filter:brightness(1.08);color:#fff}
+.dbtn:active{transform:scale(.95)}
+.app{transition:transform .35s cubic-bezier(.34,1.56,.64,1),box-shadow .3s,background .3s}
+.app:hover{transform:translateY(-3px)}
+.app:hover .ico{animation:jiggle .35s ease-in-out 2}
+</style>
+</helmet>
+<div style="width:1280px;height:800px;position:relative;overflow:hidden;font-family:-apple-system,BlinkMacSystemFont,'SF Pro Text','Inter',system-ui,sans-serif;color:#1d1d1f;background:#cfdaee">
+  <div aria-hidden="true" style="position:absolute;inset:0;background:linear-gradient(155deg,#dce6f5 0%,#c3d2ea 48%,#e6dcef 100%)"></div>
+  <div aria-hidden="true" style="position:absolute;left:-180px;top:-240px;width:760px;height:760px;border-radius:50%;background:radial-gradient(circle,rgba(56,132,255,.55) 0%,rgba(56,132,255,0) 68%);animation:drift1 22s ease-in-out infinite"></div>
+  <div aria-hidden="true" style="position:absolute;right:-220px;bottom:-260px;width:820px;height:820px;border-radius:50%;background:radial-gradient(circle,rgba(175,82,222,.42) 0%,rgba(175,82,222,0) 66%);animation:drift2 26s ease-in-out infinite"></div>
+
+  <div style="position:absolute;left:40px;top:40px;width:1200px;height:720px;border-radius:26px;background:rgba(246,247,250,.86);backdrop-filter:blur(50px) saturate(180%);-webkit-backdrop-filter:blur(50px) saturate(180%);box-shadow:0 40px 100px rgba(20,30,70,.28),0 0 0 .5px rgba(0,0,0,.16),inset 0 1px 0 rgba(255,255,255,.9);display:flex;overflow:hidden;animation:winIn .8s cubic-bezier(.32,.72,0,1) both">
+    <nav aria-label="Разделы" style="width:232px;flex-shrink:0;margin:8px;border-radius:18px;background:rgba(255,255,255,.6);box-shadow:inset 0 0 0 .5px rgba(0,0,0,.08),inset 0 1px 0 rgba(255,255,255,.9),0 1px 3px rgba(20,30,70,.06);display:flex;flex-direction:column;padding:14px 10px 10px">
+      <div style="display:flex;gap:8px;padding:0 4px 16px">
+        <span style="width:12px;height:12px;border-radius:50%;background:#FF5F57;box-shadow:inset 0 0 0 .5px rgba(0,0,0,.15)"></span>
+        <span style="width:12px;height:12px;border-radius:50%;background:#FEBC2E;box-shadow:inset 0 0 0 .5px rgba(0,0,0,.15)"></span>
+        <span style="width:12px;height:12px;border-radius:50%;background:#28C840;box-shadow:inset 0 0 0 .5px rgba(0,0,0,.15)"></span>
+      </div>
+      <label style="display:flex;align-items:center;gap:6px;height:30px;padding:0 10px;border-radius:9px;background:rgba(0,0,0,.05);color:#6e6e73;font-size:13px;margin-bottom:14px">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="6.5"></circle><path d="M20 20l-4.2-4.2"></path></svg>
+        <input type="search" placeholder="Поиск" aria-label="Поиск по диску" style="border:0;background:transparent;outline:none;font:inherit;color:#1d1d1f;width:100%;min-width:0">
+      </label>
+      <div style="font-size:11px;font-weight:600;color:#6e6e73;padding:0 10px 6px">Диск</div>
+      <a class="nav-i" href="Overview.dc.html"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#0071E3" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 16a8 8 0 1 1 16 0"></path><path d="M12 16l4-5"></path></svg>Обзор</a>
+      <a class="nav-i" href="Explorer.dc.html"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#0071E3" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="8.5"></circle><path d="M12 3.5V12l6.5 5"></path></svg>Карта диска</a>
+      <a class="nav-i" href="SmartClean.dc.html"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#0071E3" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M11 3l1.8 4.7L17.5 9.5l-4.7 1.8L11 16l-1.8-4.7L4.5 9.5l4.7-1.8z"></path><path d="M18.5 14.5l.8 2.2 2.2.8-2.2.8-.8 2.2-.8-2.2-2.2-.8 2.2-.8z"></path></svg>Умная очистка<span style="margin-left:auto;font-size:11px;font-weight:600;color:#0062C4;background:rgba(0,113,227,.12);padding:2px 7px;border-radius:10px">64,8 ГБ</span></a>
+      <div style="font-size:11px;font-weight:600;color:#6e6e73;padding:16px 10px 6px">Инструменты</div>
+      <a class="nav-i" href="LargeFiles.dc.html"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#0071E3" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 3h7l5 5v13H7z"></path><path d="M14 3v5h5"></path></svg>Большие и старые</a>
+      <a class="nav-i" href="Duplicates.dc.html"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#0071E3" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="8" y="8" width="12" height="12" rx="2.5"></rect><path d="M16 8V6a2 2 0 0 0-2-2H6a2 2 0 0 0-2 2v8a2 2 0 0 0 2 2h2"></path></svg>Дубликаты</a>
+      <a class="nav-i" href="Apps.dc.html" aria-current="page" style="background:rgba(0,113,227,.13);font-weight:600"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#0071E3" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="4" width="7" height="7" rx="2"></rect><rect x="13" y="4" width="7" height="7" rx="2"></rect><rect x="4" y="13" width="7" height="7" rx="2"></rect><rect x="13" y="13" width="7" height="7" rx="2"></rect></svg>Приложения</a>
+      <a class="nav-i" href="History.dc.html"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#0071E3" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12a8 8 0 1 0 2.3-5.6"></path><path d="M4 4v4h4"></path><path d="M12 8v4l3 2"></path></svg>История</a>
+      <div style="flex:1"></div>
+      <div style="padding:12px;border-radius:14px;background:rgba(255,255,255,.7);box-shadow:inset 0 0 0 .5px rgba(0,0,0,.06)">
+        <div style="display:flex;align-items:center;gap:8px;font-size:12px;font-weight:600">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#6e6e73" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><rect x="3" y="6" width="18" height="12" rx="3"></rect><circle cx="17" cy="12" r="1"></circle></svg>Macintosh HD
+          <a href="Settings.dc.html" aria-label="Настройки" style="margin-left:auto;color:#6e6e73;display:flex;width:24px;height:24px;align-items:center;justify-content:center;border-radius:7px"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="3"></circle><path d="M12 2.5v3M12 18.5v3M2.5 12h3M18.5 12h3M5.3 5.3l2.1 2.1M16.6 16.6l2.1 2.1M5.3 18.7l2.1-2.1M16.6 7.4l2.1-2.1"></path></svg></a>
+        </div>
+        <div style="height:6px;border-radius:3px;background:rgba(0,0,0,.08);margin:10px 0 6px;overflow:hidden">
+          <div style="width:87.6%;height:100%;border-radius:3px;background:linear-gradient(90deg,#0071E3,#5E5CE6);transform-origin:left;animation:growX 1.2s cubic-bezier(.32,.72,0,1) .4s both"></div>
+        </div>
+        <div style="font-size:11px;color:#6e6e73">123,4 ГБ свободно из 994,7 ГБ</div>
+      </div>
+    </nav>
+
+    <main style="flex:1;min-width:0;display:flex;flex-direction:column">
+      <header style="height:56px;flex-shrink:0;display:flex;align-items:center;gap:12px;padding:0 16px 0 12px">
+        <div>
+          <h1 style="margin:0;font-size:15px;font-weight:700;letter-spacing:-.01em">Приложения</h1>
+          <div style="font-size:11px;color:#6e6e73">48 приложений · 142,6 ГБ вместе с данными</div>
+        </div>
+        <div style="flex:1"></div>
+        <div role="group" aria-label="Сортировка" style="position:relative;display:flex;height:32px;padding:2px;border-radius:16px;background:rgba(0,0,0,.06)">
+          <span aria-hidden="true" style="{{pill}}"></span>
+          <button type="button" aria-pressed="{{bySize}}" onClick="{{sortSize}}" style="position:relative;width:118px;height:28px;border-radius:14px;font-size:12px;font-weight:600;text-align:center">По размеру</button>
+          <button type="button" aria-pressed="{{byAge}}" onClick="{{sortAge}}" style="position:relative;width:118px;height:28px;border-radius:14px;font-size:12px;font-weight:600;text-align:center">Давно не открывал</button>
+        </div>
+      </header>
+
+      <div style="flex:1;min-height:0;display:flex;gap:14px;padding:0 20px 16px 12px">
+        <section aria-label="Список приложений" style="flex:1;min-width:0;border-radius:22px;background:rgba(255,255,255,.55);box-shadow:inset 0 0 0 .5px rgba(0,0,0,.06),inset 0 1px 0 #fff;padding:14px;overflow:hidden">
+          <sc-if value="{{bySize}}" hint-placeholder-val="{{ true }}">
+            <div style="display:grid;grid-template-columns:repeat(3, minmax(0, 1fr));gap:10px">
+              <sc-for list="{{appsSize}}" as="a" hint-placeholder-count="12">
+                <button class="app" type="button" onClick="{{a.pick}}" aria-pressed="{{a.sel}}" style="{{a.card}}">
+                  <span class="ico" aria-hidden="true" style="{{a.icon}}">{{a.letter}}</span>
+                  <span style="min-width:0;flex:1">
+                    <span style="display:block;font-size:13px;font-weight:600;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">{{a.name}}</span>
+                    <span style="display:block;font-size:11px;color:{{a.ageColor}};white-space:nowrap;overflow:hidden;text-overflow:ellipsis">{{a.age}}</span>
+                  </span>
+                  <span style="font-size:12px;font-weight:600;font-variant-numeric:tabular-nums">{{a.size}}</span>
+                </button>
+              </sc-for>
+            </div>
+          </sc-if>
+          <sc-if value="{{byAge}}" hint-placeholder-val="{{ false }}">
+            <div style="display:grid;grid-template-columns:repeat(3, minmax(0, 1fr));gap:10px">
+              <sc-for list="{{appsAge}}" as="a" hint-placeholder-count="12">
+                <button class="app" type="button" onClick="{{a.pick}}" aria-pressed="{{a.sel}}" style="{{a.card}}">
+                  <span class="ico" aria-hidden="true" style="{{a.icon}}">{{a.letter}}</span>
+                  <span style="min-width:0;flex:1">
+                    <span style="display:block;font-size:13px;font-weight:600;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">{{a.name}}</span>
+                    <span style="display:block;font-size:11px;color:{{a.ageColor}};white-space:nowrap;overflow:hidden;text-overflow:ellipsis">{{a.age}}</span>
+                  </span>
+                  <span style="font-size:12px;font-weight:600;font-variant-numeric:tabular-nums">{{a.size}}</span>
+                </button>
+              </sc-for>
+            </div>
+          </sc-if>
+        </section>
+
+        <aside aria-label="Удаление приложения" style="width:300px;flex-shrink:0;border-radius:22px;background:rgba(255,255,255,.78);box-shadow:inset 0 0 0 .5px rgba(0,0,0,.07),inset 0 1px 0 #fff,0 1px 3px rgba(20,30,70,.05);padding:20px 18px 16px;display:flex;flex-direction:column;animation:fadeUp .7s cubic-bezier(.32,.72,0,1) .2s both">
+          <div style="display:flex;flex-direction:column;align-items:center;text-align:center">
+            <span aria-hidden="true" style="{{cur.bigIcon}}">{{cur.letter}}</span>
+            <div style="font-size:17px;font-weight:700;margin-top:12px">{{cur.name}}</div>
+            <div style="font-size:12px;color:#6e6e73;margin-top:2px">{{cur.ver}}</div>
+            <sc-if value="{{cur.stale}}" hint-placeholder-val="{{ true }}">
+              <div style="display:flex;align-items:center;gap:5px;margin-top:8px;padding:3px 10px;border-radius:10px;background:rgba(255,149,0,.14);color:#9A4600;font-size:11px;font-weight:600"><span style="width:6px;height:6px;border-radius:50%;background:#FF9500;animation:pulse 1.6s ease-in-out infinite"></span>{{cur.age}}</div>
+            </sc-if>
+          </div>
+          <div style="font-size:11px;font-weight:600;color:#6e6e73;margin:18px 0 6px">Будет удалено вместе с приложением</div>
+          <div style="position:relative;padding-left:14px">
+            <span aria-hidden="true" style="position:absolute;left:4px;top:10px;bottom:14px;width:1.5px;border-radius:1px;background:rgba(0,0,0,.14);transform-origin:top;animation:growY .8s cubic-bezier(.32,.72,0,1) .3s both"></span>
+            <sc-for list="{{cur.parts}}" as="p" hint-placeholder-count="5">
+              <label style="{{p.row}}">
+                <span aria-hidden="true" style="position:absolute;left:-10px;top:50%;width:9px;height:1.5px;background:rgba(0,0,0,.14)"></span>
+                <input type="checkbox" checked style="width:14px;height:14px;accent-color:#0071E3;margin:0;flex-shrink:0">
+                <span style="flex:1;min-width:0">
+                  <span style="display:block;font-size:12px;font-weight:500;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">{{p.name}}</span>
+                  <span style="display:block;font-size:10.5px;color:#6e6e73;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">{{p.path}}</span>
+                </span>
+                <span style="font-size:12px;font-weight:600;font-variant-numeric:tabular-nums">{{p.size}}</span>
+              </label>
+            </sc-for>
+          </div>
+          <div style="flex:1"></div>
+          <div style="display:flex;align-items:baseline;justify-content:space-between;padding:12px 2px 10px;border-top:.5px solid rgba(0,0,0,.1)">
+            <span style="font-size:13px;color:#6e6e73">Освободится</span>
+            <span style="font-size:22px;font-weight:700;letter-spacing:-.02em;font-variant-numeric:tabular-nums">{{cur.total}}</span>
+          </div>
+          <div style="display:flex;gap:8px">
+            <a class="gbtn" href="History.dc.html" style="flex:1;height:34px;border-radius:17px;background:rgba(0,0,0,.05);font-size:12px;font-weight:600;color:#1d1d1f;display:flex;align-items:center;justify-content:center">Сбросить данные</a>
+            <a class="dbtn" href="History.dc.html" style="flex:1.3;height:34px;border-radius:17px;background:#E5243B;color:#fff;font-size:12px;font-weight:600;display:flex;align-items:center;justify-content:center;box-shadow:0 6px 16px rgba(229,36,59,.28)">Удалить полностью</a>
+          </div>
+        </aside>
+      </div>
+    </main>
+  </div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1280,"height":800}}'>
+class Component extends DCLogic {
+  renderVals() {
+    const s = this.state || {};
+    const sort = s.sort || 'size';
+    const sel = s.sel == null ? 0 : s.sel;
+    const fmt = (gb) => gb >= 1 ? gb.toFixed(1).replace('.', ',') + ' ГБ' : Math.round(gb * 1024) + ' МБ';
+    const apps = [
+      { name: 'GarageBand', v: 2.8, age: 'Не открывали 2 года', months: 24, g: ['#FFB74A', '#F27A1A'], ver: 'Версия 10.4.12 · Apple', extra: [['Apple Loops', '~/Library/Audio/Apple Loops', 9.8], ['Application Support', '~/Library/Application Support/GarageBand', 2.1], ['Caches', '~/Library/Caches/com.apple.garageband10', 0.14], ['Preferences', '~/Library/Preferences', 0.0001]] },
+      { name: 'Xcode', v: 12.4, age: 'Сегодня', months: 0, g: ['#5AB0FF', '#1565D8'], ver: 'Версия 17.1 · Apple' },
+      { name: 'Final Cut Pro', v: 6.8, age: '7 мес. назад', months: 7, g: ['#4A4A55', '#16161C'], ver: 'Версия 12.0 · Apple' },
+      { name: 'Photoshop 2026', v: 4.9, age: '3 мес. назад', months: 3, g: ['#3D7BD9', '#0C2A66'], ver: 'Версия 27.2' },
+      { name: 'Parallels Desktop', v: 2.3, age: 'Не открывали 1,5 года', months: 18, g: ['#FF6B6B', '#C9182B'], ver: 'Версия 20.1' },
+      { name: 'Docker', v: 2.1, age: 'Сегодня', months: 0, g: ['#5DC7F5', '#1A86D1'], ver: 'Версия 4.38' },
+      { name: 'Steam', v: 1.8, age: '1 год назад', months: 12, g: ['#5A6B85', '#1B2838'], ver: 'Сборка 1729' },
+      { name: 'Microsoft Teams', v: 1.6, age: '11 мес. назад', months: 11, g: ['#8C8CF2', '#4B4FC2'], ver: 'Версия 25.4' },
+      { name: 'Blender', v: 1.4, age: '9 мес. назад', months: 9, g: ['#FFB04D', '#E0661A'], ver: 'Версия 4.5' },
+      { name: 'Figma', v: 0.6, age: 'Вчера', months: 0, g: ['#C792EA', '#7A3FD1'], ver: 'Версия 125.6' },
+      { name: 'Zoom', v: 0.4, age: '5 мес. назад', months: 5, g: ['#6CB8FF', '#2D8CFF'], ver: 'Версия 6.6' },
+      { name: 'Telegram', v: 0.3, age: 'Сегодня', months: 0, g: ['#6FD1FF', '#229ED9'], ver: 'Версия 11.9' }
+    ];
+    const mk = (list) => list.map((a, i) => {
+      const idx = apps.indexOf(a);
+      const on = idx === sel;
+      return {
+        name: a.name, size: fmt(a.v), age: a.age, letter: a.name.charAt(0), sel: on,
+        ageColor: a.months >= 12 ? '#B25000' : (a.months >= 6 ? '#3a3a3c' : '#6e6e73'),
+        pick: () => this.setState({ sel: idx }),
+        card: 'display:flex;align-items:center;gap:10px;padding:10px 12px;border-radius:16px;width:100%;background:' + (on ? 'rgba(255,255,255,.95)' : 'rgba(255,255,255,.6)') + ';box-shadow:' + (on ? '0 0 0 2px #0071E3,0 10px 24px rgba(0,113,227,.18)' : 'inset 0 0 0 .5px rgba(0,0,0,.07)') + ';animation:cardIn .55s cubic-bezier(.34,1.4,.64,1) ' + (i * 40) + 'ms both',
+        icon: 'width:40px;height:40px;border-radius:11px;flex-shrink:0;display:flex;align-items:center;justify-content:center;color:#fff;font-size:18px;font-weight:700;background:linear-gradient(160deg,' + a.g[0] + ',' + a.g[1] + ');box-shadow:0 3px 8px rgba(0,0,0,.18),inset 0 1px 0 rgba(255,255,255,.4)'
+      };
+    });
+    const bySize = apps.slice().sort((x, y) => y.v - x.v);
+    const byAge = apps.slice().sort((x, y) => y.months - x.months);
+    const a = apps[sel];
+    const extra = a.extra || [['Application Support', '~/Library/Application Support/' + a.name, a.v * 0.62], ['Caches', '~/Library/Caches', a.v * 0.18], ['Containers', '~/Library/Containers', a.v * 0.09], ['Preferences', '~/Library/Preferences', 0.0002]];
+    const parts = [[a.name + '.app', '/Applications', a.v]].concat(extra);
+    const total = parts.reduce((acc, p) => acc + p[2], 0);
+    return {
+      appsSize: mk(bySize), appsAge: mk(byAge),
+      bySize: sort === 'size', byAge: sort === 'age',
+      pill: 'position:absolute;top:2px;left:' + (sort === 'size' ? 2 : 120) + 'px;width:118px;height:28px;border-radius:14px;background:#fff;box-shadow:0 1px 3px rgba(0,0,0,.12),0 0 0 .5px rgba(0,0,0,.06);transition:left .45s cubic-bezier(.34,1.35,.64,1)',
+      sortSize: () => this.setState({ sort: 'size' }),
+      sortAge: () => this.setState({ sort: 'age' }),
+      cur: {
+        name: a.name, ver: a.ver, letter: a.name.charAt(0), stale: a.months >= 6, age: a.age,
+        total: fmt(total),
+        bigIcon: 'width:76px;height:76px;border-radius:20px;display:flex;align-items:center;justify-content:center;color:#fff;font-size:34px;font-weight:700;background:linear-gradient(160deg,' + a.g[0] + ',' + a.g[1] + ');box-shadow:0 12px 26px rgba(0,0,0,.22),inset 0 1px 0 rgba(255,255,255,.45);animation:iconDrop .7s cubic-bezier(.34,1.4,.64,1) both' + (a.months >= 6 ? ',jiggle .45s ease-in-out .9s 3' : ''),
+        parts: parts.map((p, i) => ({
+          name: p[0], path: p[1], size: p[2] < 0.001 ? '12 КБ' : fmt(p[2]),
+          row: 'position:relative;display:flex;align-items:center;gap:8px;padding:6px 8px;border-radius:10px;margin-bottom:2px;background:rgba(0,0,0,.03);animation:leafIn .5s cubic-bezier(.32,.72,0,1) ' + (350 + i * 90) + 'ms both'
+        }))
+      }
+    };
+  }
+}
+</script>
+</body>
+</html>

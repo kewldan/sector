@@ -1,0 +1,53 @@
+{
+  "v": 3,
+  "createdOnFiles": {"v": 1, "at": "2026-10-29T12:00:00Z"},
+  "title": "Sector — анализ и очистка диска для macOS 27",
+  "launch": {"view": "canvas"},
+  "pages": [],
+  "boards": {
+    "DesignSystem.dc.html": {"x": 0, "y": -800, "w": 1440, "h": 2800, "title": "00 · Дизайн-система macOS 27", "is_interactive": true},
+    "Main.dc.html": {"x": 0, "y": 2400, "w": 1280, "h": 800, "title": "01 · Приветствие", "is_interactive": true},
+    "Permission.dc.html": {"x": 1360, "y": 2400, "w": 1280, "h": 800, "title": "02 · Полный доступ к диску", "is_interactive": true},
+    "Scan.dc.html": {"x": 2720, "y": 2400, "w": 1280, "h": 800, "title": "03 · Первое сканирование", "is_interactive": true},
+    "Overview.dc.html": {"x": 0, "y": 3600, "w": 1280, "h": 800, "title": "04 · Обзор", "is_interactive": true},
+    "Explorer.dc.html": {"x": 1360, "y": 3600, "w": 1280, "h": 800, "title": "05 · Карта диска", "is_interactive": true},
+    "LargeFiles.dc.html": {"x": 2720, "y": 3600, "w": 1280, "h": 800, "title": "06 · Большие и старые файлы", "is_interactive": true},
+    "ConfirmDelete.dc.html": {"x": 4080, "y": 3600, "w": 1280, "h": 800, "title": "07 · Подтверждение удаления", "is_interactive": true},
+    "Duplicates.dc.html": {"x": 5440, "y": 3600, "w": 1280, "h": 800, "title": "08 · Дубликаты", "is_interactive": true},
+    "Apps.dc.html": {"x": 6800, "y": 3600, "w": 1280, "h": 800, "title": "09 · Приложения", "is_interactive": true},
+    "SmartClean.dc.html": {"x": 0, "y": 4800, "w": 1280, "h": 800, "title": "10 · Умная очистка", "is_interactive": true},
+    "Cleaning.dc.html": {"x": 1360, "y": 4800, "w": 1280, "h": 800, "title": "11 · Очистка идёт", "is_interactive": true},
+    "Done.dc.html": {"x": 2720, "y": 4800, "w": 1280, "h": 800, "title": "12 · Готово", "is_interactive": true},
+    "History.dc.html": {"x": 4080, "y": 4800, "w": 1280, "h": 800, "title": "13 · История и восстановление", "is_interactive": true},
+    "MenuBar.dc.html": {"x": 0, "y": 6000, "w": 1280, "h": 800, "title": "14 · Строка меню и виджеты", "is_interactive": true},
+    "Settings.dc.html": {"x": 1360, "y": 6000, "w": 1280, "h": 800, "title": "15 · Настройки", "is_interactive": true},
+    "States.dc.html": {"x": 2720, "y": 6000, "w": 1280, "h": 800, "title": "16 · Уведомления и состояния", "is_interactive": true}
+  },
+  "order": [
+    "Main.dc.html",
+    "Permission.dc.html",
+    "Scan.dc.html",
+    "Overview.dc.html",
+    "Explorer.dc.html",
+    "LargeFiles.dc.html",
+    "ConfirmDelete.dc.html",
+    "Duplicates.dc.html",
+    "Apps.dc.html",
+    "SmartClean.dc.html",
+    "Cleaning.dc.html",
+    "Done.dc.html",
+    "History.dc.html",
+    "MenuBar.dc.html",
+    "Settings.dc.html",
+    "States.dc.html",
+    "DesignSystem.dc.html"
+  ],
+  "notes": {
+    "tDS": {"x": 0, "y": -1080, "text": "Дизайн-система · macOS 27", "kind": "title1", "maxW": 1440},
+    "tA": {"x": 0, "y": 2120, "text": "1 · Онбординг и первое сканирование", "kind": "title1", "maxW": 4000},
+    "tB": {"x": 0, "y": 3320, "text": "2 · Анализ диска и инструменты", "kind": "title1", "maxW": 8080},
+    "tC": {"x": 0, "y": 4520, "text": "3 · Умная очистка и история", "kind": "title1", "maxW": 5360},
+    "tD": {"x": 0, "y": 5720, "text": "4 · Строка меню, настройки, системные состояния", "kind": "title1", "maxW": 4000}
+  },
+  "designSystems": []
+}

@@ -1,0 +1,269 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<title>Sector — настройки</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0}
+*{box-sizing:border-box}
+a{color:#0071E3;text-decoration:none}a:hover{color:#0058B0}
+button{font:inherit;color:inherit;border:0;background:none;padding:0;cursor:pointer;text-align:left}
+@keyframes drift1{0%,100%{transform:translate(0,0) scale(1)}50%{transform:translate(70px,40px) scale(1.15)}}
+@keyframes drift2{0%,100%{transform:translate(0,0) scale(1.1)}50%{transform:translate(-80px,-50px) scale(.95)}}
+@keyframes winIn{from{opacity:0;transform:translateY(22px) scale(.95)}to{opacity:1;transform:none}}
+@keyframes paneIn{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
+@keyframes rowAdd{0%{opacity:0;transform:translateX(-16px);max-height:0}100%{opacity:1;transform:none;max-height:50px}}
+@keyframes notifIn{0%{opacity:0;transform:translateX(40px)}100%{opacity:1;transform:none}}
+.tab{transition:color .25s}
+.tab:hover{color:#1d1d1f}
+.sw{transition:background .3s}
+.sw span{transition:transform .4s cubic-bezier(.34,1.56,.64,1),width .2s}
+.sw:active span{width:24px!important}
+.gbtn{transition:transform .2s cubic-bezier(.32,.72,0,1),background .2s}
+.gbtn:hover{background:rgba(0,0,0,.08)!important}
+.gbtn:active{transform:scale(.92)}
+.pop{transition:background .2s}
+.pop:hover{background:rgba(255,255,255,1)!important}
+input[type=range]{accent-color:#0071E3}
+</style>
+</helmet>
+<div style="width:1280px;height:800px;position:relative;overflow:hidden;font-family:-apple-system,BlinkMacSystemFont,'SF Pro Text','Inter',system-ui,sans-serif;color:#1d1d1f;background:#cfdaee">
+  <div aria-hidden="true" style="position:absolute;inset:0;background:linear-gradient(155deg,#dce6f5 0%,#c3d2ea 48%,#e6dcef 100%)"></div>
+  <div aria-hidden="true" style="position:absolute;left:-180px;top:-240px;width:760px;height:760px;border-radius:50%;background:radial-gradient(circle,rgba(56,132,255,.55) 0%,rgba(56,132,255,0) 68%);animation:drift1 22s ease-in-out infinite"></div>
+  <div aria-hidden="true" style="position:absolute;right:-220px;bottom:-260px;width:820px;height:820px;border-radius:50%;background:radial-gradient(circle,rgba(175,82,222,.42) 0%,rgba(175,82,222,0) 66%);animation:drift2 26s ease-in-out infinite"></div>
+
+  <div role="dialog" aria-label="Настройки Sector" style="position:absolute;left:270px;top:100px;width:740px;height:600px;border-radius:26px;background:rgba(246,247,250,.88);backdrop-filter:blur(50px) saturate(180%);-webkit-backdrop-filter:blur(50px) saturate(180%);box-shadow:0 40px 100px rgba(20,30,70,.28),0 0 0 .5px rgba(0,0,0,.16),inset 0 1px 0 rgba(255,255,255,.9);display:flex;flex-direction:column;overflow:hidden;animation:winIn .7s cubic-bezier(.34,1.2,.64,1) both">
+    <div style="position:relative;height:40px;display:flex;align-items:center;justify-content:center;flex-shrink:0">
+      <div style="position:absolute;left:18px;top:14px;display:flex;gap:8px">
+        <a href="Overview.dc.html" aria-label="Закрыть настройки" style="width:12px;height:12px;border-radius:50%;background:#FF5F57;box-shadow:inset 0 0 0 .5px rgba(0,0,0,.15)"></a>
+        <span style="width:12px;height:12px;border-radius:50%;background:#D9D9DE"></span>
+        <span style="width:12px;height:12px;border-radius:50%;background:#D9D9DE"></span>
+      </div>
+      <span style="font-size:13px;font-weight:700">{{tabTitle}}</span>
+    </div>
+    <div role="tablist" aria-label="Разделы настроек" style="position:relative;display:flex;justify-content:center;gap:4px;padding:0 0 14px;flex-shrink:0">
+      <div style="position:relative;display:flex;gap:4px;padding:4px;border-radius:20px;background:rgba(255,255,255,.55);box-shadow:inset 0 0 0 .5px rgba(0,0,0,.07)">
+        <span aria-hidden="true" style="{{pill}}"></span>
+        <sc-for list="{{tabs}}" as="t" hint-placeholder-count="5">
+          <button class="tab" type="button" role="tab" aria-selected="{{t.on}}" onClick="{{t.pick}}" style="{{t.style}}">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="{{t.icon}}"></path></svg>
+            <span style="font-size:11px;font-weight:600">{{t.name}}</span>
+          </button>
+        </sc-for>
+      </div>
+    </div>
+
+    <div style="flex:1;min-height:0;overflow:auto;padding:4px 36px 24px">
+      <sc-if value="{{isGeneral}}" hint-placeholder-val="{{ true }}">
+        <div style="display:flex;flex-direction:column;gap:16px;animation:paneIn .45s cubic-bezier(.32,.72,0,1) both">
+          <div style="border-radius:16px;background:rgba(255,255,255,.75);box-shadow:inset 0 0 0 .5px rgba(0,0,0,.07)">
+            <div style="display:flex;align-items:center;gap:12px;min-height:48px;padding:0 16px;border-bottom:.5px solid rgba(0,0,0,.07)">
+              <span style="flex:1;font-size:13px">Открывать при входе в систему</span>
+              <button class="sw" type="button" onClick="{{sw.g1.t}}" aria-pressed="{{sw.g1.on}}" aria-label="Открывать при входе в систему" style="{{sw.g1.track}}"><span style="{{sw.g1.knob}}"></span></button>
+            </div>
+            <div style="display:flex;align-items:center;gap:12px;min-height:48px;padding:0 16px;border-bottom:.5px solid rgba(0,0,0,.07)">
+              <span style="flex:1;font-size:13px">Показывать в строке меню</span>
+              <button class="sw" type="button" onClick="{{sw.g2.t}}" aria-pressed="{{sw.g2.on}}" aria-label="Показывать в строке меню" style="{{sw.g2.track}}"><span style="{{sw.g2.knob}}"></span></button>
+            </div>
+            <div style="display:flex;align-items:center;gap:12px;min-height:56px;padding:0 16px">
+              <span style="flex:1;font-size:13px">Значок в строке меню</span>
+              <div role="group" aria-label="Значок в строке меню" style="position:relative;display:flex;padding:2px;border-radius:9px;background:rgba(0,0,0,.06)">
+                <span aria-hidden="true" style="{{iconPill}}"></span>
+                <button type="button" aria-pressed="{{ic0}}" onClick="{{setIc0}}" style="position:relative;width:92px;height:26px;border-radius:7px;font-size:12px;font-weight:500;text-align:center">Кольцо</button>
+                <button type="button" aria-pressed="{{ic1}}" onClick="{{setIc1}}" style="position:relative;width:92px;height:26px;border-radius:7px;font-size:12px;font-weight:500;text-align:center">Кольцо + ГБ</button>
+                <button type="button" aria-pressed="{{ic2}}" onClick="{{setIc2}}" style="position:relative;width:92px;height:26px;border-radius:7px;font-size:12px;font-weight:500;text-align:center">Только ГБ</button>
+              </div>
+            </div>
+          </div>
+          <div style="border-radius:16px;background:rgba(255,255,255,.75);box-shadow:inset 0 0 0 .5px rgba(0,0,0,.07)">
+            <div style="display:flex;align-items:center;gap:12px;min-height:48px;padding:0 16px;border-bottom:.5px solid rgba(0,0,0,.07)">
+              <span style="flex:1;font-size:13px">Единицы размера</span>
+              <button class="pop" type="button" style="display:flex;align-items:center;gap:6px;height:26px;padding:0 10px;border-radius:8px;background:rgba(255,255,255,.85);box-shadow:0 0 0 .5px rgba(0,0,0,.14),0 1px 2px rgba(0,0,0,.05);font-size:12px">Десятичные (ГБ = 1000 МБ)<svg width="9" height="9" viewBox="0 0 24 24" fill="none" stroke="#6e6e73" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 9l5-5 5 5M7 15l5 5 5-5"></path></svg></button>
+            </div>
+            <div style="display:flex;align-items:center;gap:12px;min-height:48px;padding:0 16px">
+              <span style="flex:1;font-size:13px">Анимации интерфейса<span style="display:block;font-size:11px;color:#6e6e73">Учитывает «Уменьшить движение» в системе</span></span>
+              <button class="sw" type="button" onClick="{{sw.g3.t}}" aria-pressed="{{sw.g3.on}}" aria-label="Анимации интерфейса" style="{{sw.g3.track}}"><span style="{{sw.g3.knob}}"></span></button>
+            </div>
+          </div>
+          <div style="display:flex;align-items:center;gap:12px;padding:0 4px;font-size:12px;color:#6e6e73">
+            <svg width="28" height="28" viewBox="0 0 128 128" aria-hidden="true"><defs><linearGradient id="stG" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#5AC8FA"></stop><stop offset=".5" stop-color="#0A84FF"></stop><stop offset="1" stop-color="#5E5CE6"></stop></linearGradient></defs><rect x="4" y="4" width="120" height="120" rx="28" fill="url(#stG)"></rect><circle cx="64" cy="64" r="34" fill="none" stroke="rgba(255,255,255,.3)" stroke-width="14"></circle><circle cx="64" cy="64" r="34" fill="none" stroke="#fff" stroke-width="14" stroke-linecap="round" pathLength="100" stroke-dasharray="62 100" transform="rotate(-90 64 64)"></circle></svg>
+            Sector 1.0 (27) · обновления устанавливаются автоматически
+          </div>
+        </div>
+      </sc-if>
+
+      <sc-if value="{{isScan}}" hint-placeholder-val="{{ false }}">
+        <div style="display:flex;flex-direction:column;gap:16px;animation:paneIn .45s cubic-bezier(.32,.72,0,1) both">
+          <div style="font-size:12px;font-weight:600;color:#6e6e73;padding:0 4px">Диски для анализа</div>
+          <div style="border-radius:16px;background:rgba(255,255,255,.75);box-shadow:inset 0 0 0 .5px rgba(0,0,0,.07)">
+            <label style="display:flex;align-items:center;gap:12px;min-height:48px;padding:0 16px;border-bottom:.5px solid rgba(0,0,0,.07);font-size:13px"><input type="checkbox" checked style="width:16px;height:16px;accent-color:#0071E3;margin:0">Macintosh HD<span style="margin-left:auto;font-size:12px;color:#6e6e73">994,7 ГБ · APFS</span></label>
+            <label style="display:flex;align-items:center;gap:12px;min-height:48px;padding:0 16px;border-bottom:.5px solid rgba(0,0,0,.07);font-size:13px"><input type="checkbox" checked style="width:16px;height:16px;accent-color:#0071E3;margin:0">Samsung T7<span style="margin-left:auto;font-size:12px;color:#6e6e73">2 ТБ · exFAT</span></label>
+            <label style="display:flex;align-items:center;gap:12px;min-height:48px;padding:0 16px;font-size:13px"><input type="checkbox" style="width:16px;height:16px;accent-color:#0071E3;margin:0">Сетевые диски<span style="margin-left:auto;font-size:12px;color:#6e6e73">медленнее</span></label>
+          </div>
+          <div style="border-radius:16px;background:rgba(255,255,255,.75);box-shadow:inset 0 0 0 .5px rgba(0,0,0,.07)">
+            <div style="display:flex;align-items:center;gap:12px;min-height:48px;padding:0 16px;border-bottom:.5px solid rgba(0,0,0,.07)">
+              <span style="flex:1;font-size:13px">Учитывать скрытые файлы</span>
+              <button class="sw" type="button" onClick="{{sw.s1.t}}" aria-pressed="{{sw.s1.on}}" aria-label="Учитывать скрытые файлы" style="{{sw.s1.track}}"><span style="{{sw.s1.knob}}"></span></button>
+            </div>
+            <div style="display:flex;align-items:center;gap:12px;min-height:48px;padding:0 16px;border-bottom:.5px solid rgba(0,0,0,.07)">
+              <span style="flex:1;font-size:13px">Сканировать в фоне</span>
+              <button class="pop" type="button" style="display:flex;align-items:center;gap:6px;height:26px;padding:0 10px;border-radius:8px;background:rgba(255,255,255,.85);box-shadow:0 0 0 .5px rgba(0,0,0,.14),0 1px 2px rgba(0,0,0,.05);font-size:12px">Раз в неделю<svg width="9" height="9" viewBox="0 0 24 24" fill="none" stroke="#6e6e73" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 9l5-5 5 5M7 15l5 5 5-5"></path></svg></button>
+            </div>
+            <label style="display:flex;align-items:center;gap:12px;min-height:60px;padding:0 16px">
+              <span style="flex:1;font-size:13px">Нагрузка на систему<span style="display:block;font-size:11px;color:#6e6e73">{{loadLabel}}</span></span>
+              <input type="range" min="1" max="3" step="1" value="{{load}}" onChange="{{setLoad}}" aria-label="Нагрузка на систему" style="width:200px">
+            </label>
+          </div>
+        </div>
+      </sc-if>
+
+      <sc-if value="{{isClean}}" hint-placeholder-val="{{ false }}">
+        <div style="display:flex;flex-direction:column;gap:16px;animation:paneIn .45s cubic-bezier(.32,.72,0,1) both">
+          <div style="border-radius:16px;background:rgba(255,255,255,.75);box-shadow:inset 0 0 0 .5px rgba(0,0,0,.07)">
+            <div style="display:flex;align-items:center;gap:12px;min-height:56px;padding:0 16px;border-bottom:.5px solid rgba(0,0,0,.07)">
+              <span style="flex:1;font-size:13px">Перемещать в Корзину вместо удаления<span style="display:block;font-size:11px;color:#6e6e73">Рекомендуется: всё можно вернуть из «Истории»</span></span>
+              <button class="sw" type="button" onClick="{{sw.c1.t}}" aria-pressed="{{sw.c1.on}}" aria-label="Перемещать в Корзину" style="{{sw.c1.track}}"><span style="{{sw.c1.knob}}"></span></button>
+            </div>
+            <div style="display:flex;align-items:center;gap:12px;min-height:48px;padding:0 16px;border-bottom:.5px solid rgba(0,0,0,.07)">
+              <span style="flex:1;font-size:13px">Хранить удалённое</span>
+              <div style="display:flex;align-items:center;gap:2px;border-radius:9px;background:rgba(0,0,0,.05);padding:2px">
+                <button class="gbtn" type="button" onClick="{{daysDown}}" aria-label="Меньше дней" style="width:26px;height:24px;border-radius:7px;font-size:15px;text-align:center;background:rgba(0,0,0,0)">−</button>
+                <span style="width:70px;text-align:center;font-size:12px;font-weight:600;font-variant-numeric:tabular-nums">{{days}} дней</span>
+                <button class="gbtn" type="button" onClick="{{daysUp}}" aria-label="Больше дней" style="width:26px;height:24px;border-radius:7px;font-size:15px;text-align:center;background:rgba(0,0,0,0)">+</button>
+              </div>
+            </div>
+            <div style="display:flex;align-items:center;gap:12px;min-height:48px;padding:0 16px;border-bottom:.5px solid rgba(0,0,0,.07)">
+              <span style="flex:1;font-size:13px">Не предлагать файлы моложе</span>
+              <button class="pop" type="button" style="display:flex;align-items:center;gap:6px;height:26px;padding:0 10px;border-radius:8px;background:rgba(255,255,255,.85);box-shadow:0 0 0 .5px rgba(0,0,0,.14),0 1px 2px rgba(0,0,0,.05);font-size:12px">90 дней<svg width="9" height="9" viewBox="0 0 24 24" fill="none" stroke="#6e6e73" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 9l5-5 5 5M7 15l5 5 5-5"></path></svg></button>
+            </div>
+            <div style="display:flex;align-items:center;gap:12px;min-height:48px;padding:0 16px">
+              <span style="flex:1;font-size:13px">Всегда спрашивать подтверждение</span>
+              <button class="sw" type="button" onClick="{{sw.c2.t}}" aria-pressed="{{sw.c2.on}}" aria-label="Всегда спрашивать подтверждение" style="{{sw.c2.track}}"><span style="{{sw.c2.knob}}"></span></button>
+            </div>
+          </div>
+          <sc-if value="{{trashOff}}" hint-placeholder-val="{{ false }}">
+            <div role="alert" style="display:flex;gap:10px;align-items:center;padding:12px 14px;border-radius:14px;background:rgba(229,36,59,.08);color:#B0121F;font-size:12px;animation:paneIn .35s cubic-bezier(.32,.72,0,1) both">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M12 4l9 16H3z"></path><path d="M12 10v4M12 17.5v.01"></path></svg>
+              Файлы будут удаляться сразу. Восстановить их не получится.
+            </div>
+          </sc-if>
+        </div>
+      </sc-if>
+
+      <sc-if value="{{isNotif}}" hint-placeholder-val="{{ false }}">
+        <div style="display:flex;flex-direction:column;gap:16px;animation:paneIn .45s cubic-bezier(.32,.72,0,1) both">
+          <div style="border-radius:16px;background:rgba(255,255,255,.75);box-shadow:inset 0 0 0 .5px rgba(0,0,0,.07)">
+            <label style="display:flex;align-items:center;gap:12px;min-height:64px;padding:0 16px;border-bottom:.5px solid rgba(0,0,0,.07)">
+              <span style="flex:1;font-size:13px">Предупреждать, когда свободно меньше<span style="display:block;font-size:20px;font-weight:700;color:#0071E3;font-variant-numeric:tabular-nums;margin-top:2px">{{limit}} ГБ</span></span>
+              <input type="range" min="10" max="100" step="5" value="{{limit}}" onChange="{{setLimit}}" aria-label="Порог свободного места, ГБ" style="width:220px">
+            </label>
+            <div style="display:flex;align-items:center;gap:12px;min-height:48px;padding:0 16px;border-bottom:.5px solid rgba(0,0,0,.07)">
+              <span style="flex:1;font-size:13px">Ежемесячный отчёт о диске</span>
+              <button class="sw" type="button" onClick="{{sw.n1.t}}" aria-pressed="{{sw.n1.on}}" aria-label="Ежемесячный отчёт" style="{{sw.n1.track}}"><span style="{{sw.n1.knob}}"></span></button>
+            </div>
+            <div style="display:flex;align-items:center;gap:12px;min-height:48px;padding:0 16px">
+              <span style="flex:1;font-size:13px">Сообщать о больших новых файлах (&gt; 5 ГБ)</span>
+              <button class="sw" type="button" onClick="{{sw.n2.t}}" aria-pressed="{{sw.n2.on}}" aria-label="Сообщать о больших новых файлах" style="{{sw.n2.track}}"><span style="{{sw.n2.knob}}"></span></button>
+            </div>
+          </div>
+          <div style="font-size:12px;font-weight:600;color:#6e6e73;padding:0 4px">Так будет выглядеть уведомление</div>
+          <div style="display:flex;gap:12px;align-items:flex-start;padding:12px 14px;border-radius:20px;background:rgba(255,255,255,.85);box-shadow:0 10px 30px rgba(20,30,70,.12),inset 0 0 0 .5px rgba(0,0,0,.06);animation:notifIn .6s cubic-bezier(.34,1.3,.64,1) .2s both">
+            <svg width="36" height="36" viewBox="0 0 128 128" aria-hidden="true"><defs><linearGradient id="stN" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#5AC8FA"></stop><stop offset=".5" stop-color="#0A84FF"></stop><stop offset="1" stop-color="#5E5CE6"></stop></linearGradient></defs><rect x="4" y="4" width="120" height="120" rx="28" fill="url(#stN)"></rect><circle cx="64" cy="64" r="34" fill="none" stroke="rgba(255,255,255,.3)" stroke-width="14"></circle><circle cx="64" cy="64" r="34" fill="none" stroke="#fff" stroke-width="14" stroke-linecap="round" pathLength="100" stroke-dasharray="62 100" transform="rotate(-90 64 64)"></circle></svg>
+            <div style="flex:1;min-width:0">
+              <div style="display:flex;font-size:13px;font-weight:700">Мало места на Macintosh HD<span style="margin-left:auto;font-size:11px;font-weight:400;color:#6e6e73">сейчас</span></div>
+              <div style="font-size:12px;color:#3a3a3c;margin-top:2px">Свободно меньше {{limit}} ГБ. Sector нашёл 64,8 ГБ, которые можно освободить.</div>
+            </div>
+          </div>
+        </div>
+      </sc-if>
+
+      <sc-if value="{{isExcl}}" hint-placeholder-val="{{ false }}">
+        <div style="display:flex;flex-direction:column;gap:12px;animation:paneIn .45s cubic-bezier(.32,.72,0,1) both">
+          <div style="font-size:12px;color:#6e6e73;padding:0 4px">Sector не будет анализировать и предлагать к удалению файлы из этих папок.</div>
+          <div style="border-radius:16px;background:rgba(255,255,255,.75);box-shadow:inset 0 0 0 .5px rgba(0,0,0,.07);overflow:hidden">
+            <sc-for list="{{excl}}" as="x" hint-placeholder-count="3">
+              <div style="{{x.row}}">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="#5AC8FA" stroke="#1E9BB3" stroke-width="1.2" stroke-linejoin="round" aria-hidden="true"><path d="M3 7a2 2 0 0 1 2-2h4l2 2h8a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path></svg>
+                <span style="flex:1;font:12px ui-monospace,'SF Mono',Menlo,monospace">{{x.path}}</span>
+                <button class="gbtn" type="button" onClick="{{x.remove}}" aria-label="{{x.label}}" style="width:24px;height:24px;border-radius:12px;background:rgba(0,0,0,.05);display:flex;align-items:center;justify-content:center"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="#6e6e73" stroke-width="3" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"></path></svg></button>
+              </div>
+            </sc-for>
+          </div>
+          <button class="gbtn" type="button" onClick="{{addExcl}}" style="align-self:flex-start;display:flex;align-items:center;gap:6px;height:30px;padding:0 12px;border-radius:15px;background:rgba(0,0,0,.05);font-size:12px;font-weight:600;color:#0062C4"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" aria-hidden="true"><path d="M12 5v14M5 12h14"></path></svg>Добавить папку…</button>
+        </div>
+      </sc-if>
+    </div>
+  </div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1280,"height":800}}'>
+class Component extends DCLogic {
+  renderVals() {
+    const s = this.state || {};
+    const tab = s.tab || 0;
+    const sws = Object.assign({ g1: true, g2: true, g3: true, s1: false, c1: true, c2: true, n1: true, n2: false }, s.sws || {});
+    const mkSw = (k) => ({
+      on: sws[k],
+      t: () => { const cur = Object.assign({ g1: true, g2: true, g3: true, s1: false, c1: true, c2: true, n1: true, n2: false }, (this.state && this.state.sws) || {}); cur[k] = !cur[k]; this.setState({ sws: cur }); },
+      track: 'width:40px;height:24px;border-radius:12px;padding:2px;display:flex;flex-shrink:0;background:' + (sws[k] ? '#34C759' : 'rgba(0,0,0,.16)'),
+      knob: 'display:block;width:20px;height:20px;border-radius:10px;background:#fff;box-shadow:0 2px 4px rgba(0,0,0,.2),0 0 0 .5px rgba(0,0,0,.04);transform:translateX(' + (sws[k] ? 16 : 0) + 'px)'
+    });
+    const sw = {};
+    ['g1', 'g2', 'g3', 's1', 'c1', 'c2', 'n1', 'n2'].forEach((k) => { sw[k] = mkSw(k); });
+    const tabsData = [
+      ['Основные', 'M12 15a3 3 0 1 0 0-6 3 3 0 0 0 0 6zM12 2.5v3M12 18.5v3M2.5 12h3M18.5 12h3M5.3 5.3l2.1 2.1M16.6 16.6l2.1 2.1M5.3 18.7l2.1-2.1M16.6 7.4l2.1-2.1'],
+      ['Сканирование', 'M11 18a7 7 0 1 0 0-14 7 7 0 0 0 0 14zM21 21l-5-5'],
+      ['Очистка', 'M11 3l1.8 4.7L17.5 9.5l-4.7 1.8L11 16l-1.8-4.7L4.5 9.5l4.7-1.8zM18.5 14.5l.8 2.2 2.2.8-2.2.8-.8 2.2-.8-2.2-2.2-.8 2.2-.8z'],
+      ['Уведомления', 'M6 16V11a6 6 0 0 1 12 0v5l1.5 2h-15zM10 20.5a2 2 0 0 0 4 0'],
+      ['Исключения', 'M12 21a9 9 0 1 0 0-18 9 9 0 0 0 0 18zM5.6 5.6l12.8 12.8']
+    ];
+    const tabs = tabsData.map((t, i) => ({
+      name: t[0], icon: t[1], on: tab === i,
+      pick: () => this.setState({ tab: i }),
+      style: 'position:relative;width:100px;height:54px;border-radius:16px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:3px;color:' + (tab === i ? '#0071E3' : '#6e6e73')
+    }));
+    const ic = s.ic == null ? 1 : s.ic;
+    const load = s.load || 2;
+    const days = s.days || 30;
+    const limit = s.limit || 50;
+    const exclList = s.excl || ['~/Projects/active', '~/Library/Mobile Documents', '/Volumes/Backup'];
+    const newest = s.added || null;
+    const extra = ['~/Movies/Проекты в работе', '~/Music/Сэмплы', '~/Documents/Архив', '~/VirtualMachines'];
+    return {
+      tabs: tabs, sw: sw,
+      tabTitle: tabsData[tab][0],
+      pill: 'position:absolute;top:4px;left:' + (4 + tab * 104) + 'px;width:100px;height:54px;border-radius:16px;background:#fff;box-shadow:0 2px 8px rgba(20,30,70,.12),0 0 0 .5px rgba(0,0,0,.06);transition:left .5s cubic-bezier(.34,1.3,.64,1)',
+      isGeneral: tab === 0, isScan: tab === 1, isClean: tab === 2, isNotif: tab === 3, isExcl: tab === 4,
+      ic0: ic === 0, ic1: ic === 1, ic2: ic === 2,
+      iconPill: 'position:absolute;top:2px;left:' + (2 + ic * 92) + 'px;width:92px;height:26px;border-radius:7px;background:#fff;box-shadow:0 1px 3px rgba(0,0,0,.12);transition:left .4s cubic-bezier(.34,1.35,.64,1)',
+      setIc0: () => this.setState({ ic: 0 }), setIc1: () => this.setState({ ic: 1 }), setIc2: () => this.setState({ ic: 2 }),
+      load: load,
+      loadLabel: load === 1 ? 'Бережно — медленнее, почти не заметно' : (load === 2 ? 'Сбалансированно' : 'Максимально быстро — может греться'),
+      setLoad: (e) => this.setState({ load: Number(e.target.value) }),
+      days: days,
+      daysDown: () => this.setState({ days: Math.max(7, days - 7) }),
+      daysUp: () => this.setState({ days: Math.min(90, days + 7) }),
+      trashOff: !sws.c1,
+      limit: limit,
+      setLimit: (e) => this.setState({ limit: Number(e.target.value) }),
+      excl: exclList.map((p) => ({
+        path: p, label: 'Убрать ' + p,
+        row: 'display:flex;align-items:center;gap:10px;min-height:44px;padding:0 12px 0 16px;border-bottom:.5px solid rgba(0,0,0,.07);overflow:hidden' + (p === newest ? ';animation:rowAdd .45s cubic-bezier(.34,1.3,.64,1) both;background:rgba(0,113,227,.06)' : ''),
+        remove: () => this.setState({ excl: exclList.filter((q) => q !== p) })
+      })),
+      addExcl: () => {
+        const next = extra.filter((q) => exclList.indexOf(q) < 0)[0];
+        if (next) this.setState({ excl: exclList.concat([next]), added: next });
+      }
+    };
+  }
+}
+</script>
+</body>
+</html>

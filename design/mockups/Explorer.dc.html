@@ -1,0 +1,343 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<title>Sector — карта диска</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0}
+*{box-sizing:border-box}
+a{color:#0071E3;text-decoration:none}a:hover{color:#0058B0}
+button{font:inherit;color:inherit;border:0;background:none;padding:0;cursor:pointer;text-align:left}
+@keyframes fadeUp{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:none}}
+@keyframes winIn{from{opacity:0;transform:translateY(18px) scale(.97)}to{opacity:1;transform:none}}
+@keyframes drift1{0%,100%{transform:translate(0,0) scale(1)}50%{transform:translate(70px,40px) scale(1.15)}}
+@keyframes drift2{0%,100%{transform:translate(0,0) scale(1.1)}50%{transform:translate(-80px,-50px) scale(.95)}}
+@keyframes segIn{from{opacity:0;transform:rotate(-40deg) scale(.7)}to{opacity:1;transform:none}}
+@keyframes zoomIn{from{opacity:0;transform:scale(.55) rotate(30deg)}to{opacity:1;transform:none}}
+@keyframes growX{from{transform:scaleX(0)}to{transform:scaleX(1)}}
+@keyframes tileIn{from{opacity:0;transform:scale(.85)}to{opacity:1;transform:none}}
+@keyframes centerIn{0%{transform:scale(.6);opacity:0}70%{transform:scale(1.05);opacity:1}100%{transform:none}}
+@keyframes swap{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+.nav-i{display:flex;align-items:center;gap:10px;height:32px;padding:0 10px;border-radius:10px;color:#1d1d1f;font-size:13px;transition:background .2s}
+.nav-i:hover{background:rgba(0,0,0,.05);color:#1d1d1f}
+.gbtn{transition:transform .25s cubic-bezier(.32,.72,0,1),background .2s}
+.gbtn:hover{background:rgba(255,255,255,.98)!important;color:#1d1d1f}
+.gbtn:active{transform:scale(.95)}
+.tile{transition:filter .2s,transform .3s cubic-bezier(.32,.72,0,1)}
+.tile:hover{filter:brightness(1.08) saturate(1.1);transform:scale(.985)}
+.ctr{transition:transform .3s cubic-bezier(.34,1.56,.64,1),box-shadow .3s}
+.ctr:hover{transform:scale(1.04);box-shadow:0 14px 34px rgba(20,30,70,.18),inset 0 0 0 .5px rgba(0,0,0,.06)!important}
+.row{transition:background .15s}
+.row:hover{background:rgba(0,113,227,.07)}
+</style>
+</helmet>
+<div style="width:1280px;height:800px;position:relative;overflow:hidden;font-family:-apple-system,BlinkMacSystemFont,'SF Pro Text','Inter',system-ui,sans-serif;color:#1d1d1f;background:#cfdaee">
+  <div aria-hidden="true" style="position:absolute;inset:0;background:linear-gradient(155deg,#dce6f5 0%,#c3d2ea 48%,#e6dcef 100%)"></div>
+  <div aria-hidden="true" style="position:absolute;left:-180px;top:-240px;width:760px;height:760px;border-radius:50%;background:radial-gradient(circle,rgba(56,132,255,.55) 0%,rgba(56,132,255,0) 68%);animation:drift1 22s ease-in-out infinite"></div>
+  <div aria-hidden="true" style="position:absolute;right:-220px;bottom:-260px;width:820px;height:820px;border-radius:50%;background:radial-gradient(circle,rgba(175,82,222,.42) 0%,rgba(175,82,222,0) 66%);animation:drift2 26s ease-in-out infinite"></div>
+
+  <div style="position:absolute;left:40px;top:40px;width:1200px;height:720px;border-radius:26px;background:rgba(246,247,250,.86);backdrop-filter:blur(50px) saturate(180%);-webkit-backdrop-filter:blur(50px) saturate(180%);box-shadow:0 40px 100px rgba(20,30,70,.28),0 0 0 .5px rgba(0,0,0,.16),inset 0 1px 0 rgba(255,255,255,.9);display:flex;overflow:hidden;animation:winIn .8s cubic-bezier(.32,.72,0,1) both">
+    <nav aria-label="Разделы" style="width:232px;flex-shrink:0;margin:8px;border-radius:18px;background:rgba(255,255,255,.6);box-shadow:inset 0 0 0 .5px rgba(0,0,0,.08),inset 0 1px 0 rgba(255,255,255,.9),0 1px 3px rgba(20,30,70,.06);display:flex;flex-direction:column;padding:14px 10px 10px">
+      <div style="display:flex;gap:8px;padding:0 4px 16px">
+        <span style="width:12px;height:12px;border-radius:50%;background:#FF5F57;box-shadow:inset 0 0 0 .5px rgba(0,0,0,.15)"></span>
+        <span style="width:12px;height:12px;border-radius:50%;background:#FEBC2E;box-shadow:inset 0 0 0 .5px rgba(0,0,0,.15)"></span>
+        <span style="width:12px;height:12px;border-radius:50%;background:#28C840;box-shadow:inset 0 0 0 .5px rgba(0,0,0,.15)"></span>
+      </div>
+      <label style="display:flex;align-items:center;gap:6px;height:30px;padding:0 10px;border-radius:9px;background:rgba(0,0,0,.05);color:#6e6e73;font-size:13px;margin-bottom:14px">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="6.5"></circle><path d="M20 20l-4.2-4.2"></path></svg>
+        <input type="search" placeholder="Поиск" aria-label="Поиск по диску" style="border:0;background:transparent;outline:none;font:inherit;color:#1d1d1f;width:100%;min-width:0">
+      </label>
+      <div style="font-size:11px;font-weight:600;color:#6e6e73;padding:0 10px 6px">Диск</div>
+      <a class="nav-i" href="Overview.dc.html"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#0071E3" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 16a8 8 0 1 1 16 0"></path><path d="M12 16l4-5"></path></svg>Обзор</a>
+      <a class="nav-i" href="Explorer.dc.html" aria-current="page" style="background:rgba(0,113,227,.13);font-weight:600"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#0071E3" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="8.5"></circle><path d="M12 3.5V12l6.5 5"></path></svg>Карта диска</a>
+      <a class="nav-i" href="SmartClean.dc.html"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#0071E3" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M11 3l1.8 4.7L17.5 9.5l-4.7 1.8L11 16l-1.8-4.7L4.5 9.5l4.7-1.8z"></path><path d="M18.5 14.5l.8 2.2 2.2.8-2.2.8-.8 2.2-.8-2.2-2.2-.8 2.2-.8z"></path></svg>Умная очистка<span style="margin-left:auto;font-size:11px;font-weight:600;color:#0062C4;background:rgba(0,113,227,.12);padding:2px 7px;border-radius:10px">64,8 ГБ</span></a>
+      <div style="font-size:11px;font-weight:600;color:#6e6e73;padding:16px 10px 6px">Инструменты</div>
+      <a class="nav-i" href="LargeFiles.dc.html"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#0071E3" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 3h7l5 5v13H7z"></path><path d="M14 3v5h5"></path></svg>Большие и старые</a>
+      <a class="nav-i" href="Duplicates.dc.html"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#0071E3" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="8" y="8" width="12" height="12" rx="2.5"></rect><path d="M16 8V6a2 2 0 0 0-2-2H6a2 2 0 0 0-2 2v8a2 2 0 0 0 2 2h2"></path></svg>Дубликаты</a>
+      <a class="nav-i" href="Apps.dc.html"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#0071E3" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="4" width="7" height="7" rx="2"></rect><rect x="13" y="4" width="7" height="7" rx="2"></rect><rect x="4" y="13" width="7" height="7" rx="2"></rect><rect x="13" y="13" width="7" height="7" rx="2"></rect></svg>Приложения</a>
+      <a class="nav-i" href="History.dc.html"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#0071E3" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12a8 8 0 1 0 2.3-5.6"></path><path d="M4 4v4h4"></path><path d="M12 8v4l3 2"></path></svg>История</a>
+      <div style="flex:1"></div>
+      <div style="padding:12px;border-radius:14px;background:rgba(255,255,255,.7);box-shadow:inset 0 0 0 .5px rgba(0,0,0,.06)">
+        <div style="display:flex;align-items:center;gap:8px;font-size:12px;font-weight:600">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#6e6e73" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><rect x="3" y="6" width="18" height="12" rx="3"></rect><circle cx="17" cy="12" r="1"></circle></svg>Macintosh HD
+          <a href="Settings.dc.html" aria-label="Настройки" style="margin-left:auto;color:#6e6e73;display:flex;width:24px;height:24px;align-items:center;justify-content:center;border-radius:7px"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="3"></circle><path d="M12 2.5v3M12 18.5v3M2.5 12h3M18.5 12h3M5.3 5.3l2.1 2.1M16.6 16.6l2.1 2.1M5.3 18.7l2.1-2.1M16.6 7.4l2.1-2.1"></path></svg></a>
+        </div>
+        <div style="height:6px;border-radius:3px;background:rgba(0,0,0,.08);margin:10px 0 6px;overflow:hidden">
+          <div style="width:87.6%;height:100%;border-radius:3px;background:linear-gradient(90deg,#0071E3,#5E5CE6);transform-origin:left;animation:growX 1.2s cubic-bezier(.32,.72,0,1) .4s both"></div>
+        </div>
+        <div style="font-size:11px;color:#6e6e73">123,4 ГБ свободно из 994,7 ГБ</div>
+      </div>
+    </nav>
+
+    <main style="flex:1;min-width:0;display:flex;flex-direction:column">
+      <header style="height:56px;flex-shrink:0;display:flex;align-items:center;gap:10px;padding:0 16px 0 12px">
+        <div style="display:flex;align-items:center;height:34px;padding:0 3px;border-radius:17px;background:rgba(255,255,255,.72);box-shadow:0 1px 3px rgba(20,30,70,.08),0 0 0 .5px rgba(0,0,0,.08),inset 0 1px 0 #fff">
+          <button class="gbtn" type="button" aria-label="Назад" onClick="{{zoomOut}}" style="width:32px;height:28px;border-radius:14px;display:flex;align-items:center;justify-content:center;color:{{backColor}}"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 6l-6 6 6 6"></path></svg></button>
+          <button class="gbtn" type="button" aria-label="Вперёд" style="width:32px;height:28px;border-radius:14px;display:flex;align-items:center;justify-content:center;color:#b0b0b5"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 6l6 6-6 6"></path></svg></button>
+        </div>
+        <nav aria-label="Путь" style="display:flex;align-items:center;gap:4px;font-size:13px;color:#6e6e73;min-width:0">
+          <span>Macintosh HD</span><span aria-hidden="true">›</span><span>Пользователи</span><span aria-hidden="true">›</span>
+          <button type="button" onClick="{{zoomOut}}" style="color:{{rootCrumbColor}};font-weight:{{rootCrumbWeight}}">user</button>
+          <sc-if value="{{focused}}" hint-placeholder-val="{{ false }}">
+            <span aria-hidden="true">›</span><span style="color:#1d1d1f;font-weight:600;animation:swap .35s cubic-bezier(.32,.72,0,1) both">{{focusName}}</span>
+          </sc-if>
+        </nav>
+        <div style="flex:1"></div>
+        <div role="group" aria-label="Вид" style="position:relative;display:flex;height:32px;padding:2px;border-radius:16px;background:rgba(0,0,0,.06)">
+          <span aria-hidden="true" style="{{segPill}}"></span>
+          <button type="button" aria-pressed="{{isRings}}" onClick="{{setRings}}" style="position:relative;width:88px;height:28px;border-radius:14px;font-size:12px;font-weight:600;display:flex;align-items:center;justify-content:center;gap:5px"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="8.5"></circle><circle cx="12" cy="12" r="3.5"></circle></svg>Кольца</button>
+          <button type="button" aria-pressed="{{isTiles}}" onClick="{{setTiles}}" style="position:relative;width:88px;height:28px;border-radius:14px;font-size:12px;font-weight:600;display:flex;align-items:center;justify-content:center;gap:5px"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="3.5" y="3.5" width="17" height="17" rx="3"></rect><path d="M11 3.5v17M11 12h9.5"></path></svg>Плитки</button>
+        </div>
+      </header>
+
+      <div style="flex:1;min-height:0;display:flex;gap:14px;padding:0 20px 16px 12px">
+        <section aria-label="Визуализация папки" style="flex:1;min-width:0;border-radius:22px;background:rgba(255,255,255,.55);box-shadow:inset 0 0 0 .5px rgba(0,0,0,.06),inset 0 1px 0 #fff;display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden">
+          <sc-if value="{{showRoot}}" hint-placeholder-val="{{ true }}">
+            <div style="position:relative;width:500px;height:500px" onMouseLeave="{{unhover}}">
+              <sc-for list="{{rootSegs}}" as="s" hint-placeholder-count="20">
+                <svg aria-hidden="true" width="500" height="500" viewBox="0 0 500 500" style="{{s.wrap}}">
+                  <path d="{{s.d}}" fill="{{s.fill}}" fill-opacity="{{s.fo}}" stroke="#fff" stroke-width="2" stroke-linejoin="round" style="{{s.style}}" onMouseEnter="{{s.enter}}" onClick="{{s.click}}"></path>
+                </svg>
+              </sc-for>
+              <button class="ctr" type="button" aria-label="Папка user, 612 ГБ" style="position:absolute;left:162px;top:162px;width:176px;height:176px;border-radius:50%;background:rgba(255,255,255,.88);box-shadow:0 10px 30px rgba(20,30,70,.12),inset 0 0 0 .5px rgba(0,0,0,.06);display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;animation:centerIn .8s cubic-bezier(.34,1.56,.64,1) .1s both">
+                <span style="font-size:12px;color:#6e6e73;max-width:140px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">{{centerName}}</span>
+                <span style="font-size:30px;line-height:36px;font-weight:700;letter-spacing:-.02em;font-variant-numeric:tabular-nums">{{centerSize}}</span>
+                <span style="font-size:11px;color:#6e6e73">{{centerHint}}</span>
+              </button>
+            </div>
+          </sc-if>
+          <sc-if value="{{showFocus}}" hint-placeholder-val="{{ false }}">
+            <div style="position:relative;width:500px;height:500px" onMouseLeave="{{unhover}}">
+              <sc-for list="{{focusSegs}}" as="s" hint-placeholder-count="12">
+                <svg aria-hidden="true" width="500" height="500" viewBox="0 0 500 500" style="{{s.wrap}}">
+                  <path d="{{s.d}}" fill="{{s.fill}}" fill-opacity="{{s.fo}}" stroke="#fff" stroke-width="2" stroke-linejoin="round" style="{{s.style}}" onMouseEnter="{{s.enter}}"></path>
+                </svg>
+              </sc-for>
+              <button class="ctr" type="button" onClick="{{zoomOut}}" aria-label="Вернуться к папке user" style="position:absolute;left:162px;top:162px;width:176px;height:176px;border-radius:50%;background:rgba(255,255,255,.9);box-shadow:0 10px 30px rgba(20,30,70,.12),inset 0 0 0 .5px rgba(0,0,0,.06);display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;animation:centerIn .8s cubic-bezier(.34,1.56,.64,1) both">
+                <span style="font-size:12px;color:#6e6e73;max-width:140px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">{{centerName}}</span>
+                <span style="font-size:30px;line-height:36px;font-weight:700;letter-spacing:-.02em;font-variant-numeric:tabular-nums">{{centerSize}}</span>
+                <span style="display:flex;align-items:center;gap:4px;font-size:11px;color:#0071E3;font-weight:600"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 6l-6 6 6 6"></path></svg>Назад</span>
+              </button>
+            </div>
+          </sc-if>
+          <sc-if value="{{isTiles}}" hint-placeholder-val="{{ false }}">
+            <div style="position:absolute;inset:16px;display:flex;gap:4px">
+              <sc-for list="{{tiles}}" as="col" hint-placeholder-count="6">
+                <div style="{{col.style}}">
+                  <sc-for list="{{col.items}}" as="it" hint-placeholder-count="3">
+                    <button class="tile" type="button" onMouseEnter="{{it.enter}}" style="{{it.style}}">
+                      <span style="font-size:12px;font-weight:600;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">{{it.name}}</span>
+                      <span style="font-size:11px;opacity:.9;font-variant-numeric:tabular-nums">{{it.size}}</span>
+                    </button>
+                  </sc-for>
+                </div>
+              </sc-for>
+            </div>
+          </sc-if>
+          <div style="position:absolute;left:16px;bottom:14px;font-size:11px;color:#6e6e73">{{hint}}</div>
+        </section>
+
+        <aside aria-label="Инспектор" style="width:292px;flex-shrink:0;border-radius:22px;background:rgba(255,255,255,.75);box-shadow:inset 0 0 0 .5px rgba(0,0,0,.07),inset 0 1px 0 #fff,0 1px 3px rgba(20,30,70,.05);padding:18px 16px 14px;display:flex;flex-direction:column;animation:fadeUp .7s cubic-bezier(.32,.72,0,1) .25s both">
+          <div style="display:flex;align-items:center;gap:12px">
+            <span style="width:46px;height:46px;border-radius:14px;display:flex;align-items:center;justify-content:center;flex-shrink:0;background:{{info.tint}};color:{{info.color}};transition:background .3s,color .3s">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round" aria-hidden="true"><path d="M3 7a2 2 0 0 1 2-2h4l2 2h8a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path></svg>
+            </span>
+            <div style="min-width:0">
+              <div style="font-size:15px;font-weight:700;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">{{info.name}}</div>
+              <div style="font-size:11px;color:#6e6e73;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">{{info.path}}</div>
+            </div>
+          </div>
+          <div style="display:flex;align-items:baseline;gap:8px;margin-top:14px">
+            <span style="font-size:28px;font-weight:700;letter-spacing:-.02em;font-variant-numeric:tabular-nums">{{info.size}}</span>
+            <span style="font-size:12px;color:#6e6e73">{{info.pct}}</span>
+          </div>
+          <div style="height:6px;border-radius:3px;background:rgba(0,0,0,.07);margin-top:8px;overflow:hidden">
+            <div style="{{info.bar}}"></div>
+          </div>
+          <dl style="margin:14px 0 0;display:grid;grid-template-columns:auto 1fr;gap:6px 12px;font-size:12px">
+            <dt style="color:#6e6e73">Изменено</dt><dd style="margin:0;text-align:right">{{info.mod}}</dd>
+            <dt style="color:#6e6e73">Объектов</dt><dd style="margin:0;text-align:right;font-variant-numeric:tabular-nums">{{info.count}}</dd>
+            <dt style="color:#6e6e73">Тип</dt><dd style="margin:0;text-align:right">{{info.kind}}</dd>
+          </dl>
+          <div style="height:.5px;background:rgba(0,0,0,.1);margin:14px 0 10px"></div>
+          <div style="font-size:11px;font-weight:600;color:#6e6e73;margin-bottom:4px">{{info.listTitle}}</div>
+          <div style="flex:1;min-height:0;display:flex;flex-direction:column;gap:2px">
+            <sc-for list="{{info.items}}" as="it" hint-placeholder-count="5">
+              <div class="row" style="display:flex;align-items:center;gap:8px;padding:5px 6px;border-radius:8px;font-size:12px">
+                <span style="width:8px;height:8px;border-radius:3px;flex-shrink:0;background:{{it.color}}"></span>
+                <span style="flex:1;min-width:0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">{{it.name}}</span>
+                <span style="width:54px;height:4px;border-radius:2px;background:rgba(0,0,0,.06);overflow:hidden"><span style="{{it.bar}}"></span></span>
+                <span style="width:58px;text-align:right;color:#3a3a3c;font-variant-numeric:tabular-nums">{{it.size}}</span>
+              </div>
+            </sc-for>
+          </div>
+          <div style="display:flex;gap:8px;margin-top:10px">
+            <button class="gbtn" type="button" style="flex:1;height:32px;border-radius:16px;background:rgba(255,255,255,.85);box-shadow:0 0 0 .5px rgba(0,0,0,.12),0 1px 2px rgba(0,0,0,.05);font-size:12px;font-weight:600;display:flex;align-items:center;justify-content:center">Показать в Finder</button>
+            <a class="gbtn" href="ConfirmDelete.dc.html" style="flex:1;height:32px;border-radius:16px;background:rgba(255,59,48,.1);color:#C4161C;font-size:12px;font-weight:600;display:flex;align-items:center;justify-content:center;gap:5px"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 7h16"></path><path d="M9 7V4.5h6V7"></path><path d="M6 7l1 13h10l1-13"></path></svg>В Корзину</a>
+          </div>
+        </aside>
+      </div>
+    </main>
+  </div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1280,"height":800}}'>
+class Component extends DCLogic {
+  arc(cx, cy, r0, r1, a0, a1) {
+    if (a1 - a0 >= 359.99) a1 = a0 + 359.99;
+    const rad = (a) => (a - 90) * Math.PI / 180;
+    const pt = (r, a) => (cx + r * Math.cos(rad(a))).toFixed(2) + ' ' + (cy + r * Math.sin(rad(a))).toFixed(2);
+    const lg = (a1 - a0) > 180 ? 1 : 0;
+    return 'M' + pt(r1, a0) + ' A' + r1 + ' ' + r1 + ' 0 ' + lg + ' 1 ' + pt(r1, a1) + ' L' + pt(r0, a1) + ' A' + r0 + ' ' + r0 + ' 0 ' + lg + ' 0 ' + pt(r0, a0) + ' Z';
+  }
+  renderVals() {
+    const s = this.state || {};
+    const mode = s.mode || 'rings';
+    const focus = s.focus == null ? -1 : s.focus;
+    const hover = s.hover || null;
+    const f1 = (v) => v.toFixed(1).replace('.', ',') + ' ГБ';
+    const TOTAL = 612.0;
+    const tree = [
+      { name: 'Developer', v: 214.8, c: '#5E5CE6', l: '#9E9CF0', tint: 'rgba(94,92,230,.13)', mod: 'Сегодня, 11:42', count: '1 912 044', kind: 'Папка разработки', kids: [['Docker.raw', 64.0, 'Сегодня'], ['DerivedData', 61.2, 'Вчера'], ['node_modules (37)', 48.3, '3 мес. назад'], ['CoreSimulator', 27.1, '2 мес. назад'], ['Репозитории', 14.2, 'Сегодня']] },
+      { name: 'Pictures', v: 132.4, c: '#FF2D55', l: '#FF8199', tint: 'rgba(255,45,85,.12)', mod: '2 дня назад', count: '48 310', kind: 'Изображения', kids: [['Photos Library', 118.6, '2 дня назад'], ['Скриншоты', 8.1, 'Сегодня'], ['Экспорт', 5.7, '1 мес. назад']] },
+      { name: 'Library', v: 118.0, c: '#8E8E93', l: '#BBBBBF', tint: 'rgba(142,142,147,.16)', mod: 'Сегодня, 12:01', count: '702 118', kind: 'Системная папка', kids: [['Application Support', 52.3, 'Сегодня'], ['Caches', 38.6, 'Сегодня'], ['Containers', 21.4, 'Вчера'], ['Logs', 5.7, 'Сегодня']] },
+      { name: 'Documents', v: 61.2, c: '#FF9500', l: '#FFBF66', tint: 'rgba(255,149,0,.14)', mod: 'Вчера', count: '22 940', kind: 'Документы', kids: [['Проекты', 30.1, 'Вчера'], ['Сканы', 18.7, '5 мес. назад'], ['Учёба', 12.4, '1 нед. назад']] },
+      { name: 'Movies', v: 55.8, c: '#AF52DE', l: '#CF97E9', tint: 'rgba(175,82,222,.13)', mod: '7 мес. назад', count: '1 204', kind: 'Видео', kids: [['Final Cut Library', 41.0, '7 мес. назад'], ['Записи экрана', 14.8, '3 нед. назад']] },
+      { name: 'Downloads', v: 29.8, c: '#30B0C7', l: '#83D0DD', tint: 'rgba(48,176,199,.15)', mod: 'Сегодня', count: '1 877', kind: 'Загрузки', kids: [['Образы дисков', 14.1, '4 мес. назад'], ['Архивы', 9.3, '2 мес. назад'], ['Прочее', 6.4, 'Сегодня']] }
+    ];
+    const isDim = (key) => hover && hover.key !== key && hover.parentKey !== key && hover.key !== ('p' + key.split('-')[0].slice(1));
+    const mkNode = (n, parent, key, parentKey) => ({ key: key, parentKey: parentKey, name: n.name, v: n.v, color: parent ? parent.c : n.c, tint: parent ? parent.tint : n.tint, path: parent ? '~/' + parent.name + '/' + n.name : '~/' + n.name, mod: n.mod, count: n.count, kind: n.kind, kids: n.kids, parentV: parent ? parent.v : TOTAL, parentName: parent ? parent.name : 'user' });
+    const rootSegs = [];
+    let a = 0;
+    tree.forEach((n, i) => {
+      const span = n.v / TOTAL * 360;
+      const key = 'p' + i;
+      const node = mkNode(n, null, key, null);
+      const hl = hover && (hover.key === key || hover.parentKey === key);
+      const dim = hover && !hl;
+      rootSegs.push({
+        d: this.arc(250, 250, 92, 170, a, a + span), fill: n.c, fo: 1,
+        wrap: 'position:absolute;left:0;top:0;pointer-events:none;transform-origin:50% 50%;animation:segIn 1s cubic-bezier(.34,1.3,.64,1) ' + (i * 70) + 'ms both',
+        style: 'pointer-events:auto;cursor:zoom-in;transform-box:view-box;transform-origin:250px 250px;transform:' + (hover && hover.key === key ? 'scale(1.035)' : 'none') + ';opacity:' + (dim ? 0.3 : 1) + ';transition:transform .35s cubic-bezier(.34,1.56,.64,1),opacity .25s',
+        enter: () => this.setState({ hover: node }),
+        click: () => this.setState({ focus: i, hover: null })
+      });
+      let b = a;
+      n.kids.forEach((k, j) => {
+        const sp = k[1] / TOTAL * 360;
+        const ck = key + '-' + j;
+        const cnode = mkNode({ name: k[0], v: k[1], mod: k[2], count: '—', kind: 'Папка' }, n, ck, key);
+        const chl = hover && (hover.key === ck || hover.key === key);
+        rootSegs.push({
+          d: this.arc(250, 250, 174, 240, b, b + sp), fill: n.l, fo: j % 2 ? 0.72 : 1,
+          wrap: 'position:absolute;left:0;top:0;pointer-events:none;transform-origin:50% 50%;animation:segIn 1.1s cubic-bezier(.34,1.3,.64,1) ' + (380 + (i * 4 + j) * 28) + 'ms both',
+          style: 'pointer-events:auto;cursor:zoom-in;transform-box:view-box;transform-origin:250px 250px;transform:' + (hover && hover.key === ck ? 'scale(1.03)' : 'none') + ';opacity:' + (hover && !chl ? 0.3 : 1) + ';transition:transform .35s cubic-bezier(.34,1.56,.64,1),opacity .25s',
+          enter: () => this.setState({ hover: cnode }),
+          click: () => this.setState({ focus: i, hover: null })
+        });
+        b += sp;
+      });
+      a += span;
+    });
+    const focusSegs = [];
+    let fnode = null;
+    if (focus >= 0) {
+      const n = tree[focus];
+      fnode = mkNode(n, null, 'p' + focus, null);
+      let c = 0;
+      n.kids.forEach((k, j) => {
+        const sp = k[1] / n.v * 360;
+        const ck = 'f' + j;
+        const cnode = mkNode({ name: k[0], v: k[1], mod: k[2], count: '—', kind: 'Папка' }, n, ck, null);
+        const dim = hover && hover.key !== ck;
+        const fills = [n.c, n.l];
+        focusSegs.push({
+          d: this.arc(250, 250, 92, 196, c, c + sp), fill: fills[j % 2], fo: 1,
+          wrap: 'position:absolute;left:0;top:0;pointer-events:none;transform-origin:50% 50%;animation:zoomIn .9s cubic-bezier(.34,1.25,.64,1) ' + (j * 60) + 'ms both',
+          style: 'pointer-events:auto;cursor:default;transform-box:view-box;transform-origin:250px 250px;transform:' + (hover && hover.key === ck ? 'scale(1.035)' : 'none') + ';opacity:' + (dim ? 0.3 : 1) + ';transition:transform .35s cubic-bezier(.34,1.56,.64,1),opacity .25s',
+          enter: () => this.setState({ hover: cnode })
+        });
+        let d = c;
+        [0.55, 0.3, 0.15].forEach((f, q) => {
+          const sp2 = sp * f;
+          focusSegs.push({
+            d: this.arc(250, 250, 200, 240, d, d + sp2), fill: n.l, fo: q === 1 ? 0.6 : (q === 2 ? 0.38 : 0.9),
+            wrap: 'position:absolute;left:0;top:0;pointer-events:none;transform-origin:50% 50%;animation:zoomIn 1s cubic-bezier(.34,1.25,.64,1) ' + (250 + j * 60 + q * 30) + 'ms both',
+            style: 'pointer-events:auto;transform-box:view-box;transform-origin:250px 250px;opacity:' + (dim ? 0.25 : 1) + ';transition:opacity .25s',
+            enter: () => this.setState({ hover: cnode })
+          });
+          d += sp2;
+        });
+        c += sp;
+      });
+    }
+    const tiles = tree.map((n, i) => {
+      const key = 'p' + i;
+      return {
+        style: 'flex:0 0 calc(' + (n.v / TOTAL * 100).toFixed(2) + '% - 4px);display:flex;flex-direction:column;gap:4px;min-width:0',
+        items: n.kids.map((k, j) => {
+          const cnode = mkNode({ name: k[0], v: k[1], mod: k[2], count: '—', kind: 'Папка' }, n, key + '-' + j, key);
+          return {
+            name: k[0], size: f1(k[1]),
+            enter: () => this.setState({ hover: cnode }),
+            style: 'flex:0 0 calc(' + (k[1] / n.v * 100).toFixed(2) + '% - 4px);min-height:0;border-radius:12px;padding:8px 10px;display:flex;flex-direction:column;justify-content:flex-end;overflow:hidden;color:#fff;text-shadow:0 1px 2px rgba(0,0,0,.2);background:' + (j % 2 ? n.l : n.c) + ';box-shadow:inset 0 1px 0 rgba(255,255,255,.3);animation:tileIn .7s cubic-bezier(.34,1.4,.64,1) ' + (i * 70 + j * 50) + 'ms both'
+          };
+        })
+      };
+    });
+    const cur = hover || fnode;
+    let info;
+    if (cur) {
+      const isTop = !cur.parentKey && cur.key && cur.key.charAt(0) === 'p' && cur.key.indexOf('-') < 0;
+      const items = isTop ? cur.kids.map((k) => ({ name: k[0], size: f1(k[1]), color: cur.color, bar: 'display:block;height:100%;border-radius:2px;background:' + cur.color + ';width:' + (k[1] / cur.v * 100).toFixed(0) + '%' })) : [
+        { name: 'Большие файлы (> 1 ГБ)', size: f1(cur.v * 0.55), color: cur.color, bar: 'display:block;height:100%;border-radius:2px;background:' + cur.color + ';width:55%' },
+        { name: 'Средние файлы', size: f1(cur.v * 0.3), color: cur.color, bar: 'display:block;height:100%;border-radius:2px;background:' + cur.color + ';width:30%' },
+        { name: 'Мелкие файлы', size: f1(cur.v * 0.15), color: cur.color, bar: 'display:block;height:100%;border-radius:2px;background:' + cur.color + ';width:15%' }
+      ];
+      info = {
+        name: cur.name, path: cur.path, size: f1(cur.v), color: cur.color, tint: cur.tint,
+        pct: Math.round(cur.v / cur.parentV * 100) + '% от ' + cur.parentName,
+        bar: 'height:100%;border-radius:3px;background:' + cur.color + ';width:' + (cur.v / cur.parentV * 100).toFixed(1) + '%;transition:width .5s cubic-bezier(.32,.72,0,1)',
+        mod: cur.mod || 'Недавно', count: cur.count || '—', kind: cur.kind || 'Папка',
+        listTitle: isTop ? 'Содержимое' : 'По размеру файлов', items: items
+      };
+    } else {
+      info = {
+        name: 'user', path: '/Users/user', size: '612,0 ГБ', color: '#0071E3', tint: 'rgba(0,113,227,.12)', pct: '62% диска',
+        bar: 'height:100%;border-radius:3px;background:#0071E3;width:61.5%;transition:width .5s cubic-bezier(.32,.72,0,1)',
+        mod: 'Сегодня, 12:04', count: '2 688 493', kind: 'Папка пользователя', listTitle: 'Содержимое',
+        items: tree.map((n) => ({ name: n.name, size: f1(n.v), color: n.c, bar: 'display:block;height:100%;border-radius:2px;background:' + n.c + ';width:' + (n.v / 214.8 * 100).toFixed(0) + '%' }))
+      };
+    }
+    const tilesMode = mode === 'tiles';
+    const centerSrc = hover || fnode;
+    return {
+      rootSegs: rootSegs, focusSegs: focusSegs, tiles: tiles, info: info,
+      showRoot: !tilesMode && focus < 0,
+      showFocus: !tilesMode && focus >= 0,
+      isTiles: tilesMode, isRings: !tilesMode,
+      focused: focus >= 0, focusName: fnode ? fnode.name : '',
+      centerName: centerSrc ? centerSrc.name : 'user',
+      centerSize: centerSrc ? f1(centerSrc.v).replace(' ГБ', '') : '612,0',
+      centerHint: centerSrc ? 'ГБ · нажмите, чтобы открыть' : 'ГБ занято',
+      hint: tilesMode ? 'Наведите на плитку, чтобы увидеть детали' : (focus >= 0 ? 'Нажмите в центр, чтобы вернуться' : 'Нажмите на сегмент, чтобы приблизить'),
+      backColor: focus >= 0 ? '#3a3a3c' : '#b0b0b5',
+      rootCrumbColor: focus >= 0 ? '#0071E3' : '#1d1d1f',
+      rootCrumbWeight: focus >= 0 ? 500 : 600,
+      segPill: 'position:absolute;top:2px;left:' + (tilesMode ? 90 : 2) + 'px;width:88px;height:28px;border-radius:14px;background:#fff;box-shadow:0 1px 3px rgba(0,0,0,.12),0 0 0 .5px rgba(0,0,0,.06);transition:left .4s cubic-bezier(.34,1.4,.64,1)',
+      setRings: () => this.setState({ mode: 'rings', hover: null }),
+      setTiles: () => this.setState({ mode: 'tiles', hover: null }),
+      zoomOut: () => this.setState({ focus: -1, hover: null }),
+      unhover: () => this.setState({ hover: null })
+    };
+  }
+}
+</script>
+</body>
+</html>
