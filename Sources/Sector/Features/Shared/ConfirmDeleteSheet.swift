@@ -13,8 +13,12 @@ struct ConfirmDeleteSheet: View {
   @State private var skipDownloads = false
   @State private var isPerforming = false
 
+  /// Items already in the Trash can only be deleted for good.
+  private var isEmptyingTrash: Bool { request.source == .trash }
+
   private var mode: RemovalMode {
-    pickedMode ?? (model.settings.moveToTrash ? .trash : .permanent)
+    if isEmptyingTrash { return .permanent }
+    return pickedMode ?? (model.settings.moveToTrash ? .trash : .permanent)
   }
   private var isPermanent: Bool { mode == .permanent }
 
@@ -22,7 +26,9 @@ struct ConfirmDeleteSheet: View {
     VStack(alignment: .leading, spacing: 0) {
       header
       itemList.padding(.top, 18)
-      options.padding(.top, 14)
+      if !isEmptyingTrash {
+        options.padding(.top, 14)
+      }
       if isPermanent {
         PermanentWarning()
           .padding(.top, 10)
