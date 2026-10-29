@@ -117,3 +117,13 @@ private func allocated(_ url: URL) -> UInt64 {
   let plain = Array("Documents".utf8)
   #expect(!plain.withUnsafeBufferPointer { BulkAttributes.isPackage($0) })
 }
+
+@Test func russianPlurals() {
+  let ru = Locale(identifier: "ru_RU")
+  #expect(Plural.word(1, "файл", "файла", "файлов", locale: ru) == "файл")
+  #expect(Plural.word(3, "файл", "файла", "файлов", locale: ru) == "файла")
+  #expect(Plural.word(11, "файл", "файла", "файлов", locale: ru) == "файлов")
+  #expect(Plural.word(21, "файл", "файла", "файлов", locale: ru) == "файл")
+  #expect(Plural.word(112, "файл", "файла", "файлов", locale: ru) == "файлов")
+  #expect(Plural.word(5, "файл", "файла", "файлов", locale: Locale(identifier: "en_US")) == "файлов")
+}

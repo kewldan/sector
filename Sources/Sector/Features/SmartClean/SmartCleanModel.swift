@@ -11,6 +11,8 @@ import SectorCore
 ///   badge, the overview card and the menu bar.
 /// - `analyze()` — (re)computes categories from `app.tree`.
 /// - `invalidate()` — called by `AppModel` after a new scan.
+/// - `startCleaning()` — cleans the safe selection right away (menu bar
+///   "Очистить"); the Smart Clean screen shows its progress.
 @Observable @MainActor
 final class SmartCleanModel {
   @ObservationIgnored unowned let app: AppModel
@@ -27,4 +29,6 @@ final class SmartCleanModel {
   }
 
   func analyze() async {}
+
+  func startCleaning() {}
 }
