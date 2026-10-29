@@ -122,7 +122,7 @@ struct ToastView: View {
           Image(systemName: "checkmark.circle.fill").foregroundStyle(Color.sectorSuccess)
           Text(toast.text).font(.system(size: 13, weight: .medium))
           if let undo = toast.undo {
-            Button("Отменить") {
+            Button("toast.undo") {
               undo()
               model.toast = nil
             }

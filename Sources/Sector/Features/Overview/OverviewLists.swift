@@ -142,7 +142,7 @@ struct QuickActionsCard: View {
           : trashCount == 0
           ? String(localized: "Пусто")
           : "\(ByteFormat.string(snapshot?.trashSize ?? 0)) · \(trashItems)",
-        button: "Очистить", isEnabled: trashCount > 0
+        button: "trash.empty", isEnabled: trashCount > 0
       ) {
         guard let snapshot, !snapshot.trash.isEmpty else { return }
         model.requestDeletion(

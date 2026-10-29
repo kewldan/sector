@@ -141,7 +141,7 @@ struct MenuBarView: View {
         Text("Корзина").font(.system(size: 13))
       } trailing: {
         sizeLabel(trashSize)
-        Button("Очистить", action: emptyTrash)
+        Button("trash.empty", action: emptyTrash)
           .buttonStyle(MenuCapsuleButtonStyle())
           .disabled((trash ?? []).isEmpty)
       }

@@ -68,7 +68,7 @@ struct CleaningView: View {
     .toolbar {
       ToolbarItemGroup(placement: .primaryAction) {
         if run.isPaused {
-          Button("Завершить") { model.stop() }
+          Button("cleaning.finish") { model.stop() }
           Button {
             model.resume()
           } label: {
@@ -424,7 +424,7 @@ private struct StepRow: View {
       return text
     case .active:
       if wasStopped { return String(localized: "Остановлено") }
-      if isPaused { return String(localized: "Пауза") }
+      if isPaused { return String(localized: "status.paused") }
       let done = min(progress.objectsDone, planned).formatted()
       return String(localized: "Удаляем… \(done) из \(planned.formatted())")
     case .pending:

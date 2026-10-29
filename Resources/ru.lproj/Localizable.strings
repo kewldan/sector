@@ -1,1 +1,9 @@
 /* Russian is the source language; keys are the Russian strings. */
+
+/* Context-specific keys where one Russian word needs different English. */
+"toast.undo" = "Отменить";
+"cleaning.finish" = "Завершить";
+"status.paused" = "Пауза";
+"trash.empty" = "Очистить";
+"forecast.oneDay" = "день";
+"forecast.oneYear" = "год";

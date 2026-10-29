@@ -16,10 +16,15 @@ keys = set()
 for f in glob.glob(sys.argv[1] + "/*.stringsdata"):
     for entries in json.load(open(f)).get("tables", {}).values():
         keys.update(e["key"] for e in entries if re.search("[А-Яа-яЁё]", e["key"]))
+# Plural noun forms: three single-word Russian literals in a row, outside
+# comments (Plural.format arguments and tuples of forms).
+word = r'"([А-Яа-яЁё]+)"'
 for f in glob.glob("Sources/**/*.swift", recursive=True):
-    src = open(f).read()
-    for m in re.finditer(r'"([^"]*[А-Яа-яЁё][^"]*)",\s*"([^"]*[А-Яа-яЁё][^"]*)",\s*"([^"]*[А-Яа-яЁё][^"]*)"', src):
-        keys.update(m.groups())
+    for line in open(f):
+        if line.lstrip().startswith("//"):
+            continue
+        for m in re.finditer(word + r',\s*' + word + r',\s*' + word, line):
+            keys.update(m.groups())
 plist = subprocess.run(
     ["plutil", "-convert", "json", "-o", "-", "Resources/en.lproj/Localizable.strings"],
     capture_output=True, text=True, check=True).stdout

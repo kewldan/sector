@@ -312,7 +312,7 @@ private struct ScanLiveStats: View {
   }
 
   private var displayPath: String {
-    if isPaused { return String(localized: "Пауза") }
+    if isPaused { return String(localized: "status.paused") }
     let path = progress.currentPath
     if path.hasPrefix(Self.home) { return "~" + path.dropFirst(Self.home.count) }
     return path

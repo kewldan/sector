@@ -75,7 +75,7 @@ enum ForecastText {
     case ..<14:
       let n = max(1, days)
       return n == 1
-        ? String(localized: "день") : Plural.format(n, "день", "дня", "дней")
+        ? String(localized: "forecast.oneDay") : Plural.format(n, "день", "дня", "дней")
     case ..<60:
       let n = Int((Double(days) / 7).rounded())
       return Plural.format(n, "неделю", "недели", "недель")
@@ -84,7 +84,7 @@ enum ForecastText {
       return Plural.format(n, "месяц", "месяца", "месяцев")
     default:
       let n = Int((Double(days) / 365).rounded())
-      return n == 1 ? String(localized: "год") : Plural.format(n, "год", "года", "лет")
+      return n == 1 ? String(localized: "forecast.oneYear") : Plural.format(n, "год", "года", "лет")
     }
   }
 
