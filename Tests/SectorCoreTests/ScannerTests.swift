@@ -166,3 +166,16 @@ private func allocated(_ url: URL) -> UInt64 {
   #expect(scanner.deniedPaths == [skipped])
   #expect(tree.find(path: root.appendingPathComponent("a/b/c/small.txt").path) == nil)
 }
+
+@Test func widgetSnapshotRoundTrip() throws {
+  let url = FileManager.default.temporaryDirectory
+    .appendingPathComponent("sector-\(UUID().uuidString)/snapshot.json")
+  defer { try? FileManager.default.removeItem(at: url.deletingLastPathComponent()) }
+  var snapshot = WidgetSnapshot.preview
+  snapshot.date = Date(timeIntervalSince1970: 1_800_000_000)
+  #expect(snapshot.save(to: url))
+  #expect(WidgetSnapshot.load(from: url) == snapshot)
+  #expect(abs(snapshot.usedFraction - 0.876) < 0.001)
+  // Test bundles carry no group key, so there is no shared container.
+  #expect(WidgetSnapshot.groupIdentifier == nil)
+}

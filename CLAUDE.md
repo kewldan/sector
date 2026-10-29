@@ -13,17 +13,23 @@ sample data and interactions, `<helmet><style>` the animations.
 ## Build and test
 
 ```sh
-scripts/build-app.sh          # release build → build/Sector.app (ad-hoc signed)
+scripts/build-app.sh          # xcodegen + xcodebuild → build/Sector.app (release)
 scripts/build-app.sh debug
-scripts/test.sh               # swift-testing suite
-scripts/check-strings.sh      # untranslated UI strings
+scripts/test.sh               # swift-testing suite of SectorCore
+scripts/check-strings.sh      # untranslated UI strings (after build-app.sh)
 swift scripts/make-icon.swift # re-render Resources/AppIcon.icns
 swift build -c release --product sector-bench && .build/release/sector-bench ~/path
 ```
 
-Always build through the scripts or `source scripts/env.sh` first: without
-Xcode, Command Line Tools miss the SwiftUI macro plugin of the macOS 27 SDK,
-and `env.sh` switches to the macOS 26 SDK.
+The Xcode project is generated from `project.yml` (`xcodegen generate`) and
+not committed; it holds the app target and the WidgetKit extension on top of
+the `SectorCore` package. Info.plists and entitlements are generated from
+`project.yml` too — edit them there. Signing team: `DEVELOPMENT_TEAM` in
+`Config/Local.xcconfig` (not committed); without it the app is signed to run
+locally and the widgets have no App Group to read from.
+
+`scripts/env.sh` only matters without Xcode: Command Line Tools miss the
+SwiftUI macro plugin of the macOS 27 SDK, so it falls back to the macOS 26 SDK.
 
 ## Layout
 
@@ -45,14 +51,17 @@ and `env.sh` switches to the macOS 26 SDK.
   - `Shell/` — `RootView` (onboarding vs main), `MainView` (split view,
     sidebar, toast, confirmation sheet).
   - `Features/<Screen>/` — one folder per screen, with its views and model.
+  - `Features/System/` — notifications, background scan, `WidgetBridge`
+    (writes `WidgetSnapshot` to the App Group for the widgets).
+- `Widgets/` — WidgetKit extension: free-space and Smart Clean widgets.
 
 ## Conventions
 
 - Swift style: 2-space indent, 100 columns (`.swift-format`).
 - UI strings are Russian literals (`Text("Обзор")`, `String(localized:)`);
   Russian is the source language and the localization key. English goes in
-  `Resources/en.lproj/Localizable.strings`; `scripts/check-strings.sh` lists
-  keys missing a translation. Counted nouns use `Plural.format(n, one, few,
+  `Resources/Localizable.xcstrings` (String Catalog); `scripts/check-strings.sh`
+  lists keys missing a translation. Counted nouns use `Plural.format(n, one, few,
   many)`, whose forms are looked up as keys too. Text passed through a
   `String` parameter is not localized — take `LocalizedStringKey` or call
   `String(localized:)` at the call site.

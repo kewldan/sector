@@ -18,6 +18,7 @@ struct SectorApp: App {
       RootView()
         .environment(model)
         .capturesOpenWindow()
+        .onOpenURL { model.open($0) }
         .frame(minWidth: 1080, minHeight: 700)
     }
     .defaultSize(width: 1280, height: 800)

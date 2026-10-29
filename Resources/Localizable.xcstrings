@@ -1,0 +1,5543 @@
+{
+  "sourceLanguage": "ru",
+  "strings": {
+    "%@ (%@) будут удалены навсегда. Вернуть их будет нельзя.": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%@ (%@) will be deleted permanently. This can’t be undone."
+          }
+        }
+      }
+    },
+    "%@ · %@ вместе с данными": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%@ · %@ including data"
+          }
+        }
+      }
+    },
+    "%@ · %@ лишних копий": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%@ · %@ in extra copies"
+          }
+        }
+      }
+    },
+    "%@ · Папка пользователя": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%@ · Home folder"
+          }
+        }
+      }
+    },
+    "%@ · всего по %@ — %@": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%1$@ · %3$@ in total across %2$@"
+          }
+        }
+      }
+    },
+    "%@ · найдено %@": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%@ · %@ found"
+          }
+        }
+      }
+    },
+    "%@ · пересоберутся сами": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%@ · rebuilt automatically"
+          }
+        }
+      }
+    },
+    "%@ · по %@": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%@ · %@ each"
+          }
+        }
+      }
+    },
+    "%@ без владельца": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%@ without containers"
+          }
+        }
+      }
+    },
+    "%@ диска": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%@ of disk"
+          }
+        }
+      }
+    },
+    "%@ занимает %@.": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%@ takes up %@."
+          }
+        }
+      }
+    },
+    "%@ и %@ · %@": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%@ and %@ · %@"
+          }
+        }
+      }
+    },
+    "%@ и ещё %lld": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%@ and %lld more"
+          }
+        }
+      }
+    },
+    "%@ из %@": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%@ of %@"
+          }
+        }
+      }
+    },
+    "%@ из %@ · %@": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%@ of %@ · %@"
+          }
+        }
+      }
+    },
+    "%@ можно освободить": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%@ can be freed"
+          }
+        }
+      }
+    },
+    "%@ назад": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%@ ago"
+          }
+        }
+      }
+    },
+    "%@ найдено": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%@ found"
+          }
+        }
+      }
+    },
+    "%@ от %@": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%@ of %@"
+          }
+        }
+      }
+    },
+    "%@ своб.": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%@ free"
+          }
+        }
+      }
+    },
+    "%@ свободно": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%@ free"
+          }
+        }
+      }
+    },
+    "%@ свободно из %@": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%@ free of %@"
+          }
+        }
+      }
+    },
+    "%@/с": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%@/s"
+          }
+        }
+      }
+    },
+    "%lld ГБ": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%lld GB"
+          }
+        }
+      }
+    },
+    "%lld из %@ выбрано": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%lld of %@ selected"
+          }
+        }
+      }
+    },
+    "%lld мес. назад": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%lld mo ago"
+          }
+        }
+      }
+    },
+    "%lld мин": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%lld min"
+          }
+        }
+      }
+    },
+    "%lld мин. назад": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%lld min ago"
+          }
+        }
+      }
+    },
+    "%lld с": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%lld s"
+          }
+        }
+      }
+    },
+    "%lld%% · осталось ~%@": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%lld%% · ~%@ left"
+          }
+        }
+      }
+    },
+    "+%@ в день": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "+%@ per day"
+          }
+        }
+      }
+    },
+    "1 год назад": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "1 year ago"
+          }
+        }
+      }
+    },
+    "APFS-клон: данные общие с другой копией, удаление почти не освободит места": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "APFS clone: shares data with another copy, so deleting it frees almost no space"
+          }
+        }
+      }
+    },
+    "Sector нашёл %@, которые можно освободить.": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Sector found %@ you can free up."
+          }
+        }
+      }
+    },
+    "Sector не будет анализировать и предлагать к удалению файлы из этих папок.": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Sector won’t analyze files in these folders or suggest removing them."
+          }
+        }
+      }
+    },
+    "Sector отмечает свободное место раз в день и покажет, куда оно уходит.": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Sector records free space once a day and will show where it goes."
+          }
+        }
+      }
+    },
+    "Sector: %@ свободно": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Sector: %@ free"
+          }
+        }
+      }
+    },
+    "cleaning.finish": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Finish"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Завершить"
+          }
+        }
+      }
+    },
+    "forecast.oneDay": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "a day"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "день"
+          }
+        }
+      }
+    },
+    "forecast.oneYear": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "a year"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "год"
+          }
+        }
+      }
+    },
+    "macOS может работать медленнее, а обновления — не установиться.": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "macOS may slow down, and updates may fail to install."
+          }
+        }
+      }
+    },
+    "macOS не добавила Sector в объекты входа.": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "macOS didn’t add Sector to Login Items."
+          }
+        }
+      }
+    },
+    "node_modules в неактивных проектах": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "node_modules in inactive projects"
+          }
+        }
+      }
+    },
+    "status.paused": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Paused"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Пауза"
+          }
+        }
+      }
+    },
+    "toast.undo": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Undo"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Отменить"
+          }
+        }
+      }
+    },
+    "trash.empty": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Empty"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Очистить"
+          }
+        }
+      }
+    },
+    "Автовыбор оригиналов": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Auto-select originals"
+          }
+        }
+      }
+    },
+    "Автоочистка через %@ ·": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Auto-cleanup after %@ ·"
+          }
+        }
+      }
+    },
+    "Анализ идёт только на этом Mac. Данные никуда не отправляются.": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Analysis happens only on this Mac. Your data never leaves it."
+          }
+        }
+      }
+    },
+    "Анализ…": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Analyzing…"
+          }
+        }
+      }
+    },
+    "Анимации интерфейса": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Interface animations"
+          }
+        }
+      }
+    },
+    "Архивы (.zip, .tar.gz)": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Archives (.zip, .tar.gz)"
+          }
+        }
+      }
+    },
+    "Б": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "B"
+          }
+        }
+      }
+    },
+    "Безопасная очистка освободит %@.": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "A safe cleanup will free up %@."
+          }
+        }
+      }
+    },
+    "Безопасно": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Safe"
+          }
+        }
+      }
+    },
+    "Бережно — медленнее, почти не заметно": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Gentle — slower, barely noticeable"
+          }
+        }
+      }
+    },
+    "Больше 1 ГБ": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Over 1 GB"
+          }
+        }
+      }
+    },
+    "Больше 20 ГБ": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Over 20 GB"
+          }
+        }
+      }
+    },
+    "Больше дней": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "More days"
+          }
+        }
+      }
+    },
+    "Больше не спрашивать для файлов из «Загрузок»": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Don’t ask again for files in “Downloads”"
+          }
+        }
+      }
+    },
+    "Большие и старые": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Large & Old"
+          }
+        }
+      }
+    },
+    "Большие и старые файлы": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Large & old files"
+          }
+        }
+      }
+    },
+    "Больших файлов нет": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "No large files"
+          }
+        }
+      }
+    },
+    "Будет освобождено": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Will be freed"
+          }
+        }
+      }
+    },
+    "Будет освобождено %@ прямо сейчас. Это действие нельзя отменить.": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%@ will be freed right away. This can’t be undone."
+          }
+        }
+      }
+    },
+    "Будет удалено вместе с приложением": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Will be deleted along with the app"
+          }
+        }
+      }
+    },
+    "Будет удалено копий: %lld · %@": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Copies to delete: %lld · %@"
+          }
+        }
+      }
+    },
+    "Быстрая очистка": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Quick clean"
+          }
+        }
+      }
+    },
+    "Быстрые действия": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Quick actions"
+          }
+        }
+      }
+    },
+    "В Корзине сейчас": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "In the Trash now"
+          }
+        }
+      }
+    },
+    "В Корзину": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Move to Trash"
+          }
+        }
+      }
+    },
+    "В домашней папке все файлы уникальны. Можно проверить весь диск.": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "All files in your home folder are unique. You can check the entire disk."
+          }
+        }
+      }
+    },
+    "В очереди": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Queued"
+          }
+        }
+      }
+    },
+    "В папке «Программы» нет приложений, которые можно удалить.": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "There are no apps in the “Applications” folder that can be removed."
+          }
+        }
+      }
+    },
+    "Вернитесь сюда — сканирование начнётся само": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Come back here — the scan will start on its own"
+          }
+        }
+      }
+    },
+    "Версия %@": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Version %@"
+          }
+        }
+      }
+    },
+    "Версия %@ · %@": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Version %@ · %@"
+          }
+        }
+      }
+    },
+    "Вид": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "View"
+          }
+        }
+      }
+    },
+    "Включите переключатель у Sector": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Turn on the switch next to Sector"
+          }
+        }
+      }
+    },
+    "Включите полный доступ к диску, чтобы Sector видел все файлы.": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Turn on Full Disk Access so Sector can see all files."
+          }
+        }
+      }
+    },
+    "Внешние диски": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "External disks"
+          }
+        }
+      }
+    },
+    "Внешний": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "External"
+          }
+        }
+      }
+    },
+    "Возвращено в исходные папки: %@": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Restored to original folders: %@"
+          }
+        }
+      }
+    },
+    "Восстановить": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Restore"
+          }
+        }
+      }
+    },
+    "Восстановлено": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Restored"
+          }
+        }
+      }
+    },
+    "Восстановлено объектов: %lld": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Items restored: %lld"
+          }
+        }
+      }
+    },
+    "Вперёд": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Forward"
+          }
+        }
+      }
+    },
+    "Вперёд (⌘])": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Forward (⌘])"
+          }
+        }
+      }
+    },
+    "Все": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "All"
+          }
+        }
+      }
+    },
+    "Все %@ обработаны": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "All %@ done"
+          }
+        }
+      }
+    },
+    "Все большие файлы открывались за последние полгода.": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "All large files were opened in the last 6 months."
+          }
+        }
+      }
+    },
+    "Все группы": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "All groups"
+          }
+        }
+      }
+    },
+    "Все файлы больше 1 МБ уникальны. Можно проверить диск ещё раз.": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "All files over 1 MB are unique. You can check the disk again."
+          }
+        }
+      }
+    },
+    "Всегда спрашивать подтверждение": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Always ask for confirmation"
+          }
+        }
+      }
+    },
+    "Всего освобождено: %@": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Total freed: %@"
+          }
+        }
+      }
+    },
+    "Всё уходит в Корзину, история хранит %@.": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Everything goes to the Trash, and History keeps it for %@."
+          }
+        }
+      }
+    },
+    "Всё чисто": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "All clean"
+          }
+        }
+      }
+    },
+    "Всё, что удалял Sector, и что ещё можно вернуть": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Everything Sector has removed, and what you can still restore"
+          }
+        }
+      }
+    },
+    "Вчера": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Yesterday"
+          }
+        }
+      }
+    },
+    "Вчера, %@": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Yesterday, %@"
+          }
+        }
+      }
+    },
+    "Выберите папки, которые Sector не будет трогать": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Choose folders Sector should leave alone"
+          }
+        }
+      }
+    },
+    "Выбрано": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Selected"
+          }
+        }
+      }
+    },
+    "Выбрать %@": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Select %@"
+          }
+        }
+      }
+    },
+    "Выбрать безопасное": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Select safe items"
+          }
+        }
+      }
+    },
+    "Выбрать вручную": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Choose manually"
+          }
+        }
+      }
+    },
+    "Выдать доступ": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Grant access"
+          }
+        }
+      }
+    },
+    "ГБ": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "GB"
+          }
+        }
+      }
+    },
+    "Готово": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Done"
+          }
+        }
+      }
+    },
+    "Готово · %@": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Done · %@"
+          }
+        }
+      }
+    },
+    "Готово! Освобождено": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Done! Freed up"
+          }
+        }
+      }
+    },
+    "График появится через пару дней": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "The chart will appear in a couple of days"
+          }
+        }
+      }
+    },
+    "Давно не открывал": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Least recently used"
+          }
+        }
+      }
+    },
+    "Дата": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Date"
+          }
+        }
+      }
+    },
+    "Двоичные (ГБ = 1024 МБ)": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Binary (GB = 1024 MB)"
+          }
+        }
+      }
+    },
+    "Десятичные (ГБ = 1000 МБ)": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Decimal (GB = 1000 MB)"
+          }
+        }
+      }
+    },
+    "Диаграмма папки": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Folder chart"
+          }
+        }
+      }
+    },
+    "Диск": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Disk"
+          }
+        }
+      }
+    },
+    "Диск ещё не проверен": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Disk not scanned yet"
+          }
+        }
+      }
+    },
+    "Диски для анализа": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Disks to analyze"
+          }
+        }
+      }
+    },
+    "До": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Before"
+          }
+        }
+      }
+    },
+    "Добавить папку…": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Add folder…"
+          }
+        }
+      }
+    },
+    "Добро пожаловать в Sector": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Welcome to Sector"
+          }
+        }
+      }
+    },
+    "Документы": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Documents"
+          }
+        }
+      }
+    },
+    "Других данных не найдено": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "No other data found"
+          }
+        }
+      }
+    },
+    "Дубликатов не найдено": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "No duplicates found"
+          }
+        }
+      }
+    },
+    "Дубликаты": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Duplicates"
+          }
+        }
+      }
+    },
+    "Единицы размера": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Size units"
+          }
+        }
+      }
+    },
+    "Ежемесячный отчёт о диске": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Monthly disk report"
+          }
+        }
+      }
+    },
+    "Ещё раз": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Again"
+          }
+        }
+      }
+    },
+    "Журналы приложений": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "App logs"
+          }
+        }
+      }
+    },
+    "За полгода: %@": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Last 6 months: %@"
+          }
+        }
+      }
+    },
+    "Завершить": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Quit"
+          }
+        }
+      }
+    },
+    "Загрузки": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Downloads"
+          }
+        }
+      }
+    },
+    "Загрузки старше %@": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Downloads older than %@"
+          }
+        }
+      }
+    },
+    "Загрузки старше 90 дней": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Downloads older than 90 days"
+          }
+        }
+      }
+    },
+    "Загрузки — через «Историю» %@.": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Downloads can be restored from “History” for %@."
+          }
+        }
+      }
+    },
+    "Заняло %@": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Took %@"
+          }
+        }
+      }
+    },
+    "Заняло меньше секунды": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Took less than a second"
+          }
+        }
+      }
+    },
+    "Занято %lld%%": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%lld%% used"
+          }
+        }
+      }
+    },
+    "Записей: %lld": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Records: %lld"
+          }
+        }
+      }
+    },
+    "Заполнится примерно через %@": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Full in about %@"
+          }
+        }
+      }
+    },
+    "Заполнится примерно через %@.": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Will be full in about %@."
+          }
+        }
+      }
+    },
+    "Здесь нет файлов, занимающих место на диске.": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Nothing here takes up disk space."
+          }
+        }
+      }
+    },
+    "Здесь появится всё, что Sector удалит или переместит в Корзину, — и что можно вернуть.": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Everything Sector deletes or moves to the Trash will appear here — along with what you can restore."
+          }
+        }
+      }
+    },
+    "Значок в строке меню": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Menu bar icon"
+          }
+        }
+      }
+    },
+    "Идёт очистка": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Cleaning"
+          }
+        }
+      }
+    },
+    "Идёт сканирование": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Scanning"
+          }
+        }
+      }
+    },
+    "Идёт сканирование…": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Scanning…"
+          }
+        }
+      }
+    },
+    "Из-за этого Sector не видит примерно %@. Включите полный доступ к диску.": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Because of this, Sector can’t see about %@. Turn on Full Disk Access."
+          }
+        }
+      }
+    },
+    "Извлечь %@": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Eject %@"
+          }
+        }
+      }
+    },
+    "Извлечь «%@»": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Eject “%@”"
+          }
+        }
+      }
+    },
+    "Изменено": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Modified"
+          }
+        }
+      }
+    },
+    "Иконка приложения Sector": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Sector app icon"
+          }
+        }
+      }
+    },
+    "Имя": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Name"
+          }
+        }
+      }
+    },
+    "Имя файла": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "File name"
+          }
+        }
+      }
+    },
+    "Инструменты": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Tools"
+          }
+        }
+      }
+    },
+    "Исключений пока нет": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "No exclusions yet"
+          }
+        }
+      }
+    },
+    "Исключения": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Exclusions"
+          }
+        }
+      }
+    },
+    "Исключить": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Exclude"
+          }
+        }
+      }
+    },
+    "Использование диска": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Disk usage"
+          }
+        }
+      }
+    },
+    "История": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "History"
+          }
+        }
+      }
+    },
+    "История пуста": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "History is empty"
+          }
+        }
+      }
+    },
+    "Источник": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Source"
+          }
+        }
+      }
+    },
+    "Ищем приложения…": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Looking for apps…"
+          }
+        }
+      }
+    },
+    "Ищем файлы больше 1 МБ": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Looking for files over 1 MB"
+          }
+        }
+      }
+    },
+    "Ищем, что можно освободить…": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Looking for space to free up…"
+          }
+        }
+      }
+    },
+    "Ищем, что можно удалить…": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Looking for things to remove…"
+          }
+        }
+      }
+    },
+    "КБ": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "KB"
+          }
+        }
+      }
+    },
+    "Каждая папка — сегмент. Видно, где лишнее.": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Every folder is a segment — so you can see what’s taking up space."
+          }
+        }
+      }
+    },
+    "Карта диска": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Disk Map"
+          }
+        }
+      }
+    },
+    "Категория обработана": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Category done"
+          }
+        }
+      }
+    },
+    "Клон": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Clone"
+          }
+        }
+      }
+    },
+    "Кольца": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Rings"
+          }
+        }
+      }
+    },
+    "Кольцо": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ring"
+          }
+        }
+      }
+    },
+    "Кольцо + ГБ": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ring + GB"
+          }
+        }
+      }
+    },
+    "Конфиденциальность и безопасность": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Privacy & Security"
+          }
+        }
+      }
+    },
+    "Копии будут удалены навсегда": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Copies will be deleted permanently"
+          }
+        }
+      }
+    },
+    "Копии попадут в Корзину": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Copies will be moved to the Trash"
+          }
+        }
+      }
+    },
+    "Корзина": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Trash"
+          }
+        }
+      }
+    },
+    "Корзина и тома Docker удалятся безвозвратно": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "The Trash and Docker volumes will be deleted permanently"
+          }
+        }
+      }
+    },
+    "Корзина очистится безвозвратно": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "The Trash will be emptied permanently"
+          }
+        }
+      }
+    },
+    "Корзина очищена": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Trash emptied"
+          }
+        }
+      }
+    },
+    "Корзина очищена · освобождено %@": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Trash emptied · %@ freed"
+          }
+        }
+      }
+    },
+    "Критически мало места": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Critically low on space"
+          }
+        }
+      }
+    },
+    "Крупнейшие папки": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Largest folders"
+          }
+        }
+      }
+    },
+    "Кэш Xcode": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Xcode cache"
+          }
+        }
+      }
+    },
+    "Кэши Xcode": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Xcode caches"
+          }
+        }
+      }
+    },
+    "Кэши и логи": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Caches & logs"
+          }
+        }
+      }
+    },
+    "Кэши и сборки пересоздадутся сами.": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Caches and builds will be recreated automatically."
+          }
+        }
+      }
+    },
+    "Кэши приложений": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "App caches"
+          }
+        }
+      }
+    },
+    "Кэши, сборки, старые загрузки — одним списком.": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Caches, builds, old downloads — all in one list."
+          }
+        }
+      }
+    },
+    "Лишнего почти нет": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Almost nothing to clean"
+          }
+        }
+      }
+    },
+    "Логи и отчёты": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Logs & reports"
+          }
+        }
+      }
+    },
+    "Логи и отчёты о сбоях": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Logs & crash reports"
+          }
+        }
+      }
+    },
+    "МБ": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "MB"
+          }
+        }
+      }
+    },
+    "Максимально быстро — может греться": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Fastest — may run warm"
+          }
+        }
+      }
+    },
+    "Мало места на %@": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Low on space on %@"
+          }
+        }
+      }
+    },
+    "Мелкие объекты": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Small items"
+          }
+        }
+      }
+    },
+    "Меньше дней": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Fewer days"
+          }
+        }
+      }
+    },
+    "Место освободится мгновенно": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Space is freed instantly"
+          }
+        }
+      }
+    },
+    "Минимум": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Minimum"
+          }
+        }
+      }
+    },
+    "Можно вернуть": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Reversible"
+          }
+        }
+      }
+    },
+    "Можно вернуть в исходные папки": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Can be restored to original folders"
+          }
+        }
+      }
+    },
+    "Можно вернуть в течение %@": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Can be restored within %@"
+          }
+        }
+      }
+    },
+    "Можно освободить %@": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%@ can be freed"
+          }
+        }
+      }
+    },
+    "На %@ осталось %@. Sector может освободить %@ за минуту.": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%@ has %@ left. Sector can free up %@ in a minute."
+          }
+        }
+      }
+    },
+    "На %@ осталось %@. Откройте Sector, чтобы освободить место.": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%@ has %@ left. Open Sector to free up space."
+          }
+        }
+      }
+    },
+    "На диске не нашлось файлов больше 1 ГБ.": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "No files over 1 GB were found on the disk."
+          }
+        }
+      }
+    },
+    "На уровень выше (⌘↑)": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Up one level (⌘↑)"
+          }
+        }
+      }
+    },
+    "Наведите на плитку, чтобы увидеть детали": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Hover over a tile to see details"
+          }
+        }
+      }
+    },
+    "Навсегда": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Permanently"
+          }
+        }
+      }
+    },
+    "Нагрузка на систему": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "System load"
+          }
+        }
+      }
+    },
+    "Нажмите «Открыть Настройки»": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Click “Open System Settings”"
+          }
+        }
+      }
+    },
+    "Нажмите в центр, чтобы вернуться": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Click the center to go back"
+          }
+        }
+      }
+    },
+    "Нажмите на копию, чтобы оставить её. Остальные будут удалены.": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Click a copy to keep it. The others will be deleted."
+          }
+        }
+      }
+    },
+    "Нажмите на сегмент, чтобы приблизить": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Click a segment to zoom in"
+          }
+        }
+      }
+    },
+    "Назад": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Back"
+          }
+        }
+      }
+    },
+    "Название": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Name"
+          }
+        }
+      }
+    },
+    "Напоминать о чистке раз в месяц": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Remind me to clean up once a month"
+          }
+        }
+      }
+    },
+    "Настройки": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Settings"
+          }
+        }
+      }
+    },
+    "Начать заново": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Start over"
+          }
+        }
+      }
+    },
+    "Не выключайте Mac · можно продолжать работать": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Keep your Mac on · you can keep working"
+          }
+        }
+      }
+    },
+    "Не открывали": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Never opened"
+          }
+        }
+      }
+    },
+    "Не открывали %@": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Not opened in %@"
+          }
+        }
+      }
+    },
+    "Не открывали %@ года": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Not opened in %@ years"
+          }
+        }
+      }
+    },
+    "Не очищать: %@": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Don’t clean: %@"
+          }
+        }
+      }
+    },
+    "Не предлагать файлы моложе": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Don’t suggest files newer than"
+          }
+        }
+      }
+    },
+    "Не удалось восстановить: файлов уже нет в Корзине": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Couldn’t restore: the files are no longer in the Trash"
+          }
+        }
+      }
+    },
+    "Не удалось извлечь — диск занят": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Couldn’t eject — the disk is in use"
+          }
+        }
+      }
+    },
+    "Не удалось изменить объекты входа: %@": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Couldn’t update Login Items: %@"
+          }
+        }
+      }
+    },
+    "Не удалось удалить: %@": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Couldn’t delete: %@"
+          }
+        }
+      }
+    },
+    "Необратимо": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Irreversible"
+          }
+        }
+      }
+    },
+    "Нет больших файлов с таким именем.": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "No large files match that name."
+          }
+        }
+      }
+    },
+    "Нет доступа": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "No access"
+          }
+        }
+      }
+    },
+    "Нет доступа к %@": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "No access to %@"
+          }
+        }
+      }
+    },
+    "Нет доступа к %@ — их размер не учтён.": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "No access to %@ — not counted in the total."
+          }
+        }
+      }
+    },
+    "Нет доступа к Корзине · открыть настройки доступа": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "No access to the Trash · open access settings"
+          }
+        }
+      }
+    },
+    "Нет файлов %@": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "No files %@"
+          }
+        }
+      }
+    },
+    "Нечего очищать": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Nothing to clean"
+          }
+        }
+      }
+    },
+    "Никогда": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Never"
+          }
+        }
+      }
+    },
+    "Ничего лишнего не нашлось. Загляните после следующего сканирования.": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Nothing to clean up. Check back after the next scan."
+          }
+        }
+      }
+    },
+    "Ничего не найдено": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Nothing found"
+          }
+        }
+      }
+    },
+    "Новые большие файлы": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "New large files"
+          }
+        }
+      }
+    },
+    "Новый большой файл": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "New large file"
+          }
+        }
+      }
+    },
+    "Нужен полный доступ к диску": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Full Disk Access needed"
+          }
+        }
+      }
+    },
+    "Обзор": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Overview"
+          }
+        }
+      }
+    },
+    "Обработано %lld из %@": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%lld of %@ done"
+          }
+        }
+      }
+    },
+    "Образы Docker": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Docker images"
+          }
+        }
+      }
+    },
+    "Образы Docker без контейнеров": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Docker images without containers"
+          }
+        }
+      }
+    },
+    "Образы без тега": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Untagged images"
+          }
+        }
+      }
+    },
+    "Образы дисков (.dmg)": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Disk images (.dmg)"
+          }
+        }
+      }
+    },
+    "Объектов": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Items"
+          }
+        }
+      }
+    },
+    "Объекты слишком малы, чтобы показать их отдельно. Откройте папку, чтобы увидеть их.": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "These items are too small to show individually. Open the folder to see them."
+          }
+        }
+      }
+    },
+    "Освободится": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Will free up"
+          }
+        }
+      }
+    },
+    "Освободится %@ после очистки Корзины. До этого всё можно вернуть из «Истории».": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%@ will be freed when the Trash is emptied. Until then, everything can be restored from “History”."
+          }
+        }
+      }
+    },
+    "Освобождено": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Freed"
+          }
+        }
+      }
+    },
+    "Освобождено %@": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Freed %@"
+          }
+        }
+      }
+    },
+    "Освобождено %@. Свободно %@ из %@.": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Freed %@. %@ free of %@."
+          }
+        }
+      }
+    },
+    "Освобождено за полгода": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Freed in the last 6 months"
+          }
+        }
+      }
+    },
+    "Освобождено, байт": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Freed, bytes"
+          }
+        }
+      }
+    },
+    "Основные": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "General"
+          }
+        }
+      }
+    },
+    "Оставить": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Keep"
+          }
+        }
+      }
+    },
+    "Оставить копию из папки %@": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Keep the copy in %@"
+          }
+        }
+      }
+    },
+    "Остальное": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Everything else"
+          }
+        }
+      }
+    },
+    "Остановить": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Stop"
+          }
+        }
+      }
+    },
+    "Остановлено": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Stopped"
+          }
+        }
+      }
+    },
+    "Откройте Sector, чтобы просканировать диск.": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Open Sector to scan your disk."
+          }
+        }
+      }
+    },
+    "Открывался": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Last opened"
+          }
+        }
+      }
+    },
+    "Открывать при входе в систему": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Open at login"
+          }
+        }
+      }
+    },
+    "Открыть": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Open"
+          }
+        }
+      }
+    },
+    "Открыть Sector": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Open Sector"
+          }
+        }
+      }
+    },
+    "Открыть Настройки": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Open System Settings"
+          }
+        }
+      }
+    },
+    "Открыть историю": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Open History"
+          }
+        }
+      }
+    },
+    "Открыть карту ›": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Open Disk Map ›"
+          }
+        }
+      }
+    },
+    "Открыть на карте диска": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Open in Disk Map"
+          }
+        }
+      }
+    },
+    "Отменить": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Cancel"
+          }
+        }
+      }
+    },
+    "Отчёт Sector": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Sector report"
+          }
+        }
+      }
+    },
+    "Отчёт Sector %@": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Sector report %@"
+          }
+        }
+      }
+    },
+    "Отчёт о диске за %@": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Disk report for %@"
+          }
+        }
+      }
+    },
+    "Отчёт сохранён: %@": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Report saved: %@"
+          }
+        }
+      }
+    },
+    "Очистить": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Clean"
+          }
+        }
+      }
+    },
+    "Очистить %@": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Clean %@"
+          }
+        }
+      }
+    },
+    "Очистить Корзину": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Empty Trash"
+          }
+        }
+      }
+    },
+    "Очистить Корзину сейчас": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Empty Trash now"
+          }
+        }
+      }
+    },
+    "Очистить Корзину?": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Empty the Trash?"
+          }
+        }
+      }
+    },
+    "Очистить поиск": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Clear search"
+          }
+        }
+      }
+    },
+    "Очистка": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Cleaning"
+          }
+        }
+      }
+    },
+    "Очистка Корзины": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Empty Trash"
+          }
+        }
+      }
+    },
+    "Очистка завершена": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Cleaning complete"
+          }
+        }
+      }
+    },
+    "Очистка на паузе": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Cleaning paused"
+          }
+        }
+      }
+    },
+    "Очистка остановлена": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Cleaning stopped"
+          }
+        }
+      }
+    },
+    "Очищать: %@": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Clean: %@"
+          }
+        }
+      }
+    },
+    "ПБ": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "PB"
+          }
+        }
+      }
+    },
+    "Пакет · %@": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Package · %@"
+          }
+        }
+      }
+    },
+    "Папка · %@": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Folder · %@"
+          }
+        }
+      }
+    },
+    "Папка пользователя": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Home folder"
+          }
+        }
+      }
+    },
+    "Папка пуста": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Folder is empty"
+          }
+        }
+      }
+    },
+    "Папок": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Folders"
+          }
+        }
+      }
+    },
+    "Папок, занимающих заметное место, не нашлось.": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "No folders take up significant space."
+          }
+        }
+      }
+    },
+    "Пауза": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Pause"
+          }
+        }
+      }
+    },
+    "Пауза · %lld%%": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Paused · %lld%%"
+          }
+        }
+      }
+    },
+    "Перейти": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Go"
+          }
+        }
+      }
+    },
+    "Переместить %@ в Корзину?": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Move %@ to the Trash?"
+          }
+        }
+      }
+    },
+    "Переместить «%@» в Корзину?": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Move “%@” to the Trash?"
+          }
+        }
+      }
+    },
+    "Переместить в Корзину": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Move to Trash"
+          }
+        }
+      }
+    },
+    "Перемещать в Корзину вместо удаления": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Move to Trash instead of deleting"
+          }
+        }
+      }
+    },
+    "Перемещаю в Корзину…": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Moving to Trash…"
+          }
+        }
+      }
+    },
+    "Плитки": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Tiles"
+          }
+        }
+      }
+    },
+    "Плитки папки": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Folder tiles"
+          }
+        }
+      }
+    },
+    "По размеру": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "By size"
+          }
+        }
+      }
+    },
+    "Подробнее": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Details"
+          }
+        }
+      }
+    },
+    "Подробнее: %@": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Show details: %@"
+          }
+        }
+      }
+    },
+    "Подробности": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Details"
+          }
+        }
+      }
+    },
+    "Поиск остановлен": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Search stopped"
+          }
+        }
+      }
+    },
+    "Показано %lld из %@ · сортировка по размеру": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Showing %lld of %@ · sorted by size"
+          }
+        }
+      }
+    },
+    "Показать в Finder": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Show in Finder"
+          }
+        }
+      }
+    },
+    "Показать результаты": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Show results"
+          }
+        }
+      }
+    },
+    "Показывать в строке меню": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Show in menu bar"
+          }
+        }
+      }
+    },
+    "Полный доступ к диску": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Full Disk Access"
+          }
+        }
+      }
+    },
+    "Помощник синхронизации": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Sync Assistant"
+          }
+        }
+      }
+    },
+    "Пора навести порядок": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Time for a cleanup"
+          }
+        }
+      }
+    },
+    "Порог свободного места, ГБ": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Free space threshold, GB"
+          }
+        }
+      }
+    },
+    "После": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "After"
+          }
+        }
+      }
+    },
+    "После очистки": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "After cleaning"
+          }
+        }
+      }
+    },
+    "Посмотреть": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "View"
+          }
+        }
+      }
+    },
+    "Посмотреть итог": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "View summary"
+          }
+        }
+      }
+    },
+    "Почти нет места": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Almost out of space"
+          }
+        }
+      }
+    },
+    "Появилось %@ больше 5 ГБ — всего %@.": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%@ over 5 GB appeared — %@ in total."
+          }
+        }
+      }
+    },
+    "Предупреждать о нехватке места": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Warn when space is low"
+          }
+        }
+      }
+    },
+    "Предупреждать, когда свободно меньше": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Warn when free space drops below"
+          }
+        }
+      }
+    },
+    "При таком темпе диск заполнится через %@.": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "At this rate, the disk will be full in %@."
+          }
+        }
+      }
+    },
+    "При таком темпе к %@ свободно останется ~%@.": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "At this rate, ~%2$@ will be left free by %1$@."
+          }
+        }
+      }
+    },
+    "Приложение": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Application"
+          }
+        }
+      }
+    },
+    "Приложение запущено. Завершите его, чтобы удалить.": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "The app is running. Quit it to remove it."
+          }
+        }
+      }
+    },
+    "Приложений не найдено": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "No apps found"
+          }
+        }
+      }
+    },
+    "Приложения": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Apps"
+          }
+        }
+      }
+    },
+    "Проверено %@": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Scanned %@"
+          }
+        }
+      }
+    },
+    "Проверено только что": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Scanned just now"
+          }
+        }
+      }
+    },
+    "Проверить": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Review"
+          }
+        }
+      }
+    },
+    "Проверить весь диск": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Check entire disk"
+          }
+        }
+      }
+    },
+    "Проверка содержимого прервана. Её можно запустить заново.": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "The content check was interrupted. You can run it again."
+          }
+        }
+      }
+    },
+    "Проверьте": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Review"
+          }
+        }
+      }
+    },
+    "Проверьте, что занимает место на диске.": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "See what’s taking up space on your disk."
+          }
+        }
+      }
+    },
+    "Проверяем содержимое · SHA-256": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Checking contents · SHA-256"
+          }
+        }
+      }
+    },
+    "Прогноз": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Forecast"
+          }
+        }
+      }
+    },
+    "Прогноз свободного места": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Free space forecast"
+          }
+        }
+      }
+    },
+    "Прогресс сканирования": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Scan progress"
+          }
+        }
+      }
+    },
+    "Продолжить": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Resume"
+          }
+        }
+      }
+    },
+    "Пропустить": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Skip"
+          }
+        }
+      }
+    },
+    "Пропущено": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Skipped"
+          }
+        }
+      }
+    },
+    "Просмотр": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Quick Look"
+          }
+        }
+      }
+    },
+    "Просмотреть": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Review"
+          }
+        }
+      }
+    },
+    "Прочее": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Other"
+          }
+        }
+      }
+    },
+    "Прочее · %@": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Other · %@"
+          }
+        }
+      }
+    },
+    "Пусто": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Empty"
+          }
+        }
+      }
+    },
+    "Раз в неделю": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Once a week"
+          }
+        }
+      }
+    },
+    "Размер": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Size"
+          }
+        }
+      }
+    },
+    "Разобрать": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Review"
+          }
+        }
+      }
+    },
+    "Разработка": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Development"
+          }
+        }
+      }
+    },
+    "Разрешите Sector в Системных настройках › Объекты входа.": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Allow Sector in System Settings › Login Items."
+          }
+        }
+      }
+    },
+    "Разрешите приложениям доступ к данным на этом Mac.": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Allow apps to access data on this Mac."
+          }
+        }
+      }
+    },
+    "Резервное копирование": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Backup"
+          }
+        }
+      }
+    },
+    "Результаты неполные": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Results are incomplete"
+          }
+        }
+      }
+    },
+    "Рекомендуется: всё можно вернуть из «Истории»": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Recommended: everything can be restored from “History”"
+          }
+        }
+      }
+    },
+    "Ряд": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Series"
+          }
+        }
+      }
+    },
+    "Самые крупные файлы — в фильтре «Все».": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "The largest files are under the “All” filter."
+          }
+        }
+      }
+    },
+    "Сбалансированно": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Balanced"
+          }
+        }
+      }
+    },
+    "Сбросить данные": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Reset data"
+          }
+        }
+      }
+    },
+    "Свернуть %@": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Collapse %@"
+          }
+        }
+      }
+    },
+    "Свободно": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Free"
+          }
+        }
+      }
+    },
+    "Свободно всего %@": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Only %@ free"
+          }
+        }
+      }
+    },
+    "Свободно меньше %lld ГБ. Sector нашёл %@, которые можно освободить.": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Less than %lld GB free. Sector found %@ you can free up."
+          }
+        }
+      }
+    },
+    "Свободно меньше %lld ГБ. Откройте Sector, чтобы найти, что можно удалить.": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Less than %lld GB free. Open Sector to find what you can remove."
+          }
+        }
+      }
+    },
+    "Свободного места не становится меньше.": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Free space isn’t shrinking."
+          }
+        }
+      }
+    },
+    "Свободное место": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Free space"
+          }
+        }
+      }
+    },
+    "Свободное место за 30 дней": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Free space over 30 days"
+          }
+        }
+      }
+    },
+    "Сегодня": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Today"
+          }
+        }
+      }
+    },
+    "Сегодня, %@": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Today, %@"
+          }
+        }
+      }
+    },
+    "Сейчас свободно": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Free now"
+          }
+        }
+      }
+    },
+    "Сетевые диски": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Network disks"
+          }
+        }
+      }
+    },
+    "Симуляторы iOS": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "iOS simulators"
+          }
+        }
+      }
+    },
+    "Системные": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "System"
+          }
+        }
+      }
+    },
+    "Системные журналы и диагностические отчёты": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "System logs and diagnostic reports"
+          }
+        }
+      }
+    },
+    "Сканирование": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Scanning"
+          }
+        }
+      }
+    },
+    "Сканирование завершено за %@": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Scan finished in %@"
+          }
+        }
+      }
+    },
+    "Сканирование остановлено": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Scan stopped"
+          }
+        }
+      }
+    },
+    "Сканировать": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Scan"
+          }
+        }
+      }
+    },
+    "Сканировать в фоне": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Scan in background"
+          }
+        }
+      }
+    },
+    "Сканировать снова": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Scan again"
+          }
+        }
+      }
+    },
+    "Сколько можно освободить и где.": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "How much you can free up, and where."
+          }
+        }
+      }
+    },
+    "Сколько осталось на загрузочном диске.": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "How much is left on your startup disk."
+          }
+        }
+      }
+    },
+    "Скорость": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Speed"
+          }
+        }
+      }
+    },
+    "Снять выбор": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Deselect"
+          }
+        }
+      }
+    },
+    "Собираем файлы": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Collecting files"
+          }
+        }
+      }
+    },
+    "Содержимое": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Contents"
+          }
+        }
+      }
+    },
+    "Содержимое идентично · SHA-256": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Identical contents · SHA-256"
+          }
+        }
+      }
+    },
+    "Создан: %@": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Created: %@"
+          }
+        }
+      }
+    },
+    "Сообщать о больших новых файлах (> 5 ГБ)": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Notify about new large files (> 5 GB)"
+          }
+        }
+      }
+    },
+    "Сортировка": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Sort by"
+          }
+        }
+      }
+    },
+    "Способ": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Method"
+          }
+        }
+      }
+    },
+    "Способ удаления": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Deletion method"
+          }
+        }
+      }
+    },
+    "Сравниваем содержимое файлов": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Comparing file contents"
+          }
+        }
+      }
+    },
+    "Сравниваем файлы одного размера": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Comparing files of the same size"
+          }
+        }
+      }
+    },
+    "Ссылка": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Alias"
+          }
+        }
+      }
+    },
+    "Старше полугода": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Older than 6 months"
+          }
+        }
+      }
+    },
+    "Старые загрузки": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Old downloads"
+          }
+        }
+      }
+    },
+    "Старые симуляторы iOS": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Old iOS simulators"
+          }
+        }
+      }
+    },
+    "Старых файлов нет": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "No old files"
+          }
+        }
+      }
+    },
+    "ТБ": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "TB"
+          }
+        }
+      }
+    },
+    "Таблица CSV…": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "CSV spreadsheet…"
+          }
+        }
+      }
+    },
+    "Так Sector увидит всё, что занимает место, — включая кэши, почту и системные данные. Без вашего подтверждения ничего не удаляется.": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "This lets Sector see everything that takes up space — including caches, mail, and system data. Nothing is deleted without your confirmation."
+          }
+        }
+      }
+    },
+    "Так будет выглядеть уведомление": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "This is how the notification will look"
+          }
+        }
+      }
+    },
+    "Терминал": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Terminal"
+          }
+        }
+      }
+    },
+    "Тип": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Kind"
+          }
+        }
+      }
+    },
+    "Только ГБ": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "GB only"
+          }
+        }
+      }
+    },
+    "Только восстанавливаемые данные": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Only restorable data"
+          }
+        }
+      }
+    },
+    "Только папка пользователя": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Home folder only"
+          }
+        }
+      }
+    },
+    "Только что": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Just now"
+          }
+        }
+      }
+    },
+    "Тома Docker удалятся безвозвратно": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Docker volumes will be deleted permanently"
+          }
+        }
+      }
+    },
+    "Тома без контейнеров": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Volumes without containers"
+          }
+        }
+      }
+    },
+    "Убрать %@": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Remove %@"
+          }
+        }
+      }
+    },
+    "Уведомления": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Notifications"
+          }
+        }
+      }
+    },
+    "Уведомления Sector выключены в Системных настройках.": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Sector notifications are turned off in System Settings."
+          }
+        }
+      }
+    },
+    "Удалено безвозвратно": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Deleted permanently"
+          }
+        }
+      }
+    },
+    "Удалить": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Delete"
+          }
+        }
+      }
+    },
+    "Удалить %@ навсегда?": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Delete %@ permanently?"
+          }
+        }
+      }
+    },
+    "Удалить «%@» навсегда?": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Delete “%@” permanently?"
+          }
+        }
+      }
+    },
+    "Удалить копии": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Delete copies"
+          }
+        }
+      }
+    },
+    "Удалить навсегда": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Delete permanently"
+          }
+        }
+      }
+    },
+    "Удалить полностью": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Remove completely"
+          }
+        }
+      }
+    },
+    "Удалить сразу": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Delete immediately"
+          }
+        }
+      }
+    },
+    "Удалить…": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Delete…"
+          }
+        }
+      }
+    },
+    "Удаляем… %@ из %@": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Deleting… %@ of %@"
+          }
+        }
+      }
+    },
+    "Удаляю…": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Deleting…"
+          }
+        }
+      }
+    },
+    "Узнайте, что занимает место на вашем Mac, и освободите его — безопасно, наглядно и за пару кликов.": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "See what’s taking up space on your Mac and free it up — safely, visually, in just a few clicks."
+          }
+        }
+      }
+    },
+    "Умная очистка": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Smart Clean"
+          }
+        }
+      }
+    },
+    "Умная очистка, %@": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Smart Clean, %@"
+          }
+        }
+      }
+    },
+    "Установщики, архивы, образы дисков": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Installers, archives, disk images"
+          }
+        }
+      }
+    },
+    "Учитывает «Уменьшить движение» в системе": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Respects the system “Reduce motion” setting"
+          }
+        }
+      }
+    },
+    "Учитывать скрытые файлы": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Include hidden files"
+          }
+        }
+      }
+    },
+    "Файл": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "File"
+          }
+        }
+      }
+    },
+    "Файл %@": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%@ file"
+          }
+        }
+      }
+    },
+    "Файлов": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Files"
+          }
+        }
+      }
+    },
+    "Файлов больше 20 ГБ нет": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "No files over 20 GB"
+          }
+        }
+      }
+    },
+    "Файлы будут удаляться сразу. Восстановить их не получится.": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Files will be deleted immediately and can’t be restored."
+          }
+        }
+      }
+    },
+    "Файлы нельзя будет восстановить — даже через Sector.": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "The files can’t be restored — not even with Sector."
+          }
+        }
+      }
+    },
+    "Файлы старше 30 дней": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Files older than 30 days"
+          }
+        }
+      }
+    },
+    "Фильтр": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Filter"
+          }
+        }
+      }
+    },
+    "Фото и видео": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Photos & videos"
+          }
+        }
+      }
+    },
+    "Хранить удалённое": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Keep deleted items"
+          }
+        }
+      }
+    },
+    "Частично восстановлено": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Partially restored"
+          }
+        }
+      }
+    },
+    "Что": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "What"
+          }
+        }
+      }
+    },
+    "Шаг %lld из %lld": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Step %lld of %lld"
+          }
+        }
+      }
+    },
+    "Экспорт отчёта": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Export report"
+          }
+        }
+      }
+    },
+    "Этапы очистки": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Cleaning steps"
+          }
+        }
+      }
+    },
+    "архивы сборок": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "build archives"
+          }
+        }
+      }
+    },
+    "без загрузок": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "excluding downloads"
+          }
+        }
+      }
+    },
+    "включая загрузки": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "including downloads"
+          }
+        }
+      }
+    },
+    "восстановлено %lld": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%lld restored"
+          }
+        }
+      }
+    },
+    "год": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "year"
+          }
+        }
+      }
+    },
+    "года": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "years"
+          }
+        }
+      }
+    },
+    "групп": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "groups"
+          }
+        }
+      }
+    },
+    "группа": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "group"
+          }
+        }
+      }
+    },
+    "группам": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "groups"
+          }
+        }
+      }
+    },
+    "группе": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "group"
+          }
+        }
+      }
+    },
+    "группы": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "group"
+          }
+        }
+      }
+    },
+    "день": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "day"
+          }
+        }
+      }
+    },
+    "дней": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "days"
+          }
+        }
+      }
+    },
+    "дня": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "day"
+          }
+        }
+      }
+    },
+    "до заполнения диска": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "until the disk is full"
+          }
+        }
+      }
+    },
+    "ещё %@": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Show another %@"
+          }
+        }
+      }
+    },
+    "занято": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "used"
+          }
+        }
+      }
+    },
+    "и ещё %@": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "and another %@"
+          }
+        }
+      }
+    },
+    "и ещё %lld": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "and %lld more"
+          }
+        }
+      }
+    },
+    "из %@ занято": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "of %@ used"
+          }
+        }
+      }
+    },
+    "ищем, что можно удалить": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "looking for things to remove"
+          }
+        }
+      }
+    },
+    "категории": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "category"
+          }
+        }
+      }
+    },
+    "категории очищено": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "categories cleaned"
+          }
+        }
+      }
+    },
+    "категорий": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "categories"
+          }
+        }
+      }
+    },
+    "категорий очищено": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "categories cleaned"
+          }
+        }
+      }
+    },
+    "категория": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "category"
+          }
+        }
+      }
+    },
+    "категория очищена": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "category cleaned"
+          }
+        }
+      }
+    },
+    "копии": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "copies"
+          }
+        }
+      }
+    },
+    "копий": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "copies"
+          }
+        }
+      }
+    },
+    "копия": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "copy"
+          }
+        }
+      }
+    },
+    "кэши": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "caches"
+          }
+        }
+      }
+    },
+    "лет": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "years"
+          }
+        }
+      }
+    },
+    "медленнее": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "slower"
+          }
+        }
+      }
+    },
+    "месяц": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "month"
+          }
+        }
+      }
+    },
+    "месяца": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "months"
+          }
+        }
+      }
+    },
+    "месяцев": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "months"
+          }
+        }
+      }
+    },
+    "минут": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "minutes"
+          }
+        }
+      }
+    },
+    "минуту": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "minute"
+          }
+        }
+      }
+    },
+    "минуты": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "minutes"
+          }
+        }
+      }
+    },
+    "можно освободить": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "can be freed"
+          }
+        }
+      }
+    },
+    "можно освободить без риска": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "can be freed safely"
+          }
+        }
+      }
+    },
+    "нажмите, чтобы открыть": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "click to open"
+          }
+        }
+      }
+    },
+    "настраивается": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "adjustable"
+          }
+        }
+      }
+    },
+    "не подключены": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "not connected"
+          }
+        }
+      }
+    },
+    "недели": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "weeks"
+          }
+        }
+      }
+    },
+    "недель": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "weeks"
+          }
+        }
+      }
+    },
+    "неделю": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "week"
+          }
+        }
+      }
+    },
+    "обновлено %@ назад": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "updated %@ ago"
+          }
+        }
+      }
+    },
+    "образ": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "image"
+          }
+        }
+      }
+    },
+    "образа": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "images"
+          }
+        }
+      }
+    },
+    "образов": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "images"
+          }
+        }
+      }
+    },
+    "объект": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "item"
+          }
+        }
+      }
+    },
+    "объект удалён": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "item removed"
+          }
+        }
+      }
+    },
+    "объекта": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "items"
+          }
+        }
+      }
+    },
+    "объекта удалено": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "items removed"
+          }
+        }
+      }
+    },
+    "объектов": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "items"
+          }
+        }
+      }
+    },
+    "объектов удалено": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "items removed"
+          }
+        }
+      }
+    },
+    "одинаковая копия": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "identical copy"
+          }
+        }
+      }
+    },
+    "одинаковые копии": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "identical copies"
+          }
+        }
+      }
+    },
+    "одинаковых копий": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "identical copies"
+          }
+        }
+      }
+    },
+    "папка": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "folder"
+          }
+        }
+      }
+    },
+    "папкам": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "folders"
+          }
+        }
+      }
+    },
+    "папке": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "folder"
+          }
+        }
+      }
+    },
+    "папки": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "folders"
+          }
+        }
+      }
+    },
+    "папок": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "folders"
+          }
+        }
+      }
+    },
+    "приложение": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "app"
+          }
+        }
+      }
+    },
+    "приложений": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "apps"
+          }
+        }
+      }
+    },
+    "приложения": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "apps"
+          }
+        }
+      }
+    },
+    "проект": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "project"
+          }
+        }
+      }
+    },
+    "проекта": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "projects"
+          }
+        }
+      }
+    },
+    "проектов": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "projects"
+          }
+        }
+      }
+    },
+    "проекты не открывались больше %@": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "projects not opened in over %@"
+          }
+        }
+      }
+    },
+    "пропущено %lld": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%lld skipped"
+          }
+        }
+      }
+    },
+    "сейчас": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "now"
+          }
+        }
+      }
+    },
+    "сейчас нечего чистить": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "nothing to clean right now"
+          }
+        }
+      }
+    },
+    "секунд": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "seconds"
+          }
+        }
+      }
+    },
+    "секунду": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "second"
+          }
+        }
+      }
+    },
+    "секунды": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "seconds"
+          }
+        }
+      }
+    },
+    "старше %@": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "older than %@"
+          }
+        }
+      }
+    },
+    "том": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "volume"
+          }
+        }
+      }
+    },
+    "тома": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "volumes"
+          }
+        }
+      }
+    },
+    "томов": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "volumes"
+          }
+        }
+      }
+    },
+    "устройств": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "devices"
+          }
+        }
+      }
+    },
+    "устройства": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "devices"
+          }
+        }
+      }
+    },
+    "устройство": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "device"
+          }
+        }
+      }
+    },
+    "файл": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "file"
+          }
+        }
+      }
+    },
+    "файла": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "files"
+          }
+        }
+      }
+    },
+    "файлов": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "files"
+          }
+        }
+      }
+    },
+    "−%@ в день": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "−%@ per day"
+          }
+        }
+      }
+    }
+  },
+  "version": "1.0"
+}

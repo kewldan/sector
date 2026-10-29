@@ -19,6 +19,7 @@ final class SystemServices {
   private let model: AppModel
   private let notifications: NotificationService
   private let scheduler: BackgroundScheduler
+  private let widgets: WidgetBridge
   private var observers: [NSObjectProtocol] = []
   private var ticker: Task<Void, Never>?
 
@@ -26,11 +27,13 @@ final class SystemServices {
     self.model = model
     notifications = NotificationService(model: model)
     scheduler = BackgroundScheduler(model: model, notifications: notifications)
+    widgets = WidgetBridge(model: model)
   }
 
   private func run() {
     notifications.start()
     scheduler.start()
+    widgets.start()
     observeVolume()
 
     let workspace = NSWorkspace.shared.notificationCenter

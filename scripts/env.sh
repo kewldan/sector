@@ -1,6 +1,8 @@
 # Sourced by the build scripts. Without Xcode, Command Line Tools lack the
 # SwiftUI macro plugin the macOS 27 SDK needs (@State is a macro there), so
 # fall back to the newest macOS 26 SDK, which has the same Liquid Glass API.
+# The app itself is built with Xcode (scripts/build-app.sh); this only
+# matters for `swift build` / `swift test` of the package.
 developer_dir="$(xcode-select -p)"
 case "$developer_dir" in
   *Xcode*.app*) ;;

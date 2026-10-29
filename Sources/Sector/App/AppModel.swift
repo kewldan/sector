@@ -362,6 +362,16 @@ final class AppModel {
     return restored
   }
 
+  // MARK: - URLs
+
+  /// Handles `sector://` links from the widgets: `smart-clean` opens Smart
+  /// Clean, any other host the overview.
+  func open(_ url: URL) {
+    guard url.scheme == "sector", phase == .main else { return }
+    showsScan = false
+    route = url.host == "smart-clean" ? .smartClean : .overview
+  }
+
   // MARK: - Finder
 
   func revealInFinder(_ urls: [URL]) {

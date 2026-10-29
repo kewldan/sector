@@ -1,0 +1,115 @@
+# Xcode project for Sector, generated with XcodeGen:
+#   xcodegen generate
+# The engine lives in the SwiftPM package next to this file (SectorCore);
+# the app and the widget extension are Xcode targets on top of it.
+name: Sector
+options:
+  bundleIdPrefix: com.kewldan
+  deploymentTarget:
+    macOS: "26.0"
+  developmentLanguage: ru
+  createIntermediateGroups: true
+  groupSortPosition: top
+
+configFiles:
+  Debug: Config/Sector.xcconfig
+  Release: Config/Sector.xcconfig
+
+settings:
+  base:
+    SWIFT_VERSION: "6.0"
+    MARKETING_VERSION: "1.0"
+    CURRENT_PROJECT_VERSION: "1"
+    CODE_SIGN_STYLE: Automatic
+    ENABLE_HARDENED_RUNTIME: YES
+    SWIFT_EMIT_LOC_STRINGS: YES
+    LOCALIZATION_PREFERS_STRING_CATALOGS: YES
+    DEAD_CODE_STRIPPING: YES
+
+packages:
+  SectorCore:
+    path: .
+
+targets:
+  Sector:
+    type: application
+    platform: macOS
+    sources:
+      - path: Sources/Sector
+      - path: Resources/Localizable.xcstrings
+      - path: Resources/AppIcon.icns
+        buildPhase: resources
+    dependencies:
+      - package: SectorCore
+        product: SectorCore
+      - target: SectorWidgets
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: com.kewldan.sector
+        PRODUCT_NAME: Sector
+        ASSETCATALOG_COMPILER_APPICON_NAME: ""
+    info:
+      path: Resources/Info.plist
+      properties:
+        CFBundleDisplayName: Sector
+        CFBundleIconFile: AppIcon
+        CFBundleDevelopmentRegion: ru
+        CFBundleLocalizations: [ru, en]
+        CFBundleShortVersionString: $(MARKETING_VERSION)
+        CFBundleVersion: $(CURRENT_PROJECT_VERSION)
+        LSApplicationCategoryType: public.app-category.utilities
+        LSMinimumSystemVersion: $(MACOSX_DEPLOYMENT_TARGET)
+        NSHumanReadableCopyright: © 2026 kewldan
+        SectorAppGroup: $(TeamIdentifierPrefix)com.kewldan.sector
+        CFBundleURLTypes:
+          - CFBundleURLName: com.kewldan.sector
+            CFBundleURLSchemes: [sector]
+    entitlements:
+      path: Resources/Sector.entitlements
+      properties:
+        com.apple.security.application-groups:
+          - $(TeamIdentifierPrefix)com.kewldan.sector
+
+  SectorWidgets:
+    type: app-extension
+    platform: macOS
+    sources:
+      - path: Widgets
+      - path: Resources/Localizable.xcstrings
+    dependencies:
+      - package: SectorCore
+        product: SectorCore
+      - sdk: WidgetKit.framework
+      - sdk: SwiftUI.framework
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: com.kewldan.sector.widgets
+        PRODUCT_NAME: SectorWidgets
+        SKIP_INSTALL: YES
+    info:
+      path: Widgets/Info.plist
+      properties:
+        CFBundleDisplayName: Sector
+        CFBundleDevelopmentRegion: ru
+        CFBundleShortVersionString: $(MARKETING_VERSION)
+        CFBundleVersion: $(CURRENT_PROJECT_VERSION)
+        LSMinimumSystemVersion: $(MACOSX_DEPLOYMENT_TARGET)
+        SectorAppGroup: $(TeamIdentifierPrefix)com.kewldan.sector
+        NSExtension:
+          NSExtensionPointIdentifier: com.apple.widgetkit-extension
+    entitlements:
+      path: Widgets/SectorWidgets.entitlements
+      properties:
+        com.apple.security.app-sandbox: true
+        com.apple.security.application-groups:
+          - $(TeamIdentifierPrefix)com.kewldan.sector
+
+schemes:
+  Sector:
+    build:
+      targets:
+        Sector: all
+    run:
+      config: Debug
+    archive:
+      config: Release

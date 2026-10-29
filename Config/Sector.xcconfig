@@ -1,0 +1,9 @@
+// Shared build settings. Signing identity comes from Local.xcconfig, which
+// is not committed:
+//
+//   DEVELOPMENT_TEAM = ABCDE12345
+//
+// Without it scripts/build-app.sh signs to run locally (ad hoc); the app
+// works, but the widgets need a team for their App Group.
+DEVELOPMENT_TEAM =
+#include? "Local.xcconfig"
