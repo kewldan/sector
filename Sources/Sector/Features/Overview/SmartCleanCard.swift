@@ -2,7 +2,7 @@ import SectorCore
 import SwiftUI
 
 /// Blue Smart Clean teaser with the reclaimable total; opens Smart Clean.
-struct SmartCleanCard: View {
+struct OverviewSmartCleanCard: View {
   @Environment(AppModel.self) private var model
 
   var body: some View {
@@ -88,7 +88,7 @@ private struct ReviewPill: View {
       Capsule().fill(.white.opacity(0.92))
         .overlay {
           if !Motion.reduced {
-            Shimmer().clipShape(.capsule)
+            CardShimmer().clipShape(.capsule)
           }
         }
     }
@@ -96,7 +96,7 @@ private struct ReviewPill: View {
   }
 }
 
-private struct Shimmer: View {
+private struct CardShimmer: View {
   var body: some View {
     GeometryReader { geo in
       LinearGradient(

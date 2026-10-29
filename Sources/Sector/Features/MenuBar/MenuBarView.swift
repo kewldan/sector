@@ -26,7 +26,7 @@ struct MenuBarView: View {
       MenuCategoryBar(segments: segments)
         .padding(.horizontal, 4)
         .padding(.bottom, 12)
-      SmartCleanCard(action: cardAction)
+      MenuSmartCleanCard(action: cardAction)
         .appearAnimation(delay: 0.18, offset: 8)
       rows.padding(.top, 8)
       Divider().padding(.vertical, 8).padding(.horizontal, 4)
@@ -98,7 +98,7 @@ struct MenuBarView: View {
 
   // MARK: - Smart Clean
 
-  private var cardAction: SmartCleanCard.Model {
+  private var cardAction: MenuSmartCleanCard.Model {
     let reclaimable = model.smartClean.reclaimableBytes
     if model.isScanning {
       return .init(title: "Идёт сканирование…", button: "Открыть") {
@@ -395,7 +395,7 @@ struct MenuCategoryBar: View {
 }
 
 /// Gradient card: "64,8 ГБ можно освободить" + "Очистить".
-private struct SmartCleanCard: View {
+private struct MenuSmartCleanCard: View {
   struct Model {
     var title: LocalizedStringKey
     var button: LocalizedStringKey

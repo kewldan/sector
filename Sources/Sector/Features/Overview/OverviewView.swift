@@ -22,7 +22,7 @@ struct OverviewView: View {
           .appearAnimation(delay: 0.1)
 
         HStack(spacing: 14) {
-          SmartCleanCard()
+          OverviewSmartCleanCard()
             .appearAnimation(delay: 0.2)
           ForecastCard()
             .appearAnimation(delay: 0.28)

@@ -476,7 +476,7 @@ private struct CleanBar: View {
       }
       .buttonStyle(.glassProminent)
       .controlSize(.large)
-      .modifier(Shimmer(active: selected > 0))
+      .modifier(SelectionShimmer(active: selected > 0))
       .disabled(selected == 0)
     }
     .padding(.leading, 20)

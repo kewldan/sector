@@ -120,7 +120,7 @@ struct GrowingBar<Fill: ShapeStyle>: View {
 }
 
 /// Light band sweeping across a button, as on the mock's primary action.
-struct Shimmer: ViewModifier {
+struct SelectionShimmer: ViewModifier {
   var active: Bool
 
   func body(content: Content) -> some View {
