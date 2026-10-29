@@ -16,6 +16,8 @@ sample data and interactions, `<helmet><style>` the animations.
 scripts/build-app.sh          # release build → build/Sector.app (ad-hoc signed)
 scripts/build-app.sh debug
 scripts/test.sh               # swift-testing suite
+scripts/check-strings.sh      # untranslated UI strings
+swift scripts/make-icon.swift # re-render Resources/AppIcon.icns
 swift build -c release --product sector-bench && .build/release/sector-bench ~/path
 ```
 
@@ -49,7 +51,11 @@ and `env.sh` switches to the macOS 26 SDK.
 - Swift style: 2-space indent, 100 columns (`.swift-format`).
 - UI strings are Russian literals (`Text("Обзор")`, `String(localized:)`);
   Russian is the source language and the localization key. English goes in
-  `Resources/en.lproj/Localizable.strings`.
+  `Resources/en.lproj/Localizable.strings`; `scripts/check-strings.sh` lists
+  keys missing a translation. Counted nouns use `Plural.format(n, one, few,
+  many)`, whose forms are looked up as keys too. Text passed through a
+  `String` parameter is not localized — take `LocalizedStringKey` or call
+  `String(localized:)` at the call site.
 - Use the tokens: colors `Color.sector*`, category colors
   `DiskCategory.color`, radii `Metrics`, animations `Motion.smooth / bouncy /
   quick / counter` wrapped in `Motion.resolve(_:)` so Reduce Motion and the
