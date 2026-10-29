@@ -252,7 +252,7 @@ final class AppModel {
       let count = outcome.removed.count
       let record = CleanupRecord(
         source: request.source, title: request.recordTitle,
-        detail: String(localized: "\(count) объектов"), mode: mode, items: outcome.removed)
+        detail: Plural.format(count, "объект", "объекта", "объектов"), mode: mode, items: outcome.removed)
       history.add(record)
       historyVersion += 1
       var undo: (@MainActor () -> Void)?
@@ -294,6 +294,11 @@ final class AppModel {
         try? tree.write(to: FileTree.defaultCacheURL)
       }.value
     }
+  }
+
+  /// Tells History-dependent views that records changed outside `AppModel`.
+  func historyDidChange() {
+    historyVersion += 1
   }
 
   /// Records a cleanup performed outside `perform` (Smart Clean, Docker).
